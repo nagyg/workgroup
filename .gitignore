@@ -1,0 +1,12 @@
+.wgsource
+cmder
+blackmagic
+ffmpeg
+!plugins/cryptomatte
+!plugins/.gitignore
+project
+!sidefx/HSITE/qLib
+!sidefx/HSITE/.gitignore
+solidangle
+tweaksoftware
+vscode
