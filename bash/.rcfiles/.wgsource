@@ -20,7 +20,8 @@ groombear=false
 
 #------------------------FUSION------------------------////
 export FDIR="/c/Program Files/Blackmagic Design"
-export genarts_LICENSE= # not in use
+export FUSION_LICENSE_SERVER=   # not in use
+export genarts_LICENSE=         # not in use
 
 #------------------------SOURCE------------------------////
 source "${WGPATH}/bash/source/main.sh"

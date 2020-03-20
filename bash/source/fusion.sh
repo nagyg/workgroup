@@ -40,6 +40,12 @@ if [ -f "${FDIR}/Fusion ${FVERSION}/Fusion.exe" ] && [ -n "${FVERSION}" ]; then
 	pathadd "${FBin}"
 
     case "${FVERSION}" in
+	"9")
+		export FUSION9_MasterPrefs="$(cygpath -w "${WGPATH}/blackmagic/fusion/${FVERSION}/masterprefs/Master.prefs")"
+		export OFX_PLUGIN_PATH="$(cygpath -w "${WGPATH}/plugins/ofx/fusion/${FVERSION}")"
+		sapphire 2019.52
+        cryptomatte
+;;	
 	"16")
 		export FUSION16_MasterPrefs="$(cygpath -w "${WGPATH}/blackmagic/fusion/${FVERSION}/masterprefs/Master.prefs")"
 		export OFX_PLUGIN_PATH="$(cygpath -w "${WGPATH}/plugins/ofx/fusion/${FVERSION}")"
@@ -48,7 +54,8 @@ if [ -f "${FDIR}/Fusion ${FVERSION}/Fusion.exe" ] && [ -n "${FVERSION}" ]; then
         
 ;;
 	*)
-		echo "bash: ${FVERSION}: is not defined fusion version"
+		local format="%s ${red}%11s${nc} %s\n"
+		printf "$format" "Fusion    >" "${FVERSION}" "|| is not defined fusion version"
 		return ;;
 esac
 
