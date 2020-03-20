@@ -50,7 +50,7 @@ if [ -f "${FDIR}/Fusion ${FVERSION}/Fusion.exe" ] && [ -n "${FVERSION}" ]; then
 		export FUSION16_MasterPrefs="$(cygpath -w "${WGPATH}/blackmagic/fusion/${FVERSION}/masterprefs/Master.prefs")"
 		export OFX_PLUGIN_PATH="$(cygpath -w "${WGPATH}/plugins/ofx/fusion/${FVERSION}")"
 		sapphire 2019.52
-        cryptomatte
+		cryptomatte
 		;;
 	*)
 		local format="%s ${red}%11s${nc} %s\n"
@@ -95,7 +95,7 @@ Fusion.exe &
 #----------------------////
 edit.masterprefs() {
 	local d
-    local wgpath_forfusion="$(echo "$(cygpath -w "${WGPATH}")" | sed 's|\\|\\\\\\\\|g' )"
+	local wgpath_forfusion="$(echo "$(cygpath -w "${WGPATH}")" | sed 's|\\|\\\\\\\\|g' )"
 	local fusion_dir="${WGPATH}/blackmagic/fusion/"
 	for d in "${fusion_dir}"* ; do
 		if [ -f "$d/masterprefs/Master.prefs" ]; then
