@@ -1,0 +1,34 @@
+#!/bin/bash
+#----------------------- Please do not edit this section ------------------------////
+export WGPATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+export JOB= # not in use
+
+AVERSION= # not in use
+HVERSION= # not in use
+FVERSION= # not in use
+#--------------------------------------------------------------------------------////
+#------------------------ARNOLD------------------------////
+export ADIR="${WGPATH}/solidangle"
+export solidangle_LICENSE= # not in use
+
+#------------------------HOUDINI-----------------------////
+export HDIR="/c/Program Files/Side Effects Software"
+expreditor=false
+modeler=false
+groombear=false
+
+#------------------------FUSION------------------------////
+export FDIR="/c/Program Files/Blackmagic Design"
+export genarts_LICENSE= # not in use
+
+#------------------------SOURCE------------------------////
+source "${WGPATH}/bash/source/main.sh"
+source "${WGPATH}/bash/source/vscode.sh"
+#source "${WGPATH}/bash/source/ffmpeg.sh"
+#source "${WGPATH}/bash/source/tweaksoftware.sh"
+#source "${WGPATH}/bash/source/project.sh"
+#source "${WGPATH}/bash/source/arnold.sh"
+#source "${WGPATH}/bash/source/houdini.sh"
+#source "${WGPATH}/bash/source/fusion.sh"
+#--------------------------------------------------------------------------------////

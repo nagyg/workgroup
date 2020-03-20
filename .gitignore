@@ -1,4 +1,5 @@
 .wgsource
+!bash/.rcfiles/.wgsource
 cmder
 blackmagic
 ffmpeg
