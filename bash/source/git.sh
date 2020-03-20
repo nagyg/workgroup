@@ -27,8 +27,8 @@ else
 	local in=`realpath .`
 	local i
 	for i in "${@}"; do
-		curl -sSf $url/${i}.zip
-		if test "$?" != "22"; then
+		curl -is $url/${i}.zip
+		if [ $? -ne 0 ]; then
 			local path=`realpath "${WGPATH}/${i}"`
 			if [ -d "$path" ]; then
 				builtin cd "$path"
