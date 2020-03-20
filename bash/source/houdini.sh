@@ -57,10 +57,10 @@ if [ -d "${HFS}" ]; then
 	export HOUDINI_DSO_ERROR=0
 	export HOUDINI_EXTERNAL_HELP_BROWSER=1
 
-	qlib-dev
+	qlib
 
 	#------------------////
-	# FCKPLUGINS
+	# FCK PLUGINS
 	#------------------////
 	if [ "${expreditor}" == "true" ] && [ -n "${expreditor}" ]; then
 		hplug.expreditor
@@ -104,7 +104,7 @@ hstart() {
 #------------------////
 # QLib:
 #------------------////
-qlib-dev() {
+qlib() {
 	export QLIB="$HSITE\qLib"
 	export QOTL="$QLIB\otls"
 
@@ -112,7 +112,7 @@ qlib-dev() {
 	export HOUDINI_OTLSCAN_PATH="$QOTL\base;$QOTL\future;$QOTL\experimental;&"
 }
 
-cdqlib() { builtin cd $HSITE/qLib-dev; }
+cdqlib() { builtin cd $HSITE/qLib; }
 
 qlib.update() {
 	local in=`realpath .`
