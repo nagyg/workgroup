@@ -44,15 +44,14 @@ if [ -f "${FDIR}/Fusion ${FVERSION}/Fusion.exe" ] && [ -n "${FVERSION}" ]; then
 		export FUSION9_MasterPrefs="$(cygpath -w "${WGPATH}/blackmagic/fusion/${FVERSION}/masterprefs/Master.prefs")"
 		export OFX_PLUGIN_PATH="$(cygpath -w "${WGPATH}/plugins/ofx/fusion/${FVERSION}")"
 		sapphire 2019.52
-        cryptomatte
-;;	
+		cryptomatte
+		;;	
 	"16")
 		export FUSION16_MasterPrefs="$(cygpath -w "${WGPATH}/blackmagic/fusion/${FVERSION}/masterprefs/Master.prefs")"
 		export OFX_PLUGIN_PATH="$(cygpath -w "${WGPATH}/plugins/ofx/fusion/${FVERSION}")"
 		sapphire 2019.52
         cryptomatte
-        
-;;
+		;;
 	*)
 		local format="%s ${red}%11s${nc} %s\n"
 		printf "$format" "Fusion    >" "${FVERSION}" "|| is not defined fusion version"
