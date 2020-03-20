@@ -1,24 +1,9 @@
 #!/bin/bash
 #--------------------------------------------------------------------------------------------------////
-# git :
+# URL update:
 #--------------------------------------------------------------------------------------------------////
-git.push() {
-    if [ -z "$1" ]; then
-     local message="`date +"%D %T"` `whoami`"
-     echo -e "\n message: $message \n"
-    else
-     local message="$1"
-    fi
-    git commit -a -m "$message"
-    git push
-}
 
-#--------------------------------------------------------------------------------------------------////
-# Download from url :
-#--------------------------------------------------------------------------------------------------////
-pathadd "${WGPATH}/7za"
-
-export url="http://nagyg.ddns.net:17600/workgroup"
+export url1="http://nagyg.ddns.net:17600/workgroup"
 
 update() {
 if [ "$#" == 0 ]; then
@@ -27,7 +12,7 @@ else
 	local in=`realpath .`
 	local i
 	for i in "${@}"; do
-		curl -is $url/${i}.zip
+		curl -is $url1/${i}.zip
 		if [ $? -ne 0 ]; then
 			local path=`realpath "${WGPATH}/${i}"`
 			if [ -d "$path" ]; then
@@ -36,11 +21,11 @@ else
 				mkdir "$path"
 				builtin cd "$path"
 			fi
-			curl $url/${i}.zip --output ./${i}.zip
+			curl $url1/${i}.zip --output ./${i}.zip
 			7za x ${i}.zip -r -aou && rm ${i}.zip
-			echo -e "[${green}$url/${i}.zip${nc}]	>> ${i}"
+			echo -e "[${green}$url1/${i}.zip${nc}]	>> ${i}"
 		else
-			echo -e "[${red}$url/${i}.zip${nc}]" 
+			echo -e "[${red}$url1/${i}.zip${nc}]" 
 		fi
 	done
 	builtin cd "$in"
