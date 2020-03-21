@@ -1,4 +1,5 @@
-### Installation
+Installation
+============
 
 #### 1. [Download](https://cmder.net) full cmder with Git for Windows
 #### 2. run bash:
@@ -11,12 +12,14 @@
             code $WGPATH/.wgsource
 #### 7. restart cmder
 
-### Update workgroup
+### update workgroup
+====================
 
             builtin cd ~/workgroup && git pull
             reload
             update.all
 
-### Update Arnold
+### update arnold
+=================
 
             update.solidangle
