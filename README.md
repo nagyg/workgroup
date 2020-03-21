@@ -40,6 +40,18 @@ You should be ready, good luck!
 
 
 
+
+Update
+======
+Close all applications then run the following commands.
+### This will update all git submodules and all url / binary repos
+            builtin cd ~/workgroup && git pull --recurse-submodules
+            reload
+            update.all
+
+
+
+
 #### NOTE: you can check out / place your workgroup repo anywhere. The instructions above were just an example.
 
 The important members: 
@@ -51,13 +63,3 @@ At every startup .bash_profile runs a source command: source /pathto/.wgsource. 
 Your workgroup folder contains a .wgsource file which is the last member. This file contains the components / variables will be set on starting up your cmder / conemu shell.
  
 
-
-
-
-Update
-======
-close all applications
-### git submodules and all url repo
-            builtin cd ~/workgroup && git pull --recurse-submodules
-            reload
-            update.all
