@@ -18,7 +18,3 @@ Update
             builtin cd ~/workgroup && git pull --recurse-submodules
             reload
             update.all
-
-### arnold
-
-            update.solidangle
