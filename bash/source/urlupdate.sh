@@ -22,10 +22,10 @@ else
 				builtin cd "$path"
 			fi
 			curl $url1/${i}.zip --output ./${i}.zip
-			7za x ${i}.zip -r -aou && rm ${i}.zip
-			echo -e "[${green}$url1/${i}.zip${nc}]	>> ${i}"
+			7za x ${i}.zip -r -aoa && rm ${i}.zip
+			echo -e "\n[${green}$url1/${i}.zip${nc}]	>> ${i}\n"
 		else
-			echo -e "[${red}$url1/${i}.zip${nc}]" 
+			echo -e "[${red}$url1/${i}.zip${nc}]\n" 
 		fi
 	done
 	builtin cd "$in"
