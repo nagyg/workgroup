@@ -1,6 +1,6 @@
 ### Installation
 
-#### 1. Download full cmder (with Git for Windows) https://cmder.net/
+#### 1. [Download](https://cmder.net) full cmder (with Git for Windows)
 #### 2. run bash
             git clone --recursive https://github.com/nagyg/workgroup.git ~/workgroup
 #### 3. start ~/workgroup/bash/cleanrc.cmd - backup and config your .bash_profile .bash_userfile .bashrc
