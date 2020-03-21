@@ -1,13 +1,16 @@
+# from git
 .wgsource
 !bash/.rcfiles/.wgsource
+#!plugins/.gitignore
+#!sidefx/.gitignore
+#!sidefx/HSITE/.gitignore
+
+# from url
 cmder
 blackmagic
 ffmpeg
-!plugins/cryptomatte
-!plugins/.gitignore
 project
-!sidefx/HSITE/qLib
-!sidefx/HSITE/.gitignore
 solidangle
+tmp
 tweaksoftware
 vscode

@@ -2,7 +2,7 @@
 
 #### 1. Download full cmder (with Git for Windows) https://cmder.net/
 #### 2. run bash
-            cd ~; git clone --recursive https://github.com/nagyg/workgroup.git ./workgroup
+            git clone --recursive https://github.com/nagyg/workgroup.git ~/workgroup
 #### 3. start ~/workgroup/bash/clean.rc.cmd
 #### 4. restart cmder
 #### 5. run bash
