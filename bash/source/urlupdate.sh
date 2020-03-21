@@ -3,7 +3,7 @@
 # URL update:
 #--------------------------------------------------------------------------------------------------////
 
-export url1="http://nagyg.ddns.net:17600/workgroup"
+export url0="http://nagyg.ddns.net:17600/workgroup"
 
 update() {
 if [ "$#" == 0 ]; then
@@ -12,7 +12,7 @@ else
 	local in=`realpath .`
 	local i
 	for i in "${@}"; do
-		curl -is $url1/${i}.zip
+		curl -is $url0/${i}.zip
 		if [ $? -ne 0 ]; then
 			local path=`realpath "${WGPATH}/${i}"`
 			if [ -d "$path" ]; then
@@ -21,19 +21,21 @@ else
 				mkdir "$path"
 				builtin cd "$path"
 			fi
-			curl $url1/${i}.zip --output ./${i}.zip
+			curl $url0/${i}.zip --output ./${i}.zip
 			7za x ${i}.zip -r -aoa && rm ${i}.zip
-			echo -e "\n[${green}$url1/${i}.zip${nc}]	>> ${i}\n"
+			echo -e "\n[${green}$url0/${i}.zip${nc}]	>> ${i}\n"
 		else
-			echo -e "[${red}$url1/${i}.zip${nc}]\n"
+			echo -e "[${red}$url0/${i}.zip${nc}]\n"
 		fi
 	done
 	builtin cd "$in"
 fi
 }
 
+#------------------////
+# alias:
+#------------------////
 alias update.blackmagic='update blackmagic'
-#alias update.cmder='update cmder'
 alias update.ffmpeg='update ffmpeg'
 alias update.plugins='update plugins'
 alias update.project='update project'

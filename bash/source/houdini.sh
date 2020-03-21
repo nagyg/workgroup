@@ -114,14 +114,6 @@ qlib() {
 
 cdqlib() { builtin cd $HSITE/qLib; }
 
-qlib.update() {
-	local in=`realpath .`
-	cdqlib
-	echo -e "git pull >> [${blue}qlib${nc}]"
-	git pull
-	builtin cd "$in"
-}
-
 #------------------////
 # Houdini ExprEditor:
 #------------------////
