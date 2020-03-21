@@ -5,11 +5,11 @@ Installation
 
  By running cmder.exe the first time make sure it is starting up a bash shell.
  
- Settings -> Startup -> Specified named task -> select "{bash::bash}" option from the dropdown.
+ - Settings -> Startup -> Specified named task -> select "{bash::bash}" option from the dropdown.
  
- Save settings.
+ - Save settings.
  
- Exit / Restart cmder.
+ - Exit / Restart cmder.
  
 #### 2. From the new cmder run:
             git clone --recursive https://github.com/nagyg/workgroup.git ~/workgroup
@@ -31,7 +31,9 @@ This will download some more meat.
             code $WGPATH/.wgsource
             
 The line above will open vscode and edit the ~/workgroup/.wgsource file. 
-Set up the environment variables here if it's needed. For example solidangle_LICENSE=5060@<COMPUTERNAME_PROVIDING_LICENSE> 
+Set up the environment variables here if it's needed.
+For example:
+            solidangle_LICENSE=5060@<COMPUTERNAME_PROVIDING_LICENSE> 
 
             
 #### 7. Last exit / Restart cmder
@@ -58,8 +60,12 @@ The important members:
 
 Cmder running is bash mode -> you have a ~ / ${HOME} folder where your .bash_profile resides AND runs on bash every startup.
 
-At every startup .bash_profile runs a source command: source /pathto/.wgsource.  This is the point where you can relocate your workgroup! Move it anywhere and edit your .bash_profile accordingly. Example: move it to Q:\gfx\workgroup then your .bash_profile should contain the line "source /q/gfx/workgroup/.wgsource". 
+At every startup .bash_profile runs a source command: source /pathto/.wgsource.
+This is the point where you can relocate your workgroup! Move it anywhere and edit your .bash_profile accordingly.
 
-Your workgroup folder contains a .wgsource file which is the last member. This file contains the components / variables will be set on starting up your cmder / conemu shell.
+Example: move it to Q:\gfx\workgroup then your .bash_profile should contain the line "source /q/gfx/workgroup/.wgsource"
+
+Your workgroup folder contains a .wgsource file which is the last member.
+This file contains the components / variables will be set on starting up your cmder / conemu shell.
  
 
