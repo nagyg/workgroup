@@ -38,7 +38,7 @@ Set up the environment variables here if it's needed. For example solidangle_LIC
 
 You should be ready, good luck! 
 
-### NOTE: you can check out / place your workgroup repo anywhere it was just an example.
+### NOTE: you can check out / place your workgroup repo anywhere. The instructions above were just an example.
 
 The important members: 
 
