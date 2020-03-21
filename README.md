@@ -12,14 +12,14 @@ Installation
             code $WGPATH/.wgsource
 #### 7. restart cmder
 
-### update workgroup
-====================
+update workgroup
+================
 
             builtin cd ~/workgroup && git pull
             reload
             update.all
 
-### update arnold
-=================
+update arnold
+=============
 
             update.solidangle
