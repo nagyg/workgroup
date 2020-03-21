@@ -11,15 +11,26 @@ Installation
  
  Restart cmder.
  
-### 2. from cmder run the following command:
+#### 2. from cmder run:
             git clone --recursive https://github.com/nagyg/workgroup.git ~/workgroup
-#### 3. start ~/workgroup/bash/cleanrc.cmd - The command will backup and configure your .bash_profile .bash_userfile .bashrc
+            
+The command above will download files from GitHub and might take some time.
+
+#### 3. from cmder run:
+            ~/workgroup/bash/cleanrc.cmd - The command will backup and configure your .bash_profile .bash_userfile .bashrc
+
+The command above will initialize your shell startup.
+
 #### 4. restart cmder
-#### 5. run bash: - download meat from url
+#### 5. from cmder run:
             update.all
-#### 6. run bash: - open and edit ~/workgroup/.wgsource file
+            
+This will download some more meat.
+
+#### 6. run bash: 
             code $WGPATH/.wgsource
             
+The line above will open vscode and edit the ~/workgroup/.wgsource file. 
 Set up the environment variables here if it's needed. For example solidangle_LICENSE=5060@<COMPUTERNAME_PROVIDING_LICENSE> 
 
 
