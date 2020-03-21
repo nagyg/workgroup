@@ -56,7 +56,7 @@ Close all applications then run the following commands.
 
 The important members: 
 
-Cmder running is bash mode -> you have a ~ / ${HOME} folder where your .bash_profile resides AND run on bash every startup.
+Cmder running is bash mode -> you have a ~ / ${HOME} folder where your .bash_profile resides AND runs on bash every startup.
 
 At every startup .bash_profile runs a source command: source /pathto/.wgsource.  This is the point where you can relocate your workgroup! Move it anywhere and edit your .bash_profile accordingly. Example: move it to Q:\gfx\workgroup then your .bash_profile should contain the line "source /q/gfx/workgroup/.wgsource". 
 
