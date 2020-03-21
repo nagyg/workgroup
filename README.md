@@ -27,16 +27,17 @@ The command above will initialize your shell startup.
             
 This will download some more meat.
 
-#### 6. run bash: 
+#### 6. from cmder run: 
             code $WGPATH/.wgsource
             
 The line above will open vscode and edit the ~/workgroup/.wgsource file. 
 Set up the environment variables here if it's needed. For example solidangle_LICENSE=5060@<COMPUTERNAME_PROVIDING_LICENSE> 
 
-
-
             
 #### 7. restart cmder
+
+
+
 
 Update
 ======
