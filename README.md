@@ -3,7 +3,7 @@
 #### 1. Download full cmder (with Git for Windows) https://cmder.net/
 #### 2. run bash
             git clone --recursive https://github.com/nagyg/workgroup.git ~/workgroup
-#### 3. start ~/workgroup/bash/clean.rc.cmd - backup and config your .bashrc .bash_userfile .bash_profile
+#### 3. start ~/workgroup/bash/cleanrc.cmd - backup and config your .bash_profile .bash_userfile .bashrc
 #### 4. restart cmder
 #### 5. run bash - download meat from url
             update.all
