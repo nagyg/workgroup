@@ -14,6 +14,7 @@ Installation
 
 Update
 ======
+close all applications
 ### workgroup
             builtin cd ~/workgroup && git pull --recurse-submodules
             reload
