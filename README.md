@@ -39,10 +39,8 @@ Set up the environment variables here if it's needed.
 #### 7. Last exit / Restart cmder
 
 You should be ready, good luck! 
-
-
-
-
+<br />
+<br />
 Update
 ======
 Close all applications then run the following commands.
