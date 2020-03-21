@@ -15,7 +15,7 @@ Installation
 Update
 ======
 close all applications
-### workgroup
+### git submodules and all url repo
             builtin cd ~/workgroup && git pull --recurse-submodules
             reload
             update.all
