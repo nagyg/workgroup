@@ -19,7 +19,7 @@ The command above will download files from GitHub and might take some time.
 #### 3. Then run:
             ~/workgroup/bash/cleanrc.cmd
 
-The command above will initialize your shell startup.  Backs up and configure your .bash_profile .bash_userfile (.bashrc).
+The command above will initialize your shell startup.  Backs up and configures your .bash_profile .bash_userfile (.bashrc).
 
 #### 4. Exit / Restart cmder
 #### 5. From the new cmder run:
