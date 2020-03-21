@@ -3,42 +3,44 @@ Installation
 
 #### 1. [Download](https://cmder.net) the full cmder with Git for Windows. 
 
- Running it first time make sure it is starting up a bash shell.
+ By running cmder.exe the first time make sure it is starting up a bash shell.
  
  Settings -> Startup -> Specified named task -> select "{bash::bash}" option from the dropdown.
  
  Save settings.
  
- Restart cmder.
+ Exit / Restart cmder.
  
-#### 2. from the new cmder run:
+#### 2. From the new cmder run:
             git clone --recursive https://github.com/nagyg/workgroup.git ~/workgroup
             
 The command above will download files from GitHub and might take some time.
 
-#### 3. then run:
+#### 3. Then run:
             ~/workgroup/bash/cleanrc.cmd - The command will backup and configure your .bash_profile .bash_userfile .bashrc
 
 The command above will initialize your shell startup.
 
-#### 4. exit / restart cmder
-#### 5. from new cmder run:
+#### 4. Exit / Restart cmder
+#### 5. From the new cmder run:
             update.all
             
 This will download some more meat.
 
-#### 6. then run: 
+#### 6. Then run: 
             code $WGPATH/.wgsource
             
 The line above will open vscode and edit the ~/workgroup/.wgsource file. 
 Set up the environment variables here if it's needed. For example solidangle_LICENSE=5060@<COMPUTERNAME_PROVIDING_LICENSE> 
 
             
-#### 7. restart cmder
+#### 7. Exit / Restart cmder!
 
 You should be ready, good luck! 
 
-### NOTE: you can check out / place your workgroup repo anywhere. The instructions above were just an example.
+
+
+#### NOTE: you can check out / place your workgroup repo anywhere. The instructions above were just an example.
 
 The important members: 
 
