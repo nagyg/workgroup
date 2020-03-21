@@ -15,7 +15,7 @@ Installation
 Update
 ======
 ### workgroup
-            builtin cd ~/workgroup && git pull
+            builtin cd ~/workgroup && git pull --recurse-submodules
             reload
             update.all
 
