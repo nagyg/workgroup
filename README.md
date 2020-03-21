@@ -10,3 +10,13 @@
 #### 6. run bash: - open and edit ~/workgroup/.wgsource file
             code $WGPATH/.wgsource
 #### 7. restart cmder
+
+### Update workgroup
+
+            builtin cd ~/workgroup && git pull
+            reload
+            update.all
+
+### Update Arnold
+
+            update.solidangle
