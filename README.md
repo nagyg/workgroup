@@ -1,8 +1,17 @@
 Installation
 ============
 
-#### 1. [Download](https://cmder.net) full cmder with Git for Windows
-#### 2. run bash:
+#### 1. [Download](https://cmder.net) full cmder with Git for Windows. 
+
+ Running it first time make sure it is starting up a bash shell.
+ 
+ Settings -> Startup -> Specified named task -> select "{bash::bash}" option from the dropdown.
+ 
+ Save settings.
+ 
+ Restart cmder.
+ 
+### 2. run bash:
             git clone --recursive https://github.com/nagyg/workgroup.git ~/workgroup
 #### 3. start ~/workgroup/bash/cleanrc.cmd - backup and config your .bash_profile .bash_userfile .bashrc
 #### 4. restart cmder
