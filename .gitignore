@@ -1,11 +1,9 @@
-# from git
 .wgsource
 !bash/.rcfiles/.wgsource
 #!plugins/.gitignore
 #!sidefx/.gitignore
 #!sidefx/HSITE/.gitignore
 
-# from url
 cmder
 blackmagic
 ffmpeg
