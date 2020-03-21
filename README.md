@@ -33,14 +33,12 @@ This will download some more meat.
 The line above will open vscode and edit the ~/workgroup/.wgsource file. 
 Set up the environment variables here if it's needed.
 
-##### Example: solidangle_LICENSE=5060@<COMPUTERNAME_PROVIDING_LICENSE> 
+##### Example: solidangle_LICENSE=5060@<COMPUTERNAME_PROVIDING_LICENSE>
 
-            
 #### 7. Last exit / Restart cmder
 
-You should be ready, good luck! 
-<br />
-<br />
+You should be ready, good luck!
+
 Update
 ======
 Close all applications then run the following commands.
@@ -48,10 +46,7 @@ Close all applications then run the following commands.
             builtin cd ~/workgroup && git pull --recurse-submodules
             reload
             update.all
-
-
-
-
+            
 #### NOTE: you can check out / place your workgroup repo anywhere. The instructions above were just an example.
 
 The important members: 
