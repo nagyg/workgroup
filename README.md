@@ -33,7 +33,7 @@ This will download some more meat.
 The line above will open vscode and edit the ~/workgroup/.wgsource file. 
 Set up the environment variables here if it's needed.
 
-## Example:solidangle_LICENSE=5060@<COMPUTERNAME_PROVIDING_LICENSE> 
+##### Example:solidangle_LICENSE=5060@<COMPUTERNAME_PROVIDING_LICENSE> 
 
             
 #### 7. Last exit / Restart cmder
@@ -63,7 +63,7 @@ Cmder running is bash mode -> you have a ~ / ${HOME} folder where your .bash_pro
 At every startup .bash_profile runs a source command: source /pathto/.wgsource.
 This is the point where you can relocate your workgroup! Move it anywhere and edit your .bash_profile accordingly.
 
-## Example: move it to Q:\gfx\workgroup then your .bash_profile should contain the line "source /q/gfx/workgroup/.wgsource"
+##### Example: move it to Q:\gfx\workgroup then your .bash_profile should contain the line "source /q/gfx/workgroup/.wgsource"
 
 Your workgroup folder contains a .wgsource file which is the last member.
 This file contains the components / variables will be set on starting up your cmder / conemu shell.
