@@ -93,14 +93,14 @@ Fusion.exe &
 #----------------------////
 # Fusion MasterPrefs:
 #----------------------////
-edit.masterprefs() {
+edit.fusionmasterprefs() {
 	local d
-	local wgpath_forfusion="$(echo "$(cygpath -w "${WGPATH}")" | sed 's|\\|\\\\\\\\|g' )"
+	local path_forfusion="$(echo "$(cygpath -w "${2}")" | sed 's|\\|\\\\\\\\|g' )"
 	local fusion_dir="${WGPATH}/blackmagic/fusion/"
 	for d in "${fusion_dir}"* ; do
 		if [ -f "$d/masterprefs/Master.prefs" ]; then
             local file="$d/masterprefs/Master.prefs"
-            sed -i "/\[\"WG\:\"\]\ \=\ /c\\\t\t\t\t\[\"WG\:\"\]\ \=\ \"${wgpath_forfusion}\"\," "${file}"
+            sed -i "/\[\"${1}\:\"\]\ \=\ /c\\\t\t\t\t\[\"${1}\:\"\]\ \=\ \"${path_forfusion}\"\," "${file}"
 		fi
 	done
 }
@@ -113,4 +113,4 @@ if [ -z "${FDIR}" ]; then
 fi
 
 fsetenv
-edit.masterprefs
+edit.fusionmasterprefs WG "$WGPATH"
