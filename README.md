@@ -33,7 +33,9 @@ This will download some more meat.
 The line above will open vscode and edit the ~/workgroup/.wgsource file. 
 Set up the environment variables here if it's needed.
 
-##### Example: solidangle_LICENSE=5060@<COMPUTERNAME_PROVIDING_LICENSE>
+##### Example:
+            export solidangle_LICENSE=5060@(COMPUTERNAME_PROVIDING_LICENSE)
+            export genarts_LICENSE="$(cygpath -w "${WGPATH}/plugins/borisfx/mocha/mochapro.lic")"
 
 #### 7. Last exit / Restart cmder
 
