@@ -90,10 +90,10 @@ alias ..='cd ..'
 alias ...='cd ../../'
 
 #------------------------------------------////
-# SOURCE:
+# HIDDEN SOURCE:
 #------------------------------------------////
-source "${WGPATH}/bash/source/githelper.sh"
-source "${WGPATH}/bash/source/urlupdate.sh"
+source "${WGPATH}/bash/source/git.sh"
+source "${WGPATH}/bash/source/repo.sh"
 
 #------------------------------------------////
 # INITIAL:
