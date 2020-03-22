@@ -35,7 +35,7 @@ Set up the environment variables here if it's needed.
 
 ##### Example:
             export solidangle_LICENSE=5060@(COMPUTERNAME_PROVIDING_LICENSE)
-            export genarts_LICENSE="$(cygpath -w "${WGPATH}/plugins/borisfx/mocha/mochapro.lic")"
+            export genarts_LICENSE="$(cygpath -w "/C/mocha/mochapro.lic")"
 
 #### 7. Last exit / Restart cmder
 
