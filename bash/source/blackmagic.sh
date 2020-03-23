@@ -35,9 +35,9 @@ fi
 fsetenv() {
 if [ -f "${BMDIR}/Fusion ${FVERSION}/Fusion.exe" ] && [ -n "${FVERSION}" ]; then
 
-	pathremove "${FBin}"
-	export FBin="${BMDIR}/Fusion ${FVERSION}"
-	pathadd "${FBin}"
+	#pathremove "${FBin}"
+	#export FBin="${BMDIR}/Fusion ${FVERSION}"
+	#pathadd "${FBin}"
 
     case "${FVERSION}" in
 	"9")
@@ -104,13 +104,9 @@ cryptomatte() {
 #----------------------////
 # RUN:
 #----------------------////
-f() {
-	Fusion.exe &
-}
+f() { "${BMDIR}/Fusion ${FVERSION}/Fusion.exe" &};
 
-r() {
-	"${BMDIR}/DaVinci Resolve/Resolve.exe" &
-}
+r() { "${BMDIR}/DaVinci Resolve/Resolve.exe" &};
 
 #----------------------////
 # Fusion MasterPrefs:

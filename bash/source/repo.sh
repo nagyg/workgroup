@@ -9,7 +9,11 @@ local archive_dir="${WGPATH}/"
 
 function 7zazip {
 	7za a -tzip "${WGPATH}/tmp/${archive}" -x@.repoignore
-	echo -e "[${green}${WGPATH}/tmp${nc}]	>> ${archive}.zip\n"
+			if [ $? -eq 0 ]; then
+				echo -e "[${green}${WGPATH}/tmp/${archive}.zip${nc}]\n"
+			else
+				echo -e "[${red}${WGPATH}/tmp/${archive}.zip${nc}]\n"
+			fi
 }
 
 if [ "$#" == 0 ]; then
@@ -34,17 +38,18 @@ builtin cd "$in"
 fi
 }
 
-export url0="http://nagyg.ddns.net:17600/workgroup"
-
 update() {
 if [ "$#" == 0 ]; then
 	echo "bash: [$#]: illegal number of parameters"
 else
 	local i
 	local in=`realpath .`
+
+	local url0="http://nagyg.ddns.net:17600/workgroup"
+
 	for i in "${@}"; do
-		curl -is $url0/${i}.zip
-		if [ $? -ne 0 ]; then
+		curl -sSf $url0/${i}.zip > /dev/null
+		if [ $? -eq 23 ]; then
 			local path=`realpath "${WGPATH}/${i}"`
 			if [ -d "$path" ]; then
 				builtin cd "$path"
@@ -54,7 +59,11 @@ else
 			fi
 			curl $url0/${i}.zip --output ./${i}.zip
 			7za x ${i}.zip -r -aoa && rm ${i}.zip
-			echo -e "[${green}$url0/${i}.zip${nc}]	>> ${i}\n"
+				if [ $? -eq 0 ]; then
+					echo -e "[${green}$url0/${i}.zip${nc}]	${green}>> ${i}${nc}\n"
+				else
+					echo -e "[${red}$url0/${i}.zip${nc}]\n"
+				fi
 		else
 			echo -e "[${red}$url0/${i}.zip${nc}]\n"
 		fi
