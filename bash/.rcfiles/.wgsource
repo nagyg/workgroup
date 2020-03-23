@@ -7,8 +7,7 @@ export JOB= # not in use
 AVERSION= # not in use
 HVERSION= # not in use
 FVERSION= # not in use
-#--------------------------------------------------------------------------------////
-#------------------------ARNOLD------------------------////
+#------------------------ARNOLD--------------------------------------------------////
 export ADIR="${WGPATH}/solidangle"
 export solidangle_LICENSE= # not in use
 
@@ -28,8 +27,8 @@ source "${WGPATH}/bash/source/main.sh"
 source "${WGPATH}/bash/source/vscode.sh"
 #source "${WGPATH}/bash/source/ffmpeg.sh"
 #source "${WGPATH}/bash/source/tweaksoftware.sh"
-#source "${WGPATH}/bash/source/project.sh"
 #source "${WGPATH}/bash/source/arnold.sh"
 #source "${WGPATH}/bash/source/houdini.sh"
 #source "${WGPATH}/bash/source/fusion.sh"
+#source "${WGPATH}/bash/source/project.sh"
 #--------------------------------------------------------------------------------////

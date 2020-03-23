@@ -84,8 +84,8 @@ if [ ${supphtoa} = 1 ]; then
 	echo -e "\n"\
 	$(switch "${supphtoa}" "" " HOUDINI: ${green}${HVERSION}${nc} HTOA: ${green}${htoa_version}${nc}")
 
-	$(switch "${supphtoa}" "" "echo -e \n${blue} HTOA DLL SHADERS ====== ${nc}$ARNOLD_PLUGIN\n\
-	${blue}HTOA DLL PROCEDURAL === ${nc}$ARNOLD_PROCEDURAL")
+	$(switch "${supphtoa}" "" "echo -e \n${blue} HTOA DLL SHADERS\t--> ${nc}$ARNOLD_PLUGIN\n\
+	${blue}HTOA DLL PROCEDURAL\t--> ${nc}$ARNOLD_PROCEDURAL")
 fi
 }
 

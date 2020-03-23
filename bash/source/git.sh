@@ -50,3 +50,6 @@ git.submodule.update() {
 git.pull.recurse() {
     git pull --recurse-submodules
 }
+
+# some more cd aliases
+cdw() { cd "${WGPATH}"; }
