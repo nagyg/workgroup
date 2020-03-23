@@ -104,4 +104,4 @@ else
 	builtin cd ~
 fi
 
-printf "%s ${yellow}%11s${nc}\n" "Workgroup >" "${WGPATH}"
+printf "%s ${yellow}%11s${nc}\n" "Workgroup  >" "${WGPATH}"

@@ -50,7 +50,7 @@ if [ ${#all_aversion[@]} != 0 ]; then
 	echo ==========================================================================
 else
 	local format="${red}%s %24s${nc}\n"
-	printf "$format" "Arnold    >" "|| Not found"
+	printf "$format" "Arnold     >" "|| Not found"
 fi
 }
 
@@ -69,7 +69,7 @@ if [ -d "${ADIR}/arnold/${AVERSION}" ] && [ -n "${AVERSION}" ]; then
 	fi
 
 	local format="%s ${green}%11s${nc} %s ${green}%s${nc}\n"
-	printf "$format" "Arnold    >" "${AVERSION}" "||"
+	printf "$format" "Arnold     >" "${AVERSION}" "||"
 
 else
 	supphtoa=0

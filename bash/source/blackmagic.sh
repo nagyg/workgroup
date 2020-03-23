@@ -5,7 +5,7 @@
 fscan() {
 	unset all_fversion
 	local d i
-	local fusion_dir="${FDIR}/Fusion "
+	local fusion_dir="${BMDIR}/Fusion "
 	for d in "${fusion_dir}"* ; do
 		if [ -f "$d/Fusion.exe" ]; then
 			all_fversion+=(`echo ${d##${fusion_dir}}`)
@@ -19,7 +19,7 @@ fversion() {
     fscan
 if [ ${#all_fversion[@]} != 0 ]; then
 	echo ==========================================================================
-	echo -e " List exist ${blue}Fusion${nc} in [${FDIR}] directory."
+	echo -e " List exist ${blue}Fusion${nc} in [${BMDIR}] directory."
 	echo
 	createmenu "${all_fversion[@]}"
 	echo
@@ -27,21 +27,21 @@ if [ ${#all_fversion[@]} != 0 ]; then
 	edit.profile "FVERSION" "$FVERSION"
 	echo ==========================================================================
 else
-	local format="${red}%s %24s${nc}\n"
-	printf "$format" "Fusion    >" "|| Not found"
+	local format="${red}%s %31s${nc}\n"
+	printf "$format" "Blackmagic >" "|| Fusion Not found"
 fi
 }
 
 fsetenv() {
-if [ -f "${FDIR}/Fusion ${FVERSION}/Fusion.exe" ] && [ -n "${FVERSION}" ]; then
+if [ -f "${BMDIR}/Fusion ${FVERSION}/Fusion.exe" ] && [ -n "${FVERSION}" ]; then
 
 	pathremove "${FBin}"
-	export FBin="${FDIR}/Fusion ${FVERSION}"
+	export FBin="${BMDIR}/Fusion ${FVERSION}"
 	pathadd "${FBin}"
 
     case "${FVERSION}" in
 	"9")
-		export FUSION9_MasterPrefs="$(cygpath -w "${WGPATH}/blackmagic/fusion/${FVERSION}/masterprefs/Master.prefs")"
+		export FUSION9_MasterPrefs="$(cygpath -w "${WGPATH}/blackmagic/masterprefs/${FVERSION}/Master.prefs")"
 		export OFX_PLUGIN_PATH="$(cygpath -w "${WGPATH}/plugins/ofx/fusion/${FVERSION}")"
 		sapphire 2019.52
 		cryptomatte
@@ -49,7 +49,7 @@ if [ -f "${FDIR}/Fusion ${FVERSION}/Fusion.exe" ] && [ -n "${FVERSION}" ]; then
 		unset FUSION16_MasterPrefs
 		;;	
 	"16")
-		export FUSION16_MasterPrefs="$(cygpath -w "${WGPATH}/blackmagic/fusion/${FVERSION}/masterprefs/Master.prefs")"
+		export FUSION16_MasterPrefs="$(cygpath -w "${WGPATH}/blackmagic/masterprefs/${FVERSION}/Master.prefs")"
 		export OFX_PLUGIN_PATH="$(cygpath -w "${WGPATH}/plugins/ofx/fusion/${FVERSION}")"
 		sapphire 2019.52
 		cryptomatte
@@ -58,12 +58,26 @@ if [ -f "${FDIR}/Fusion ${FVERSION}/Fusion.exe" ] && [ -n "${FVERSION}" ]; then
 		;;
 	*)
 		local format="%s ${red}%11s${nc} %s\n"
-		printf "$format" "Fusion    >" "${FVERSION}" "|| is not defined fusion version"
+		printf "$format" "Blackmagic >" "${FVERSION}" "|| is not defined fusion version"
 		return ;;
 esac
 
-	local format="%s ${green}%11s${nc} %s\n"
-	printf "$format" "Fusion    >" "${FVERSION}" "||"
+	if [ -f "${BMDIR}/DaVinci Resolve/Resolve.exe" ]; then
+		local supresolve=1
+
+		if [ -f "/c/Python27/python.exe" ] && [ -d "/c/ProgramData/Blackmagic Design/DaVinci Resolve/Support/Developer" ]; then
+			local resolvedev="$(cygpath -w "/c/ProgramData/Blackmagic Design/DaVinci Resolve/Support/Developer/Scripting")"
+			export PYTHONPATH="$resolvedev\Modules;$resolvedev\Examples;$PYTHONPATH"
+			export RESOLVE_SCRIPT_LIB="$(cygpath -w "${BMDIR}/DaVinci Resolve/fusionscript.dll")"
+		fi
+
+	else
+		local supresolve=0
+	fi
+
+		local format="%s ${green}%11s${nc} %s $(switch.color $supresolve)%s${nc}\n"
+		printf "$format" "Blackmagic >" "Fusion ${FVERSION}" "||" "RESOLVE"
+
 else
 	fversion
 fi
@@ -91,7 +105,11 @@ cryptomatte() {
 # RUN:
 #----------------------////
 f() {
-Fusion.exe &
+	Fusion.exe &
+}
+
+r() {
+	"${BMDIR}/DaVinci Resolve/Resolve.exe" &
 }
 
 #----------------------////
@@ -100,10 +118,10 @@ Fusion.exe &
 edit.fusionmasterprefs() {
 	local d
 	local path_forfusion="$(echo "$(cygpath -w "${2}")" | sed 's|\\|\\\\\\\\|g' )"
-	local fusion_dir="${WGPATH}/blackmagic/fusion/"
-	for d in "${fusion_dir}"* ; do
-		if [ -f "$d/masterprefs/Master.prefs" ]; then
-            local file="$d/masterprefs/Master.prefs"
+	local prefs_dir="${WGPATH}/blackmagic/masterprefs/"
+	for d in "${prefs_dir}"* ; do
+		if [ -f "$d/Master.prefs" ]; then
+            local file="$d/Master.prefs"
             sed -i "/\[\"${1}\:\"\]\ \=\ /c\\\t\t\t\t\[\"${1}\:\"\]\ \=\ \"${path_forfusion}\"\," "${file}"
 		fi
 	done
@@ -112,8 +130,8 @@ edit.fusionmasterprefs() {
 #--------------------------------------------------------------------------------------------------////
 # FUSION INITIAL:
 #--------------------------------------------------------------------------------------------------////
-if [ -z "${FDIR}" ]; then
-	export FDIR="/c/Program Files/Blackmagic Design"
+if [ -z "${BMDIR}" ]; then
+	export BMDIR="/c/Program Files/Blackmagic Design"
 fi
 
 fsetenv

@@ -29,7 +29,7 @@ if [ ${#all_hversion[@]} != 0 ]; then
 	echo ==========================================================================
 else
 	local format="${red}%s %24s${nc}\n"
-	printf "$format" "Houdini   >" "|| Not found"
+	printf "$format" "Houdini    >" "|| Not found"
 fi
 }
 
@@ -80,7 +80,7 @@ if [ -d "${HFS}" ]; then
 	htoa_env=false
 
 	local format="%s ${green}%11s${nc} %s $(switch.color $supphtoa)%s${nc}\n"
-	printf "$format" "Houdini   >" "${HVERSION}" "||" "HTOA $(switch ${supphtoa} "" "${toa_version[1]}")"
+	printf "$format" "Houdini    >" "${HVERSION}" "||" "HTOA"
 
 else
 	unset HFS
