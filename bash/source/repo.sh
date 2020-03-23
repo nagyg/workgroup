@@ -32,6 +32,19 @@ else
 fi
 }
 
+#export TEST=/c/Users/gergo/test
+
+#repo.archive() {
+#	local d
+#	local archive_dir="${TEST}/"
+#	for d in "${archive_dir}"* ; do
+#		if [ -f "$d/.repo" ]; then
+#			builtin cd "$d"
+#			7za a -tzip archive.zip -xr@.repo
+#		fi
+#	done
+#}
+
 #------------------////
 # alias:
 #------------------////
