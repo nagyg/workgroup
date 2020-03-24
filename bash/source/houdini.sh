@@ -194,6 +194,17 @@ fi
 #-----------------------////
 pathhshow () { printenv HOUDINI_PATH | sed 's|;|\n|g'; }
 
+hrop() {
+local rop
+for rop in "${@}"; do
+	if [ "$rop" == "$1" ]; then
+		continue
+	else
+		cmd //c "echo render -C -V -I $rop | hbatch $1"
+	fi
+done
+}
+
 lasthip() {
 local history="~/houdini${HOUDINI_RELEASE_VERSION}/file.history"
 if [ -f "$history" ]; then
@@ -212,6 +223,8 @@ fi
 h.last() { echo -e "lasthip >> [${blue}`lasthip`${nc}]"; h "`lasthip`"; }
 
 ha.last() { echo -e "lasthip >> [${blue}`lasthip`${nc}]"; ha "`lasthip`"; }
+
+hrop.last() { echo -e "lasthip >> [${blue}`lasthip`${nc}] | rop [${blue}"$@"${nc}]"; hrop "`lasthip`" ${@}; }
 
 #--------------------------------------------------------------------------------------------------////
 # INITIAL:
