@@ -66,6 +66,10 @@ if [ -d "${HFS}" ]; then
 		hplug.expreditor
 	fi
 
+	if [ "${quadremesher}" == "true" ] && [ -n "${quadremesher}" ]; then
+		hplug.quadremesher
+	fi
+
 	if [ "${modeler}" == "true" ] && [ -n "${modeler}" ]; then
 		hplug.modeler
 	fi
@@ -76,6 +80,7 @@ if [ -d "${HFS}" ]; then
 	
 	#HOUDINI_PATH safe end
 	export HOUDINI_PATH="${HOUDINI_PATH};&"
+	export HOUDINI_OTLSCAN_PATH="${HOUDINI_OTLSCAN_PATH};&"
 
 	htoa_env=false
 
@@ -109,7 +114,7 @@ qlib() {
 	export QOTL="$QLIB\otls"
 
 	export HOUDINI_PATH="$QLIB;${HOUDINI_PATH}"
-	export HOUDINI_OTLSCAN_PATH="$QOTL\base;$QOTL\future;$QOTL\experimental;&"
+	export HOUDINI_OTLSCAN_PATH="$QOTL\base;$QOTL\future;$QOTL\experimental"
 }
 
 cdqlib() { builtin cd $HSITE/qLib; }
@@ -121,6 +126,14 @@ hplug.expreditor () {
 local path="${HSITE}\expreditor\1.3.3"
 	export HOUDINI_PATH="$path;${HOUDINI_PATH}"
 	export EDITOR="${WGPATH}/vscode/Code.exe"
+}
+
+#---------------------////
+# Exoside Quad Remesher:
+#---------------------////
+hplug.quadremesher () {
+local path="${HSITE}\quadremesher\otls"
+	export HOUDINI_OTLSCAN_PATH="$path;${HOUDINI_OTLSCAN_PATH}"
 }
 
 #------------------////
