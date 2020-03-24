@@ -59,9 +59,9 @@ if [ -d "${HFS}" ]; then
 
 	qlib
 
-	#------------------////
+	#-----------------------////
 	# FCK PLUGINS
-	#------------------////
+	#-----------------------////
 	if [ "${expreditor}" == "true" ] && [ -n "${expreditor}" ]; then
 		hplug.expreditor
 	fi
@@ -106,9 +106,9 @@ hstart() {
 	fi
 }
 
-#------------------////
+#-----------------------////
 # QLib:
-#------------------////
+#-----------------------////
 qlib() {
 	export QLIB="$HSITE\qLib"
 	export QOTL="$QLIB\otls"
@@ -119,35 +119,35 @@ qlib() {
 
 cdqlib() { builtin cd $HSITE/qLib; }
 
-#------------------////
+#-----------------------////
 # Houdini ExprEditor:
-#------------------////
+#-----------------------////
 hplug.expreditor () {
 local path="${HSITE}\expreditor\1.3.3"
 	export HOUDINI_PATH="$path;${HOUDINI_PATH}"
 	export EDITOR="${WGPATH}/vscode/Code.exe"
 }
 
-#---------------------////
-# Exoside Quad Remesher:
-#---------------------////
+#-----------------------////
+# Exoside Quadremesher:
+#-----------------------////
 hplug.quadremesher () {
 local path="${HSITE}\quadremesher\otls"
 	export HOUDINI_OTLSCAN_PATH="$path;${HOUDINI_OTLSCAN_PATH}"
 }
 
-#------------------////
+#-----------------------////
 # Modeler:
-#------------------////
+#-----------------------////
 hplug.modeler () {
 local path="${HSITE}\modeler\1.0.4\modeler"
 	export MODELER_PATH="$path"
 	export HOUDINI_PATH="$path;${HOUDINI_PATH}"
 }
 
-#------------------////
+#-----------------------////
 # GROOMBEAR:
-#------------------////
+#-----------------------////
 hplug.groombear () {
 local path="${HSITE}\groombear\\${HVERSION}"
 if [ -d "$(cygpath -u "${path}")" ]; then
@@ -157,9 +157,9 @@ if [ -d "$(cygpath -u "${path}")" ]; then
 fi
 }
 
-#------------------////
+#-----------------------////
 # RUN:
-#------------------///
+#-----------------------////
 h() {
 if [ "${htoa_env}" == "true" ]; then
 	asetenv &> /dev/null
@@ -189,9 +189,9 @@ else
 fi
 }
 
-#------------------////
+#-----------------------////
 # Function:
-#------------------////
+#-----------------------////
 pathhshow () { printenv HOUDINI_PATH | sed 's|;|\n|g'; }
 
 lasthip() {

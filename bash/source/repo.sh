@@ -8,12 +8,12 @@ local in=`realpath .`
 local archive_dir="${WGPATH}/"
 
 function 7zazip {
-	7za a -tzip "${WGPATH}/tmp/${archive}" -x@.repoignore
-		if [ $? -eq 0 ]; then
-			echo -e "[${green}${WGPATH}/tmp/${archive}.zip${nc}]\n"
-		else
-			echo -e "[${red}${WGPATH}/tmp/${archive}.zip${nc}]\n"
-		fi
+7za a -tzip "${WGPATH}/tmp/${archive}" -x@.repoignore
+	if [ $? -eq 0 ]; then
+		echo -e "[${green}${WGPATH}/tmp/${archive}.zip${nc}]\n"
+	else
+		echo -e "[${red}${WGPATH}/tmp/${archive}.zip${nc}]\n"
+	fi
 }
 
 if [ "$#" == 0 ]; then
