@@ -1,11 +1,4 @@
-#url repo dirs
 expreditor
 groombear
-houdini17.0
-houdini17.5
-houdini18.0
 modeler
 quadremesher
-
-#url repo files
-site_environment.py
