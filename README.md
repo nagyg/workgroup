@@ -5,7 +5,7 @@ Installation
 
  By running cmder.exe the first time make sure it is starting up a bash shell.
  
- - Run as administrator Cmder.exe
+ - Cmder.exe run as administrator 
 
  - Settings -> Startup -> Specified named task -> select "{bash::bash}" option from the dropdown.
  
@@ -65,3 +65,8 @@ This is the point where you can relocate your workgroup! Move it anywhere and ed
 
 Your workgroup folder contains a .wgsource file which is the last member. 
 This file contains the components / variables will be set on starting up your cmder / conemu shell.
+
+Submodules
+==========
+ - [qLab/qLib](https://github.com/qLab/qLib)
+ - [Psyop/Cryptomatte](https://github.com/Psyop/Cryptomatte)
