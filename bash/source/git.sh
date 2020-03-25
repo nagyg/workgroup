@@ -21,6 +21,13 @@
 #   git submodule add -b master [URL to Git repo] 
 #   git submodule init 
 
+# update submodule in the master branch
+# skip this if you use --recurse-submodules
+# and have the master branch checked out
+#   cd [submodule directory]
+#   git checkout master
+#   git pull
+
 # pull all changes for the submodules
 # update your submodule --remote fetches new commits in the submodules
 # and updates the working tree to the commit described by the branch
