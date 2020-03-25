@@ -28,17 +28,12 @@ if [ ${#all_fversion[@]} != 0 ]; then
 	echo ==========================================================================
 else
 	local format="${red}%s %31s${nc}\n"
-	printf "$format" "Blackmagic >" "|| Fusion Not found"
+	printf "$format" "Blackmagic >" "|| Fusion not found"
 fi
 }
 
 fsetenv() {
 if [ -f "${BMDIR}/Fusion ${FVERSION}/Fusion.exe" ] && [ -n "${FVERSION}" ]; then
-
-	#pathremove "${FBin}"
-	#export FBin="${BMDIR}/Fusion ${FVERSION}"
-	#pathadd "${FBin}"
-
     case "${FVERSION}" in
 	"9")
 		export FUSION9_MasterPrefs="$(cygpath -w "${WGPATH}/blackmagic/masterprefs/${FVERSION}/Master.prefs")"
@@ -61,6 +56,12 @@ if [ -f "${BMDIR}/Fusion ${FVERSION}/Fusion.exe" ] && [ -n "${FVERSION}" ]; then
 		printf "$format" "Blackmagic >" "${FVERSION}" "|| is not defined fusion version"
 		return ;;
 esac
+
+	#pathremove "${FBin}"
+	#export FBin="${BMDIR}/Fusion ${FVERSION}"
+	#pathadd "${FBin}"
+
+	edit.fusionmasterprefs WG "$WGPATH"
 
 	if [ -f "${BMDIR}/DaVinci Resolve/Resolve.exe" ]; then
 		local supresolve=1
@@ -131,4 +132,3 @@ if [ -z "${BMDIR}" ]; then
 fi
 
 fsetenv
-edit.fusionmasterprefs WG "$WGPATH"

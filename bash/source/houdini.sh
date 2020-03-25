@@ -28,8 +28,8 @@ if [ ${#all_hversion[@]} != 0 ]; then
 	edit.profile "HVERSION" "$HVERSION"
 	echo ==========================================================================
 else
-	local format="${red}%s %24s${nc}\n"
-	printf "$format" "Houdini    >" "|| Not found"
+	local format="${red}%s %32s${nc}\n"
+	printf "$format" "Houdini    >" "|| Houdini not found"
 fi
 }
 

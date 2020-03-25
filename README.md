@@ -5,6 +5,8 @@ Installation
 
  By running cmder.exe the first time make sure it is starting up a bash shell.
  
+ - Run as administrator Cmder.exe
+
  - Settings -> Startup -> Specified named task -> select "{bash::bash}" option from the dropdown.
  
  - Save settings.
