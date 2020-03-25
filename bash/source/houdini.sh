@@ -51,12 +51,14 @@ if [ -d "${HFS}" ]; then
 	export HOUDINI_BUILD_VERSION=${HVERSION:5}
 	export HOUDINI_RELEASE_VERSION=${HVERSION:0:4}
 
-	export HSITE="$(cygpath -w "${WGPATH}/sidefx/HSITE")"
-	export HOUDINI_PATH="$(cygpath -w "${HSITE}/houdini${HOUDINI_RELEASE_VERSION}")"
-
 	export HOUDINI_DSO_ERROR=0
 	export HOUDINI_EXTERNAL_HELP_BROWSER=1
 
+	export HSITE="$(cygpath -w "${WGPATH}/sidefx/HSITE")"
+
+	unset HOUDINI_PATH
+
+	mlnlib
 	qlib
 
 	#-----------------------////
@@ -105,9 +107,16 @@ hstart() {
 		houdini "${@}" &
 	fi
 }
+#-----------------------////
+# mlnLib:
+#-----------------------////
+mlnlib() {
+	export MLNLIB="$HSITE\mlnLib"
+	export HOUDINI_PATH="$MLNLIB"
+}
 
 #-----------------------////
-# QLib:
+# qLib:
 #-----------------------////
 qlib() {
 	export QLIB="$HSITE\qLib"
@@ -116,8 +125,6 @@ qlib() {
 	export HOUDINI_PATH="$QLIB;${HOUDINI_PATH}"
 	export HOUDINI_OTLSCAN_PATH="$QOTL\base;$QOTL\future;$QOTL\experimental"
 }
-
-cdqlib() { builtin cd $HSITE/qLib; }
 
 #-----------------------////
 # Houdini ExprEditor:
@@ -193,6 +200,8 @@ fi
 # Function:
 #-----------------------////
 pathhshow () { printenv HOUDINI_PATH | sed 's|;|\n|g'; }
+
+cdhsite() { cd $HSITE; }
 
 hrop() {
 local rop
