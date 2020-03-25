@@ -27,6 +27,13 @@
 #   cd [submodule directory]
 #   git checkout master
 #   git pull
+# commit the change in main repo
+# to use the latest commit in master of the submodule
+#   cd ..
+#   git add [submodule directory]
+#   git commit -m "move submodule to latest commit in master"
+# share your changes
+#   git push
 
 # pull all changes for the submodules
 # update your submodule --remote fetches new commits in the submodules
