@@ -1,9 +1,4 @@
-.wgsource
-!bash/.rcfiles/.wgsource
-#!plugins/.gitignore
-#!sidefx/.gitignore
-#!sidefx/HSITE/.gitignore
-
+#url repo dirs
 cmder
 blackmagic
 ffmpeg
@@ -12,3 +7,7 @@ solidangle
 tmp
 tweaksoftware
 vscode
+
+# user .wgsource file
+.wgsource
+!bash/.rcfiles/.wgsource
