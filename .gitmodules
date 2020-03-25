@@ -10,3 +10,7 @@
 	path = plugins/cryptomatte
 	url = https://github.com/Psyop/Cryptomatte.git
 	branch = master
+[submodule "mtool"]
+	path = mtool
+	url = https://github.com/crmabs/mtool.git
+	branch = master

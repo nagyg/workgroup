@@ -70,4 +70,5 @@ Submodules
 ==========
  - [nagyg/mlnLib](https://github.com/nagyg/mlnLib)
  - [qLab/qLib](https://github.com/qLab/qLib)
+ - [crmabs/mtool](https://github.com/crmabs/mtool)
  - [Psyop/Cryptomatte](https://github.com/Psyop/Cryptomatte)
