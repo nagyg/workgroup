@@ -44,11 +44,13 @@ if [ "$#" == 0 ]; then
 else
 	local i
 	local in=`realpath .`
+	local ext=zip
 
-	local url0="http://nagyg.ddns.net:17600/workgroup"
+
+	local url0="http://nagyg.ddns.net:17600/workgroup/win"
 
 	for i in "${@}"; do
-		curl -sSf $url0/${i}.zip > /dev/null
+		curl -sSf $url0/${i}.${ext} > /dev/null
 		if [ $? -eq 23 ]; then
 			local path=`realpath "${WGPATH}/${i}"`
 			if [ -d "$path" ]; then
@@ -57,15 +59,15 @@ else
 				mkdir "$path"
 				builtin cd "$path"
 			fi
-			curl $url0/${i}.zip --output ./${i}.zip
-			7za x ${i}.zip -r -aoa && rm ${i}.zip
+			curl $url0/${i}.${ext} --output ./${i}.${ext}
+			7za x ${i}.${ext} -r -aoa && rm ${i}.${ext}
 				if [ $? -eq 0 ]; then
-					echo -e "[${green}$url0/${i}.zip${nc}]	${green}>> ${i}${nc}\n"
+					echo -e "[${green}$url0/${i}.${ext}${nc}]	${green}>> ${i}${nc}\n"
 				else
-					echo -e "[${red}$url0/${i}.zip${nc}]\n"
+					echo -e "[${red}$url0/${i}.${ext}${nc}]\n"
 				fi
 		else
-			echo -e "[${red}$url0/${i}.zip${nc}]\n"
+			echo -e "[${red}$url0/${i}.${ext}${nc}]\n"
 		fi
 	done
 	builtin cd "$in"
