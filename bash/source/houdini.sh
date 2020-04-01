@@ -132,7 +132,7 @@ qlib() {
 hplug.expreditor () {
 local path="${HSITE}\expreditor\\${expreditor[1]}"
 	export HOUDINI_PATH="$path;${HOUDINI_PATH}"
-	export EDITOR="${WGPATH}/vscode/Code.exe"
+	export EDITOR="${WGPATH}/vscode/VSCode-win32-x64/Code.exe"
 }
 
 #-----------------------////
