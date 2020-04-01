@@ -64,19 +64,19 @@ if [ -d "${HFS}" ]; then
 	#-----------------------////
 	# FCK PLUGINS
 	#-----------------------////
-	if [ "${expreditor}" == "true" ] && [ -n "${expreditor}" ]; then
+	if [ "${expreditor[0]}" == "true" ]; then
 		hplug.expreditor
 	fi
 
-	if [ "${quadremesher}" == "true" ] && [ -n "${quadremesher}" ]; then
+	if [ "${quadremesher[0]}" == "true" ]; then
 		hplug.quadremesher
 	fi
 
-	if [ "${modeler}" == "true" ] && [ -n "${modeler}" ]; then
+	if [ "${modeler[0]}" == "true" ]; then
 		hplug.modeler
 	fi
 
-	if [ "${groombear}" == "true" ] && [ -n "${groombear}" ]; then
+	if [ "${groombear[0]}" == "true" ]; then
 		hplug.groombear
 	fi
 	
@@ -130,24 +130,16 @@ qlib() {
 # Houdini ExprEditor:
 #-----------------------////
 hplug.expreditor () {
-local path="${HSITE}\expreditor\1.3.3"
+local path="${HSITE}\expreditor\\${expreditor[1]}"
 	export HOUDINI_PATH="$path;${HOUDINI_PATH}"
 	export EDITOR="${WGPATH}/vscode/Code.exe"
-}
-
-#-----------------------////
-# Exoside Quadremesher:
-#-----------------------////
-hplug.quadremesher () {
-local path="${HSITE}\quadremesher\otls"
-	export HOUDINI_OTLSCAN_PATH="$path;${HOUDINI_OTLSCAN_PATH}"
 }
 
 #-----------------------////
 # Modeler:
 #-----------------------////
 hplug.modeler () {
-local path="${HSITE}\modeler\1.0.4\modeler"
+local path="${HSITE}\modeler\\${modeler[1]}\modeler"
 	export MODELER_PATH="$path"
 	export HOUDINI_PATH="$path;${HOUDINI_PATH}"
 }
@@ -156,12 +148,20 @@ local path="${HSITE}\modeler\1.0.4\modeler"
 # GROOMBEAR:
 #-----------------------////
 hplug.groombear () {
-local path="${HSITE}\groombear\\${HVERSION}"
+local path="${HSITE}\groombear\\${groombear[1]}"
 if [ -d "$(cygpath -u "${path}")" ]; then
 	export GROOMBEAR_PATH="$path"
 	export GROOMBEAR_ICONS="$path\icons"
 	export HOUDINI_PATH="$path;${HOUDINI_PATH}"
 fi
+}
+
+#-----------------------////
+# Exoside Quadremesher:
+#-----------------------////
+hplug.quadremesher () {
+local path="${HSITE}\quadremesher\otls"
+	export HOUDINI_OTLSCAN_PATH="$path;${HOUDINI_OTLSCAN_PATH}"
 }
 
 #-----------------------////
