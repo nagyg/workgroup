@@ -12,14 +12,15 @@ local archive_dir="${WGPATH}/"
 local ext=tar.gz
 
 function repo.tar {
-mkdir -p ${WGPATH}/tmp
+local tmp=${WGPATH}/tmp
+mkdir -p "${tmp}"
 if [ -f "$dir/.repoignore" ]; then
 	builtin cd "$dir"
-	tar -zcvf "${WGPATH}/tmp/${archive}.tar.gz" -X "$dir/.repoignore" .
+	tar -zcvf "${tmp}/${archive}.tar.gz" -X "$dir/.repoignore" .
 	if [ $? -eq 0 ]; then
-		echo -e "[${green}${WGPATH}/tmp/${archive}.${ext}${nc}]\n"
+		echo -e "[${green}${tmp}/${archive}.${ext}${nc}]\n"
 	else
-		echo -e "[${red}tar exit [$?] ${WGPATH}/tmp/${archive}.${ext}${nc}]\n"
+		echo -e "[${red}tar exit [$?] ${tmp}/${archive}.${ext}${nc}]\n"
 	fi
 else
 	echo -e "[${dir}]	>> .repoignore file not found"

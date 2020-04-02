@@ -4,9 +4,9 @@ export WGPATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )
 
 export JOB= # not in use
 
-AVERSION= # not in use
-HVERSION= # not in use
-FVERSION= # not in use
+AVERSION=   # not in use
+HVERSION=   # not in use
+FVERSION=   # not in use
 #------------------------ ARNOLD --------------------------------------------------////
 export solidangle_LICENSE= # not in use
 
