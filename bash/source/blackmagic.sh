@@ -57,18 +57,18 @@ if [ -f "${BMDIR}/Fusion ${FVERSION}/Fusion.exe" ] && [ -n "${FVERSION}" ]; then
 		return ;;
 esac
 
-	pathremove "${FBin}"
-	export FBin="${BMDIR}/Fusion ${FVERSION}"
-	pathadd "${FBin}"
+	#pathremove "${FBin}"
+	#export FBin="${BMDIR}/Fusion ${FVERSION}"
+	#pathadd "${FBin}"
 
 	edit.fusionmasterprefs WG "$WGPATH"
 
 	if [ -f "${BMDIR}/DaVinci Resolve/Resolve.exe" ]; then
 		local supresolve=1
 
-		pathremove "${RBin}"
-		export RBin="${BMDIR}/DaVinci Resolve"
-		pathadd "${RBin}"
+		#pathremove "${RBin}"
+		#export RBin="${BMDIR}/DaVinci Resolve"
+		#pathadd "${RBin}"
 
 		if [ -f "/c/Python27/python.exe" ] && [ -d "/c/ProgramData/Blackmagic Design/DaVinci Resolve/Support/Developer" ]; then
 			local resolvedev="$(cygpath -w "/c/ProgramData/Blackmagic Design/DaVinci Resolve/Support/Developer/Scripting")"
@@ -112,14 +112,14 @@ cryptomatte() {
 f() {
 	local in=`realpath .`
 	builtin cd "${BMDIR}/Fusion ${FVERSION}"
-	Fusion.exe &
+	"${BMDIR}/Fusion ${FVERSION}/Fusion.exe" &
 	builtin cd "$in"
 }
 
 r() {
 	local in=`realpath .`
 	builtin cd "${BMDIR}/DaVinci Resolve"
-	Resolve.exe &
+	"${BMDIR}/DaVinci Resolve/Resolve.exe" &
 	builtin cd "$in"
 }
 
