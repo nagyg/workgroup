@@ -85,6 +85,7 @@ if [ -d "${HFS}" ]; then
 	export HOUDINI_OTLSCAN_PATH="${HOUDINI_OTLSCAN_PATH};&"
 
 	htoa_env=false
+	htors_env=false
 
 	local format="%s ${green}%11s${nc} %s $(switch.color $supphtoa)%s${nc}\n"
 	printf "$format" "Houdini    >" "${HVERSION}" "||" "HTOA"
@@ -169,6 +170,12 @@ local path="${HSITE}\quadremesher\otls"
 #-----------------------////
 h() {
 if [ "${htoa_env}" == "true" ]; then
+	asetenv &> /dev/null
+	hsetenv &> /dev/null
+fi
+if [ "${htors_env}" == "true" ]; then
+	unset REDSHIFT_COREDATAPATH REDSHIFT_LICENSEPATH
+	pathremove "${REDSHIFT_COREDATAPATH}/bin"
 	asetenv &> /dev/null
 	hsetenv &> /dev/null
 fi
