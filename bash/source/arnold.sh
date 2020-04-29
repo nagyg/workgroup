@@ -49,8 +49,8 @@ if [ ${#all_aversion[@]} != 0 ]; then
 	edit.profile "AVERSION" "$AVERSION"
 	echo ==========================================================================
 else
-	local format="${red}%s %31s${nc}\n"
-	printf "$format" "Arnold     >" "|| Arnold not found"
+	local format="${red}%s %14s${nc}\n"
+	printf "$format" "Arnold     >" "Not found ||"
 fi
 }
 
