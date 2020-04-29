@@ -27,8 +27,8 @@ if [ ${#all_fversion[@]} != 0 ]; then
 	edit.profile "FVERSION" "$FVERSION"
 	echo ==========================================================================
 else
-	local format="${red}%s %31s${nc}\n"
-	printf "$format" "Blackmagic >" "|| Fusion not found"
+	local format="${red}%s %14s${nc}\n"
+	printf "$format" "Blackmagic >" "Not found ||"
 fi
 }
 
