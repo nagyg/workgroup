@@ -27,8 +27,11 @@ echo(
 echo HKEY_CLASSES_ROOT\Directory\shell\Version\command
 reg add "HKEY_CLASSES_ROOT\Directory\shell\Version\command" /t REG_SZ /d "C:\Windows\system32\WindowsPowerShell\v1.0\powershell.exe -NoLogo -File %WGPATH%\mpro\context_menu\Version.ps1 \"%%L\""
 echo(
+echo ===========================================================
+goto exit
 
 :exit
+echo(
 echo Press any key to EXIT
 pause >nul
 exit
