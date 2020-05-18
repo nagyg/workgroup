@@ -23,12 +23,12 @@ export FUSION_LICENSE_SERVER=   # not in use
 export genarts_LICENSE=         # not in use
 
 #------------------------ SOURCE ------------------------////
-source "${WGPATH}/bash/source/main.sh"
-source "${WGPATH}/bash/source/vscode.sh"
-#source "${WGPATH}/bash/source/ffmpeg.sh"
-#source "${WGPATH}/bash/source/tweaksoftware.sh"
-#source "${WGPATH}/bash/source/arnold.sh"
-#source "${WGPATH}/bash/source/redshift.sh"
-#source "${WGPATH}/bash/source/houdini.sh"
-#source "${WGPATH}/bash/source/blackmagic.sh"
-#source "${WGPATH}/bash/source/project.sh"
+source "${WGPATH}/setup/source/main.sh"
+source "${WGPATH}/setup/source/vscode.sh"
+#source "${WGPATH}/setup/source/ffmpeg.sh"
+#source "${WGPATH}/setup/source/tweaksoftware.sh"
+#source "${WGPATH}/setup/source/arnold.sh"
+#source "${WGPATH}/setup/source/redshift.sh"
+#source "${WGPATH}/setup/source/houdini.sh"
+#source "${WGPATH}/setup/source/blackmagic.sh"
+#source "${WGPATH}/setup/source/project.sh"

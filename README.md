@@ -19,7 +19,7 @@ Installation
 The command above will download files from GitHub and might take some time.
 
 #### 3. Then run:
-            ~/workgroup/bash/cleanrc.cmd
+            ~/workgroup/setup/cleanrc.cmd
 
 The command above will initialize your shell startup. Backs up and configures your .bash_profile .bash_userfile .bashrc
 
