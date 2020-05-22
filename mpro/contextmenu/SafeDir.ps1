@@ -1,18 +1,12 @@
 ﻿#SafeDir V1.0 KNM
 
-
 $Dir = $args
-#$Dir = "A:\b\Terkep_"
-
-$console = $host.ui.rawui
-$console.backgroundcolor = "black"
-$console.foregroundcolor = "white"
 
 #$pshost = get-host
 #$pswindow = $pshost.ui.rawui
 #$newsize = $pswindow.buffersize
 #$newsize.height = 3000
-#$newsize.width = 100
+#$newsize.width = 150
 #$pswindow.buffersize = $newsize
 #$newsize = $pswindow.windowsize
 #$newsize.height = 8
@@ -20,9 +14,6 @@ $console.foregroundcolor = "white"
 #$pswindow.windowsize = $newsize
 $host.ui.rawui.WindowTitle = "SafeDir: $Dir"
 Clear-Host
-
-
-
 
 
 
@@ -67,6 +58,7 @@ if ($SafeDirB -ne 'First')
     }
 
 Write-Host "Copy: $Dir ---> $SafeDir"
+
 Copy-Item -Path $Dir -Exclude *.ass,*.ifd -Destination $SafeDir -Recurse
 
 if (Compare-Object (Get-childitem -Recurse -Exclude *.ass,*.ifd $Dir | Select-Object LastWriteTime ) (Get-childitem -Recurse $SafeDir | Select-Object LastWriteTime))

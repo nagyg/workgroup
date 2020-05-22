@@ -1,9 +1,6 @@
-﻿#C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\powershell.exe -NoLogo -WindowStyle Minimized -File M:\\PowerShell\\context_menu\\Version.ps1 "%L"
-#-NoExit
-
+﻿#Safe V1.0 KNM
 
 $File = $args
-
 
 $console = $host.ui.rawui
 $console.backgroundcolor = "black"

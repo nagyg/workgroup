@@ -1,9 +1,6 @@
 ﻿#Versions V1.0 KNM
 
-
 $Dir = $args
-#$Dir = "A:\a\Terkep\Terkepaa_V001"
-
 
 $console = $host.ui.rawui
 $console.backgroundcolor = "black"
@@ -32,17 +29,15 @@ public static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);
 
 $DirVPath = ([io.fileinfo]"$Dir").DirectoryName
 $DirVName = ([io.fileinfo]"$Dir").Basename
-
-if (($DirVName.Length-$DirVName.Trimend("0123456789").Length) -eq 3)
+if ($DirVName.Length -gt 5)
     {
-        if ($DirVName.Trimend("V0123456789").Remove(0,$DirVName.Trimend("V0123456789").Length-1) -eq "_")
+        if ($DirVName.Remove(0,($DirVName.Length-5)).Trimend("0123456789") -eq "_V")
             {
                 Write-Host "Ez már egy verzíó: $Dir"
                 Start-Sleep -s 5
                 exit
             }
     }
-
 
 
 if (Get-ChildItem -Path $Dir -Exclude *.dpx,*.exr,*.jpg,*.tga,*tif) 
@@ -56,6 +51,7 @@ if (Get-ChildItem -Path $Dir -Exclude *.dpx,*.exr,*.jpg,*.tga,*tif)
 $Selector = "_V"
 if ($DirVName.Remove(0,$DirVName.Length-1) -eq "_") {$Selector = "V"}
 $ver = 1
+$verok = 1
 $VerDirPrev = ''
 
 do {
@@ -67,14 +63,27 @@ do {
             $VerDirPrev = "$DirVPath\$DirVName$Selector$VerPad"
             $ver ++
         }
-        else {break}
+        else 
+        {
+            $verok ++
+            $ver ++
+        }
 }while ($Ver -le 99)
 
-if ($ver -eq 1) 
+if (($Ver-$verok) -eq 0) 
 {
-   $a = [System.Windows.Forms.MessageBox]::Show("Biztos létrehozzam $VerDir ?" , "Version status!!!" , 4)
-    if ($a -eq "YES" ) {} else {exit}
+   $b = [System.Windows.Forms.MessageBox]::Show("Biztos létrehozzam $VerDir ?" , "Version status!!!" , 4)
+    if ($b -eq "YES" )
+    {
+        $VerDirPrev = "$DirVPath\$DirVName$Selector"+"000"
+    } else {exit}
 }
+
+$a = [int]($VerDirPrev.Remove(0,($VerDirPrev.Length-3)))+1
+$VerPad = "$a".PadLeft(3,"0")
+$VerDir = "$DirVPath\$DirVName$Selector$VerPad"
+write-host $VerDirPrev
+
 
 New-Item $VerDir -ItemType directory -force | Out-Null
 
@@ -86,7 +95,8 @@ $items = (Get-ChildItem -Path "$Dir")
             $FileName = ([io.fileinfo]"$item").Basename
             $Selector = "_V"
             if ($FileName.Trimend(".0123456789").Remove(0,$FileName.Trimend(".0123456789").Length-1) -eq "_") {$Selector = "V"}
-            $FileVName = $FileName.Trimend(".0123456789")+$Selector+$VerPad+'_'+$FileName.replace($FileName.Trimend(".0123456789"),'')+([io.fileinfo]"$item").Extension
+            $a = ($FileName.Trimend("0123456789")).Trimend(".")
+            $FileVName = $a+$Selector+$VerPad+'_'+$FileName.replace($a,'')+([io.fileinfo]"$item").Extension
             Write-Host $Dir'\'$item $VerDir'\'$FileVName 
             Move-Item -Path $Dir'\'$item -Destination $VerDir'\'$FileVName
         }   
@@ -97,7 +107,7 @@ if((Get-ChildItem $Dir -force | Select-Object -First 1 | Measure-Object).Count -
     Remove-Item $Dir -Force -Recurse
 }
 
-if ($VerDirPrev -eq '')
+if ($b -eq "YES" )
     {
         Write-Host "`n`nCreate: $VerDir"
         Start-Sleep -s 5
