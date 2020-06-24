@@ -27,10 +27,10 @@ alist() {
 	for i in "${all_aversion[@]}"; do
 		local count=$((count+1))
 		local htoa_version=$htoa_version
-		local arnold_support_hversion=$arnold_support_hversion
+		local htoa_support_hversion=$htoa_support_hversion
 		aversions "${i}"
 		printf "$format" "${count})" "${i}" \
-		"|| ${arnold_support_hversion[@]}" "HTOA" "${htoa_version}"
+		"|| ${htoa_support_hversion[@]}" "HTOA" "${htoa_version}"
 	done
 }
 
@@ -64,7 +64,7 @@ if [ -d "${ADIR}/arnold/${AVERSION}" ] && [ -n "${AVERSION}" ]; then
 	pathadd "${ARNOLD_BINDIR}"
 
 	if [ -z "${HVERSION}" ]; then supphtoa=0; else
-		case ${arnold_support_hversion[@]} in  *${HVERSION}*) supphtoa=1 ;; *) supphtoa=0 ;; esac
+		case ${htoa_support_hversion[@]} in  *${HVERSION}*) supphtoa=1 ;; *) supphtoa=0 ;; esac
 		htoa_path="${ADIR}/htoa/${HVERSION}"
 	fi
 
