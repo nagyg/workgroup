@@ -37,6 +37,8 @@ if [ -z "$1" ]; then return; fi
 case "$1" in
 	"${all_aversion[@]}")
 		local input=AVERSION ;;
+	"${all_rversion[@]}")
+		local input=RVERSION ;;
 	"${all_hversion[@]}")
 		local input=HVERSION ;;
 	"${all_fversion[@]}")

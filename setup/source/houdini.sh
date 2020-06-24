@@ -23,6 +23,7 @@ if [ ${#all_hversion[@]} != 0 ]; then
 	echo
 	createmenu "${all_hversion[@]}"
 	echo
+	rsetenv > /dev/null 2>&1
 	asetenv > /dev/null 2>&1
 	hsetenv
 	edit.profile "HVERSION" "$HVERSION"
@@ -85,10 +86,10 @@ if [ -d "${HFS}" ]; then
 	export HOUDINI_OTLSCAN_PATH="${HOUDINI_OTLSCAN_PATH};&"
 
 	htoa_env=false
-	htors_env=false
+	htor_env=false
 
-	local format="%s ${green}%11s${nc} %s $(switch.color $supphtoa)%s${nc}\n"
-	printf "$format" "Houdini    >" "${HVERSION}" "||" "HTOA"
+	local format="%s ${green}%11s${nc} %s $(switch.color $supphtoa)%s${nc} %s $(switch.color $suppredshift)%s${nc}\n"
+	printf "$format" "Houdini    >" "${HVERSION}" "||" "ARNOLD" "|" "REDSHIFT"
 
 else
 	unset HFS
@@ -102,7 +103,7 @@ hstart() {
 		houdini &
 	elif [[ "$1" = '-envonly' ]]; then
 		# don't run houdini
-		echo 'Environment is set for HTOA';
+		echo 'Environment is set for ARNOLD';
 	else 
 		# run houdini and pass all args
 		houdini "${@}" &
@@ -173,10 +174,7 @@ if [ "${htoa_env}" == "true" ]; then
 	asetenv &> /dev/null
 	hsetenv &> /dev/null
 fi
-if [ "${htors_env}" == "true" ]; then
-	unset REDSHIFT_COREDATAPATH REDSHIFT_LICENSEPATH
-	pathremove "${REDSHIFT_COREDATAPATH}/bin"
-	asetenv &> /dev/null
+if [ "${htor_env}" == "true" ]; then
 	hsetenv &> /dev/null
 fi
 hstart
@@ -198,6 +196,23 @@ else
 	pathadd "${ARNOLD_BINDIR}"
 
 	htoa_env=true
+
+    hstart
+fi
+}
+
+hr() {
+if [ -z "${suppredshift}" ] || [ ${suppredshift} = 0 ]; then
+	echo -e "${red}${RVERSION} Redshift not working with Houdini ${HVERSION}${nc}"
+	rlist
+else
+
+	hsetenv &> /dev/null
+
+	local path="$(cygpath -w "${WGPATH}/redshift/${RVERSION}/Plugins/Houdini/${HVERSION}")"
+	export HOUDINI_PATH="$path;${HOUDINI_PATH}"
+
+	htor_env=true
 
     hstart
 fi

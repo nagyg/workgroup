@@ -5,6 +5,7 @@ export WGPATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )
 export JOB= # not in use
 
 AVERSION=   # not in use
+RVERSION=   # not in use
 HVERSION=   # not in use
 FVERSION=   # not in use
 #------------------------ ARNOLD --------------------------------------------------////
@@ -32,3 +33,6 @@ source "${WGPATH}/setup/source/vscode.sh"
 #source "${WGPATH}/setup/source/houdini.sh"
 #source "${WGPATH}/setup/source/blackmagic.sh"
 #source "${WGPATH}/setup/source/project.sh"
+
+## GRAVEYARD ##
+#source "${WGPATH}/setup/source/graveyard/softimage.sh"

@@ -27,10 +27,10 @@ alist() {
 	for i in "${all_aversion[@]}"; do
 		local count=$((count+1))
 		local htoa_version=$htoa_version
-		local support_hversion=$support_hversion
+		local arnold_support_hversion=$arnold_support_hversion
 		aversions "${i}"
 		printf "$format" "${count})" "${i}" \
-		"|| ${support_hversion[@]}" "HTOA" "${htoa_version}"
+		"|| ${arnold_support_hversion[@]}" "HTOA" "${htoa_version}"
 	done
 }
 
@@ -64,7 +64,7 @@ if [ -d "${ADIR}/arnold/${AVERSION}" ] && [ -n "${AVERSION}" ]; then
 	pathadd "${ARNOLD_BINDIR}"
 
 	if [ -z "${HVERSION}" ]; then supphtoa=0; else
-		case ${support_hversion[@]} in  *${HVERSION}*) supphtoa=1 ;; *) supphtoa=0 ;; esac
+		case ${arnold_support_hversion[@]} in  *${HVERSION}*) supphtoa=1 ;; *) supphtoa=0 ;; esac
 		htoa_path="${ADIR}/htoa/${HVERSION}"
 	fi
 
@@ -74,18 +74,6 @@ if [ -d "${ADIR}/arnold/${AVERSION}" ] && [ -n "${AVERSION}" ]; then
 else
 	supphtoa=0
 	aversion
-fi
-}
-
-aenvironment() {
-if [ ${supphtoa} = 1 ]; then
-	echo -e "\n"\
-	"ARNOLD: ${blue}${AVERSION}${nc}"
-	echo -e "\n"\
-	$(switch "${supphtoa}" "" " HOUDINI: ${green}${HVERSION}${nc} HTOA: ${green}${htoa_version}${nc}")
-
-	$(switch "${supphtoa}" "" "echo -e \n${blue} HTOA DLL SHADERS\t--> ${nc}$ARNOLD_PLUGIN\n\
-	${blue}HTOA DLL PROCEDURAL\t--> ${nc}$ARNOLD_PROCEDURAL")
 fi
 }
 
