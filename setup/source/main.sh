@@ -27,7 +27,7 @@ pathadd "${WGPATH}/bin/wget-1.20.3-win32"
 #------------------------------------------////
 # Bash Finction & Alias:
 #------------------------------------------////
-edit.profile () { sed -i "/${1}=/c\\${1}=\"${2}\"" ${WGPATH}/.wgsource; }
+edit.profile () { sed -i "/${1}=/c\\${1}=\"${2}\"" ~/.bash_profile; }
 
 switch () {  if [ -z $1 ] || [ $1 == 0 ]; then echo $2 ; else echo $3; fi; }
 switch.color () { switch "$1" ${red} ${green}; }

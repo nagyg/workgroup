@@ -1,0 +1,6 @@
+#!/bin/bash
+#------------------------ ARNOLD ------------------------////
+export solidangle_LICENSE=      # not in use
+#---------------------- BLACKMAGIC ----------------------////
+export FUSION_LICENSE_SERVER=   # not in use
+export genarts_LICENSE=         # not in use

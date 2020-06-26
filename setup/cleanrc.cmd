@@ -19,9 +19,6 @@ rem ############################################################################
 		echo BACKUP %USERPROFILE%\.bash_profile_BACKUP%rand% )
 	replace %WGPATH%\setup\.rcfiles\.bash_profile %USERPROFILE% /a
 rem ############################################################################
-	del %WGPATH%\.wgsource 2>nul
-	replace %WGPATH%\setup\.rcfiles\.wgsource %WGPATH% /a
-rem ############################################################################
 	if exist %USERPROFILE%\.bash_userfile (
 		rename %USERPROFILE%\.bash_userfile .bash_userfile_BACKUP%rand%
 		echo BACKUP %USERPROFILE%\.bash_userfile_BACKUP%rand% )

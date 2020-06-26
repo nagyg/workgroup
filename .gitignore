@@ -13,5 +13,5 @@ tweaksoftware
 vscode
 
 # user .wgsource file
-.wgsource
-!setup/.rcfiles/.wgsource
+.licenses
+!setup/.rcfiles/.licenses
