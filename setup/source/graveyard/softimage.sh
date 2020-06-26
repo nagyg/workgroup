@@ -28,8 +28,8 @@ if [ ${#all_sversion[@]} != 0 ]; then
 	edit.profile "SVERSION" "$SVERSION"
 	echo ==========================================================================
 else
-	local format="${red}%s %24s${nc}\n"
-	printf "$format" "Softimage >" "|| Not found"
+	local format="${red}%s %14s${nc}\n"
+	printf "$format" "Softimage  >" "Not found ||"
 fi
 }
 
