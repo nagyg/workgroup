@@ -14,7 +14,7 @@ AVERSION=   # not in use
 RVERSION=   # not in use
 HVERSION=   # not in use
 FVERSION=   # not in use
-#------------------------ HOUDINI -----------------------////
+#----------------------- HOUDINI -------------------------////
 export HDIR="/c/Program Files/Side Effects Software"
 expreditor=(    "true" "1.3.3"     )
 modeler=(       "false" "1.0.4"     )
@@ -22,7 +22,7 @@ groombear=(     "false" "1.1.36"    )
 quadremesher=(  "true"             )
 #------------------- BLACKMAGIC FUSION -------------------////
 export BMDIR="/c/Program Files/Blackmagic Design"
-#------------------------ SOURCE ------------------------////
+#------------------------ SOURCE -------------------------////
 source "${WGPATH}/setup/source/main.sh"
 source "${WGPATH}/setup/source/vscode.sh"
 #source "${WGPATH}/setup/source/ffmpeg.sh"
