@@ -34,8 +34,8 @@ source "${WGPATH}/setup/source/vscode.sh"
 #source "${WGPATH}/setup/source/project.sh"
 #source "${WGPATH}/licenses.sh"
 
-## GRAVEYARD ##
-#source "${WGPATH}/setup/source/graveyard/softimage.sh"
+#----------------------- GRAVEYARD ---------////
+#source "${WGPATH}/softimage/setup/softimage.sh"
 #---------------------------------------------------------////
 # 2 # POST
 #---------------------------------------------------------////
