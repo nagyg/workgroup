@@ -22,9 +22,9 @@ if [ ${#all_sversion[@]} != 0 ]; then
 	echo
 	createmenu "${all_sversion[@]}"
 	echo
-	asetenv > /dev/null 2>&1
+	#asetenv > /dev/null 2>&1
 	ssetenv
-	hsetenv > /dev/null 2>&1
+	#hsetenv > /dev/null 2>&1
 	edit.profile "SVERSION" "$SVERSION"
 	echo ==========================================================================
 else
