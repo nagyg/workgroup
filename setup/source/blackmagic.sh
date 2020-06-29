@@ -36,7 +36,7 @@ fsetenv() {
 if [ -f "${BMDIR}/Fusion ${FVERSION}/Fusion.exe" ] && [ -n "${FVERSION}" ]; then
     case "${FVERSION}" in
 	"9")
-		export FUSION9_MasterPrefs="$(cygpath -w "${WGPATH}/blackmagic/masterprefs/${FVERSION}/Master.prefs")"
+		export FUSION9_MasterPrefs="$(cygpath -w "${WGPATH}/blackmagic/masterprefs/${FVERSION}/Master.prefs");$(cygpath -w "${APPDATA}/Blackmagic Design/Fusion/Profiles/Default/JOB.prefs")"
 		export OFX_PLUGIN_PATH="$(cygpath -w "${WGPATH}/plugins/ofx/fusion/${FVERSION}")"
 		sapphire 2019.52
 		cryptomatte
@@ -44,7 +44,7 @@ if [ -f "${BMDIR}/Fusion ${FVERSION}/Fusion.exe" ] && [ -n "${FVERSION}" ]; then
 		unset FUSION16_MasterPrefs
 		;;	
 	"16")
-		export FUSION16_MasterPrefs="$(cygpath -w "${WGPATH}/blackmagic/masterprefs/${FVERSION}/Master.prefs")"
+		export FUSION16_MasterPrefs="$(cygpath -w "${WGPATH}/blackmagic/masterprefs/${FVERSION}/Master.prefs");$(cygpath -w "${APPDATA}/Blackmagic Design/Fusion/Profiles/Default/JOB.prefs")"
 		export OFX_PLUGIN_PATH="$(cygpath -w "${WGPATH}/plugins/ofx/fusion/${FVERSION}")"
 		sapphire 2019.52
 		cryptomatte
@@ -61,7 +61,7 @@ esac
 	#export FBin="${BMDIR}/Fusion ${FVERSION}"
 	#pathadd "${FBin}"
 
-	edit.fusionmasterprefs WG "$WGPATH"
+	edit.fusionprefs WG "$WGPATH"
 
 	if [ -f "${BMDIR}/DaVinci Resolve/Resolve.exe" ]; then
 		local supresolve=1
@@ -127,13 +127,13 @@ r() {
 #----------------------////
 # Fusion MasterPrefs:
 #----------------------////
-edit.fusionmasterprefs() {
+edit.fusionprefs() {
 	local d
 	local path_forfusion="$(echo "$(cygpath -w "${2}")" | sed 's|\\|\\\\\\\\|g' )"
 	local prefs_dir="${WGPATH}/blackmagic/masterprefs/"
 	for d in "${prefs_dir}"* ; do
 		if [ -f "$d/Master.prefs" ]; then
-            local file="$d/Master.prefs"
+           local file="$d/Master.prefs"
             sed -i "/\[\"${1}\:\"\]\ \=\ /c\\\t\t\t\t\[\"${1}\:\"\]\ \=\ \"${path_forfusion}\"\," "${file}"
 		fi
 	done
