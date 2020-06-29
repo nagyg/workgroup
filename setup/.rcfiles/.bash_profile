@@ -32,7 +32,7 @@ source "${WGPATH}/setup/source/vscode.sh"
 #source "${WGPATH}/setup/source/houdini.sh"
 #source "${WGPATH}/setup/source/blackmagic.sh"
 #source "${WGPATH}/setup/source/project.sh"
-#source "${WGPATH}/licenses.sh"
+#source "${WGPATH}/.licenses"
 
 #----------------------- GRAVEYARD
 #source "${WGPATH}/softimage/setup/softimage.sh"
