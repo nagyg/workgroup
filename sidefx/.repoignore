@@ -1,6 +1,6 @@
 .gitignore
 .repoignore
-houdini
+apps/*
 HSITE/qLib
 HSITE/mlnLib
 HSITE/.gitignore

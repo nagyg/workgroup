@@ -8,7 +8,7 @@
 #---------------------------------------------------------////
 export WGPATH=~/workgroup
 #-------------- Please do not edit this section ----------////
-export JOB=   # not in use
+export JOB= # not in use
 
 AVERSION=   # not in use
 RVERSION=   # not in use
@@ -20,7 +20,7 @@ expreditor=(    "true" "1.3.3"     )
 modeler=(       "false" "1.0.4"     )
 groombear=(     "false" "1.1.36"    )
 quadremesher=(  "true"             )
-#------------------- BLACKMAGIC FUSION -------------------////
+#-------------------- BLACKMAGIC APPS --------------------////
 export BMDIR="/c/Program Files/Blackmagic Design"
 #------------------------ SOURCE -------------------------////
 source "${WGPATH}/setup/source/main.sh"

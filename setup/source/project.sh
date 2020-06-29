@@ -10,7 +10,7 @@ else
 	if [ -d "$1" ]; then
 		export JOB="$path"
 		edit.profile "export JOB" "$JOB" 2> /dev/null
-#		edit.fusionprefs JOB "$JOB"
+		edit.fusionprefs JOB "$JOB" "$fusion_profiles_dir" Comp.prefs 2> /dev/null
 		job
 	else
 		echo "bash: $path: directory not found"
