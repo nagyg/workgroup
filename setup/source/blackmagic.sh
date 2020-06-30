@@ -36,11 +36,11 @@ fsetenv() {
 if [ -f "${BMDIR}/Fusion ${FVERSION}/Fusion.exe" ] && [ -n "${FVERSION}" ]; then
 
 	fusion_profiles_dir="$(cygpath -u "$APPDATA\Blackmagic Design\Fusion\Profiles")"
-	cp -u "${WGPATH}/blackmagic/masterprefs/Comp.prefs" "${fusion_profiles_dir}/Default"
+	cp -u "${WGPATH}/blackmagic/masterprefs/${FVERSION}/workgroup.prefs" "${fusion_profiles_dir}/Default"
 
     case "${FVERSION}" in
 	"9")
-		export FUSION9_MasterPrefs="$(cygpath -w "${WGPATH}/blackmagic/masterprefs/${FVERSION}/Master.prefs");$(cygpath -w "${fusion_profiles_dir}/Default/Comp.prefs")"
+		export FUSION9_MasterPrefs="$(cygpath -w "${fusion_profiles_dir}/Default/workgroup.prefs")"
 		export OFX_PLUGIN_PATH="$(cygpath -w "${WGPATH}/plugins/ofx/fusion/${FVERSION}")"
 		sapphire 2019.52
 		cryptomatte
@@ -48,7 +48,7 @@ if [ -f "${BMDIR}/Fusion ${FVERSION}/Fusion.exe" ] && [ -n "${FVERSION}" ]; then
 		unset FUSION16_MasterPrefs
 		;;	
 	"16")
-		export FUSION16_MasterPrefs="$(cygpath -w "${WGPATH}/blackmagic/masterprefs/${FVERSION}/Master.prefs");$(cygpath -w "${fusion_profiles_dir}/Default/Comp.prefs")"
+		export FUSION16_MasterPrefs="$(cygpath -w "${fusion_profiles_dir}/Default/workgroup.prefs")"
 		export OFX_PLUGIN_PATH="$(cygpath -w "${WGPATH}/plugins/ofx/fusion/${FVERSION}")"
 		sapphire 2019.52
 		cryptomatte
@@ -65,7 +65,9 @@ esac
 	#export FBin="${BMDIR}/Fusion ${FVERSION}"
 	#pathadd "${FBin}"
 
-	edit.fusionprefs WG "$WGPATH" "${WGPATH}/blackmagic/masterprefs" Master.prefs
+	edit.fusionprefs FVERSION "${FVERSION}"
+	edit.fusionprefs WG "$WGPATH"
+	edit.fusionprefs JOB "$JOB"
 
 	if [ -f "${BMDIR}/DaVinci Resolve/Resolve.exe" ]; then
 		local supresolve=1
@@ -134,10 +136,10 @@ r() {
 edit.fusionprefs() {
 	local d
 	local path_forfusion="$(echo "$(cygpath -w "${2}")" | sed 's|\\|\\\\\\\\|g' )"
-	local prefs_dir=${3}
+	local prefs_dir=${fusion_profiles_dir}
 	for d in "${prefs_dir}/"* ; do
-		if [ -f "$d/${4}" ]; then
-           local file="$d/${4}"
+		if [ -f "$d/workgroup.prefs" ]; then
+           local file="$d/workgroup.prefs"
             sed -i "/\[\"${1}\:\"\]\ \=\ /c\\\t\t\t\t\[\"${1}\:\"\]\ \=\ \"${path_forfusion}\"\," "${file}"
 		fi
 	done
