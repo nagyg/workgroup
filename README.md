@@ -30,9 +30,9 @@ The command above will initialize your shell startup. Backs up and configures yo
 This will download some more meat.
 
 #### 6. Then run: 
-            code $WGPATH/.wgsource
+            code ~/.bash_profile $WGPATH/.licenses
             
-The line above will open vscode and edit the ~/workgroup/.wgsource file. 
+The line above will open vscode and edit the ~/.bash_profile and $WGPATH/.licenses files. 
 Set up the environment variables here if it's needed.
 
 ##### Example:
