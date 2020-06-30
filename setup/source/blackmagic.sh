@@ -44,7 +44,8 @@ if [ -f "${BMDIR}/Fusion ${FVERSION}/Fusion.exe" ] && [ -n "${FVERSION}" ]; then
 		export OFX_PLUGIN_PATH="$(cygpath -w "${WGPATH}/plugins/ofx/fusion/${FVERSION}")"
 		sapphire 2019.52
 		cryptomatte
-
+		
+		edit.fusionprefs WGFusion "WG:\blackmagic\masterprefs\9"
 		edit.fusionprefs FFmpeg "WG:ffmpeg\ffmpeg-3.4.2-win64-shared"
 
 		unset FUSION16_MasterPrefs
@@ -55,6 +56,7 @@ if [ -f "${BMDIR}/Fusion ${FVERSION}/Fusion.exe" ] && [ -n "${FVERSION}" ]; then
 		sapphire 2019.52
 		cryptomatte
 
+		edit.fusionprefs WGFusion "WG:\blackmagic\masterprefs\16"
 		edit.fusionprefs FFmpeg "WG:ffmpeg\ffmpeg-4.2.2-win64-shared"
 
 		unset FUSION9_MasterPrefs
@@ -69,7 +71,6 @@ esac
 	#export FBin="${BMDIR}/Fusion ${FVERSION}"
 	#pathadd "${FBin}"
 
-	edit.fusionprefs FVERSION "$FVERSION"
 	edit.fusionprefs WG "$WGPATH"
 	edit.fusionprefs JOB "$JOB"
 
