@@ -35,23 +35,27 @@ fi
 fsetenv() {
 if [ -f "${BMDIR}/Fusion ${FVERSION}/Fusion.exe" ] && [ -n "${FVERSION}" ]; then
 
-	fusion_profiles_dir="$(cygpath -u "$APPDATA\Blackmagic Design\Fusion\Profiles")"
-	cp -u "${WGPATH}/blackmagic/masterprefs/${FVERSION}/workgroup.prefs" "${fusion_profiles_dir}/Default"
+	fusion_profiles_dir="$(cygpath -u "$APPDATA\Blackmagic Design\Fusion\Profiles\Default")"
+	cp -u "${WGPATH}/blackmagic/masterprefs/workgroup.prefs" "${fusion_profiles_dir}"
 
     case "${FVERSION}" in
 	"9")
-		export FUSION9_MasterPrefs="$(cygpath -w "${fusion_profiles_dir}/Default/workgroup.prefs")"
+		export FUSION9_MasterPrefs="$(cygpath -w "${fusion_profiles_dir}/workgroup.prefs")"
 		export OFX_PLUGIN_PATH="$(cygpath -w "${WGPATH}/plugins/ofx/fusion/${FVERSION}")"
 		sapphire 2019.52
 		cryptomatte
+
+		edit.fusionprefs FFmpeg "WG:ffmpeg\ffmpeg-3.4.2-win64-shared"
 
 		unset FUSION16_MasterPrefs
 		;;	
 	"16")
-		export FUSION16_MasterPrefs="$(cygpath -w "${fusion_profiles_dir}/Default/workgroup.prefs")"
+		export FUSION16_MasterPrefs="$(cygpath -w "${fusion_profiles_dir}/workgroup.prefs")"
 		export OFX_PLUGIN_PATH="$(cygpath -w "${WGPATH}/plugins/ofx/fusion/${FVERSION}")"
 		sapphire 2019.52
 		cryptomatte
+
+		edit.fusionprefs FFmpeg "WG:ffmpeg\ffmpeg-4.2.2-win64-shared"
 
 		unset FUSION9_MasterPrefs
 		;;
@@ -65,7 +69,7 @@ esac
 	#export FBin="${BMDIR}/Fusion ${FVERSION}"
 	#pathadd "${FBin}"
 
-	edit.fusionprefs FVERSION "${FVERSION}"
+	edit.fusionprefs FVERSION "$FVERSION"
 	edit.fusionprefs WG "$WGPATH"
 	edit.fusionprefs JOB "$JOB"
 
@@ -134,15 +138,16 @@ r() {
 # Fusion MasterPrefs:
 #----------------------////
 edit.fusionprefs() {
-	local d
-	local path_forfusion="$(echo "$(cygpath -w "${2}")" | sed 's|\\|\\\\\\\\|g' )"
-	local prefs_dir=${fusion_profiles_dir}
-	for d in "${prefs_dir}/"* ; do
-		if [ -f "$d/workgroup.prefs" ]; then
-           local file="$d/workgroup.prefs"
-            sed -i "/\[\"${1}\:\"\]\ \=\ /c\\\t\t\t\t\[\"${1}\:\"\]\ \=\ \"${path_forfusion}\"\," "${file}"
-		fi
-	done
+	if [[ ${2} == *":"* ]]; then
+  		local path_forfusion="$(echo "${2}" | sed 's|\\|\\\\\\\\|g' )"
+	else
+		local path_forfusion="$(echo "$(cygpath -w "${2}")" | sed 's|\\|\\\\\\\\|g' )"
+	fi
+	
+	if [ -f "${fusion_profiles_dir}/workgroup.prefs" ]; then
+        local file="${fusion_profiles_dir}/workgroup.prefs"
+        sed -i "/\[\"${1}\:\"\]\ \=\ /c\\\t\t\t\t\[\"${1}\:\"\]\ \=\ \"${path_forfusion}\"\," "${file}"
+	fi
 }
 
 #--------------------------------------------------------------------------------------------------////
