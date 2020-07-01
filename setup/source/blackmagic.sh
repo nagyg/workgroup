@@ -35,12 +35,16 @@ fi
 fsetenv() {
 if [ -f "${BMDIR}/Fusion ${FVERSION}/Fusion.exe" ] && [ -n "${FVERSION}" ]; then
 
-	fusion_profiles_dir="$(cygpath -u "$APPDATA\Blackmagic Design\Fusion\Profiles\Default")"
-	cp -u "${WGPATH}/blackmagic/masterprefs/workgroup.prefs" "${fusion_profiles_dir}"
+	fusion_profile_dir="$(cygpath -u "$APPDATA\Blackmagic Design\Fusion\Profiles\Default")"
+
+	if [ ! -d "${fusion_profile_dir}" ]; then mkdir -p "${fusion_profile_dir}"; fi
+	cp -u "${WGPATH}/blackmagic/masterprefs/workgroup.prefs" "${fusion_profile_dir}"
+
+	fusion_prefs="${fusion_profile_dir}/workgroup.prefs"
 
     case "${FVERSION}" in
 	"9")
-		export FUSION9_MasterPrefs="$(cygpath -w "${fusion_profiles_dir}/workgroup.prefs")"
+		export FUSION9_MasterPrefs="$(cygpath -w "${fusion_prefs}")"
 		export OFX_PLUGIN_PATH="$(cygpath -w "${WGPATH}/plugins/ofx/fusion/${FVERSION}")"
 		sapphire 2019.52
 		cryptomatte
@@ -51,7 +55,7 @@ if [ -f "${BMDIR}/Fusion ${FVERSION}/Fusion.exe" ] && [ -n "${FVERSION}" ]; then
 		unset FUSION16_MasterPrefs
 		;;	
 	"16")
-		export FUSION16_MasterPrefs="$(cygpath -w "${fusion_profiles_dir}/workgroup.prefs")"
+		export FUSION16_MasterPrefs="$(cygpath -w "${fusion_prefs}")"
 		export OFX_PLUGIN_PATH="$(cygpath -w "${WGPATH}/plugins/ofx/fusion/${FVERSION}")"
 		sapphire 2019.52
 		cryptomatte
@@ -139,18 +143,16 @@ r() {
 # Fusion MasterPrefs:
 #----------------------////
 edit.fusionprefs() {
-if [ -z "${2}" ]; then
-	return
-else
+if [ -n "${2}" ]; then
+
 	if [[ ${2} == *":"* ]]; then
   		local path_forfusion="$(echo "${2}" | sed 's|\\|\\\\\\\\|g' )"
 	else
 		local path_forfusion="$(echo "$(cygpath -w "${2}")" | sed 's|\\|\\\\\\\\|g' )"
 	fi
-	
-	if [ -f "${fusion_profiles_dir}/workgroup.prefs" ]; then
-        local file="${fusion_profiles_dir}/workgroup.prefs"
-        sed -i "/\[\"${1}\:\"\]\ \=\ /c\\\t\t\t\t\[\"${1}\:\"\]\ \=\ \"${path_forfusion}\"\," "${file}"
+
+	if [ -f "${fusion_prefs}" ]; then
+		sed -i "/\[\"${1}\:\"\]\ \=\ /c\\\t\t\t\t\[\"${1}\:\"\]\ \=\ \"${path_forfusion}\"\," "${fusion_prefs}"
 	fi
 fi
 }
