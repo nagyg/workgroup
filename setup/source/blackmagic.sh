@@ -139,6 +139,9 @@ r() {
 # Fusion MasterPrefs:
 #----------------------////
 edit.fusionprefs() {
+if [ -z "${2}" ]; then
+	return
+else
 	if [[ ${2} == *":"* ]]; then
   		local path_forfusion="$(echo "${2}" | sed 's|\\|\\\\\\\\|g' )"
 	else
@@ -149,6 +152,7 @@ edit.fusionprefs() {
         local file="${fusion_profiles_dir}/workgroup.prefs"
         sed -i "/\[\"${1}\:\"\]\ \=\ /c\\\t\t\t\t\[\"${1}\:\"\]\ \=\ \"${path_forfusion}\"\," "${file}"
 	fi
+fi
 }
 
 #--------------------------------------------------------------------------------------------------////
