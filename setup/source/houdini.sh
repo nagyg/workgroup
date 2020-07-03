@@ -52,7 +52,7 @@ if [ -d "${HFS}" ]; then
 	export HOUDINI_BUILD_VERSION=${HVERSION:5}
 	export HOUDINI_RELEASE_VERSION=${HVERSION:0:4}
 
-	export HOUDINI_DSO_ERROR=0
+	export HOUDINI_DSO_ERROR=2
 	export HOUDINI_EXTERNAL_HELP_BROWSER=1
 
 	export HSITE="$(cygpath -w "${WGPATH}/sidefx/HSITE")"
