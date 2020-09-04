@@ -61,7 +61,7 @@ if [ -f "${BMDIR}/Fusion ${FVERSION}/Fusion.exe" ] && [ -n "${FVERSION}" ]; then
 		cryptomatte
 
 		edit.fusionprefs WGFusion "WG:\blackmagic\masterprefs\16"
-		edit.fusionprefs FFmpeg "WG:ffmpeg\ffmpeg-4.2.2-win64-shared"
+		edit.fusionprefs FFmpeg "WG:ffmpeg\ffmpeg-latest-win64-shared"
 
 		unset FUSION9_MasterPrefs
 		;;
