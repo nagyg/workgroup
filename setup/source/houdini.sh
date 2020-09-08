@@ -164,20 +164,17 @@ fi
 # Exoside Quadremesher:
 #-----------------------////
 hplug.quadremesher () {
-local path="${HSITE}\quadremesher\otls"
-	export HOUDINI_OTLSCAN_PATH="$path;${HOUDINI_OTLSCAN_PATH}"
+	export HOUDINI_OTLSCAN_PATH="${HSITE}\quadremesher\otls;${HOUDINI_OTLSCAN_PATH}"
 }
 
 #-----------------------////
 # Axiom Solver:
 #-----------------------////
 hplug.axiom () {
-	if [ -d "${WGPATH}/sidefx/HSITE/axiom/${HVERSION}" ]; then
-		local path="$HSITE\axiom\\${HVERSION}"
-
-		export HOUDINI_PATH="$path;${HOUDINI_PATH}"
-		export HOUDINI_OTLSCAN_PATH="$path;${HOUDINI_OTLSCAN_PATH}"
-	fi
+local path="$HSITE\axiom\\${HVERSION}"
+if [ -d "$(cygpath -u "${path}")" ]; then
+	export HOUDINI_PATH="$path;${HOUDINI_PATH}"
+fi
 }
 
 #-----------------------////
