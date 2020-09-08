@@ -80,7 +80,9 @@ if [ -d "${HFS}" ]; then
 	if [ "${groombear[0]}" == "true" ]; then
 		hplug.groombear
 	fi
-	
+
+	hplug.axiom
+
 	#HOUDINI_PATH safe end
 	export HOUDINI_PATH="${HOUDINI_PATH};&"
 	export HOUDINI_OTLSCAN_PATH="${HOUDINI_OTLSCAN_PATH};&"
@@ -164,6 +166,18 @@ fi
 hplug.quadremesher () {
 local path="${HSITE}\quadremesher\otls"
 	export HOUDINI_OTLSCAN_PATH="$path;${HOUDINI_OTLSCAN_PATH}"
+}
+
+#-----------------------////
+# Axiom Solver:
+#-----------------------////
+hplug.axiom () {
+	if [ -d "${WGPATH}/sidefx/HSITE/axiom/${HVERSION}" ]; then
+		local path="$HSITE\axiom\\${HVERSION}"
+
+		export HOUDINI_PATH="$path;${HOUDINI_PATH}"
+		export HOUDINI_OTLSCAN_PATH="$path;${HOUDINI_OTLSCAN_PATH}"
+	fi
 }
 
 #-----------------------////
