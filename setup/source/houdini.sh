@@ -59,8 +59,9 @@ if [ -d "${HFS}" ]; then
 
 	unset HOUDINI_PATH
 
-	mlnlib
-	qlib
+	hplug.mlnlib
+	hplug.qlib
+	hplug.mops
 
 	#-----------------------////
 	# FCK PLUGINS
@@ -114,7 +115,7 @@ hstart() {
 #-----------------------////
 # mlnLib:
 #-----------------------////
-mlnlib() {
+hplug.mlnlib() {
 	export MLNLIB="$HSITE\mlnLib"
 	export HOUDINI_PATH="$MLNLIB"
 }
@@ -122,12 +123,21 @@ mlnlib() {
 #-----------------------////
 # qLib:
 #-----------------------////
-qlib() {
+hplug.qlib() {
 	export QLIB="$HSITE\qLib"
 	export QOTL="$QLIB\otls"
 
 	export HOUDINI_PATH="$QLIB;${HOUDINI_PATH}"
 	export HOUDINI_OTLSCAN_PATH="$QOTL\base;$QOTL\future;$QOTL\experimental"
+}
+
+#-----------------------////
+# MOPs:
+#-----------------------////
+hplug.mops() {
+	export MOPS="$HSITE\mops"
+
+	export HOUDINI_PATH="$MOPS;${HOUDINI_PATH}"
 }
 
 #-----------------------////

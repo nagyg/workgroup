@@ -14,3 +14,7 @@
 	path = mtool
 	url = https://github.com/crmabs/mtool.git
 	branch = master
+[submodule "sidefx/HSITE/mops"]
+	path = sidefx/HSITE/mops
+	url = https://github.com/toadstorm/MOPS.git
+	branch = master

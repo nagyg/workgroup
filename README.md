@@ -69,6 +69,7 @@ This file contains the components / variables will be set on starting up your cm
 Submodules
 ==========
  - [qLab/qLib](https://github.com/qLab/qLib)
+ - [toadstorm/MOPS](https://github.com/toadstorm/MOPS)
  - [nagyg/mlnLib](https://github.com/nagyg/mlnLib)
  - [crmabs/mtool](https://github.com/crmabs/mtool)
  - [Psyop/Cryptomatte](https://github.com/Psyop/Cryptomatte)
