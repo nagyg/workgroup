@@ -51,7 +51,7 @@ Update
 Close all applications then run the following commands.
 ### This will update all git submodules and all url / binary repos
             builtin cd ~/workgroup && git pull --recurse-submodules
-            Now restart conemu and enter the following command:
+            - Now restart conemu and enter the following command:
             update.all
             
 #### NOTE: you can check out / place your workgroup repo anywhere. The instructions above were just an example.
@@ -68,6 +68,18 @@ This is the point where you can relocate your workgroup! Move it anywhere and ed
 
 Your workgroup folder contains a .wgsource file which is the last member. 
 This file contains the components / variables will be set on starting up your cmder / conemu shell.
+
+#### Example: Isolated environment
+The previous configurations expect a .bash_profile file to be found. ( "c:\Users\Sandor" or "/home/sandor" )
+If you don't want to mess with the existing stuff there then you can create an isolated environment.
+
+A quick description follows: Create a dir anywhere. This will be the root dir later in the example. 
+ Extract cmder.zip into root. Clone this repo into root. Hack yourself a HOME env.variable into <root>/config/user_profile.sh which can be
+done by adding a line like this: export HOME='/a/wg';
+ Which is merely the path to root. The install will do the rest. Keep your eye on cleanrc.cmd! The .bash_profile it creates is in your OS user's home.  ( "c:\Users\Sandor" or "/home/sandor" ) Move the new .bash_profile to root. Restore your old .bash_profile from the backup if needed. 
+ 
+Rather dirty but also very quick-safe-clean.
+
 
 Submodules
 ==========
