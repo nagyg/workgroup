@@ -67,10 +67,10 @@ This is the point where you can relocate your workgroup! Move it anywhere and ed
             source /q/path\ to/workgroup/.wgsource
 
 Your workgroup folder contains a .wgsource file which is the last member. 
-This file contains the components / variables will be set on starting up your cmder / conemu shell.
+This file contains the components / variables will be set on starting up your cmder / conemu shell. Don't touch this file! Your .bash_profile drives it. So, tweak that if something must be tweaked.
 
 #### Example: Isolated environment
-By default the configuration expect a .bash_profile file to be found on "c:\Users\Sandor" or "/home/sandor" where it is by default.
+By default the configuration expect a .bash_profile file to be found on "c:\Users\Sandor" or "/home/sandor".
 If you don't want to mess with the existing stuff there then you can create an isolated environment.
 
 A quick description follows: Create a dir anywhere. This will be the root dir later in the example. 
