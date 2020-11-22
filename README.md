@@ -70,13 +70,12 @@ Your workgroup folder contains a .wgsource file which is the last member.
 This file contains the components / variables will be set on starting up your cmder / conemu shell.
 
 #### Example: Isolated environment
-The previous configurations expect a .bash_profile file to be found. ( "c:\Users\Sandor" or "/home/sandor" )
+The previous configuration expect a .bash_profile file to be found on "c:\Users\Sandor" or "/home/sandor" where it is by default.
 If you don't want to mess with the existing stuff there then you can create an isolated environment.
 
 A quick description follows: Create a dir anywhere. This will be the root dir later in the example. 
  Extract cmder.zip into root. Clone this repo into root. Hack yourself a HOME env.variable into <root>/config/user_profile.sh which can be
-done by adding a line like this: export HOME='/a/wg';
- Which is merely the path to root. The install will do the rest. Keep your eye on cleanrc.cmd! The .bash_profile it creates is in your OS user's home.  ( "c:\Users\Sandor" or "/home/sandor" ) Move the new .bash_profile to root. Restore your old .bash_profile from the backup if needed. 
+done by adding a line like this: export HOME='/a/wg'; The path is the path to the root directory. The install steps will do the rest. Keep your eye on cleanrc.cmd! The .bash_profile it creates is in your OS user's home.  ( "c:\Users\Sandor" or "/home/sandor" ) Move the new .bash_profile to root. Restore your old .bash_profile from the backup if needed. 
  
 Rather dirty but also very quick-safe-clean.
 
