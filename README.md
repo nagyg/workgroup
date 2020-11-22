@@ -12,7 +12,9 @@ Installation
  - Save settings.
  
  - Exit / Restart cmder.
+ 
 Check the images below in case you are wondering where are those settings we are talking about:
+![alt text](https://github.com/nagyg/workgroup/blob/master/cmder_settings.png?raw=true)
 
 #### 2. From the new cmder run:
             git clone --recursive https://github.com/nagyg/workgroup.git ~/workgroup
