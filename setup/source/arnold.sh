@@ -59,10 +59,6 @@ if [ -d "${ADIR}/arnold/${AVERSION}" ] && [ -n "${AVERSION}" ]; then
 
 	aversions "${AVERSION}"
 
-	pathremove "${ARNOLD_BINDIR}"
-	export ARNOLD_BINDIR="${ADIR}/arnold/${AVERSION}/bin"
-	pathadd "${ARNOLD_BINDIR}"
-
 	if [ -z "${HVERSION}" ]; then supphtoa=0; else
 		case ${htoa_support_hversion[@]} in  *${HVERSION}*) supphtoa=1 ;; *) supphtoa=0 ;; esac
 		htoa_path="${ADIR}/htoa/${HVERSION}"

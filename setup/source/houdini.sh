@@ -57,7 +57,7 @@ if [ -d "${HFS}" ]; then
 
 	export HSITE="$(cygpath -w "${WGPATH}/sidefx/HSITE")"
 
-	unset HOUDINI_PATH
+	unset HOUDINI_PATH HOUDINI_OTLSCAN_PATH
 
 	hplug.mlnlib
 	hplug.qlib
@@ -106,7 +106,7 @@ hstart() {
 		houdini &
 	elif [[ "$1" = '-envonly' ]]; then
 		# don't run houdini
-		echo 'Environment is set for ARNOLD';
+		echo 'Environment is set for ARNOLD or REDSHIFT';
 	else 
 		# run houdini and pass all args
 		houdini "${@}" &
@@ -209,12 +209,13 @@ else
 
 	hsetenv &> /dev/null
 
-	local path="$(cygpath -w "${htoa_path}")"
-	export HOUDINI_PATH="$path;${HOUDINI_PATH}"
-
 	pathremove "${ARNOLD_BINDIR}"
 	export ARNOLD_BINDIR="${htoa_path}/scripts/bin"
 	pathadd "${ARNOLD_BINDIR}"
+
+	local path="$(cygpath -w "${htoa_path}")"
+
+	export HOUDINI_PATH="$path;${HOUDINI_PATH}"
 
 	htoa_env=true
 
@@ -230,8 +231,15 @@ else
 
 	hsetenv &> /dev/null
 
-	local path="$(cygpath -w "${WGPATH}/redshift/${RVERSION}/Plugins/Houdini/${HVERSION}")"
+	pathremove "${REDSHIFT_COREDATAPATH}"
+	export REDSHIFT_COREDATAPATH="${htor_path}/bin"
+	pathadd "${REDSHIFT_COREDATAPATH}"
+
+	local path="$(cygpath -w "${htor_path}/Plugins/Houdini/${HVERSION}")"
 	export HOUDINI_PATH="$path;${HOUDINI_PATH}"
+
+	#local pxrpath="$(cygpath -w "${htor_path}/Plugins/Solaris/${HVERSION}")"
+	#export PXR_PLUGINPATH_NAME="${pxrpath};&"
 
 	htor_env=true
 
@@ -275,6 +283,8 @@ fi
 h.last() { echo -e "lasthip >> [${blue}`lasthip`${nc}]"; h "`lasthip`"; }
 
 ha.last() { echo -e "lasthip >> [${blue}`lasthip`${nc}]"; ha "`lasthip`"; }
+
+hr.last() { echo -e "lasthip >> [${blue}`lasthip`${nc}]"; hr "`lasthip`"; }
 
 hrop.last() { echo -e "lasthip >> [${blue}`lasthip`${nc}] | rop [${blue}"$@"${nc}]"; hrop "`lasthip`" ${@}; }
 

@@ -58,13 +58,9 @@ if [ -d "${RDIR}/${RVERSION}" ] && [ -n "${RVERSION}" ]; then
 
 	rversions "${RVERSION}"
 
-	pathremove "${REDSHIFT_COREDATAPATH}/bin"
-	export REDSHIFT_COREDATAPATH=${WGPATH}/redshift/${RVERSION}
-	pathadd "${REDSHIFT_COREDATAPATH}/bin"
-
 	if [ -z "${HVERSION}" ]; then suppredshift=0; else
 		case ${redshift_support_hversion[@]} in  *${HVERSION}*) suppredshift=1 ;; *) suppredshift=0 ;; esac
-		htor_path="${RDIR}/${RVERSION}/Plugins/Houdini/${HVERSION}"
+		htor_path="${RDIR}/${RVERSION}"
 	fi
 
 	local format="%s ${green}%11s${nc} %s ${green}%s${nc}\n"
