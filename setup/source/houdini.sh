@@ -231,15 +231,15 @@ else
 
 	hsetenv &> /dev/null
 
-	pathremove "${REDSHIFT_COREDATAPATH}"
-	export REDSHIFT_COREDATAPATH="${htor_path}/bin"
-	pathadd "${REDSHIFT_COREDATAPATH}"
+	pathremove "${REDSHIFT_COREDATAPATH}/bin"
+	export REDSHIFT_COREDATAPATH="${htor_path}"
+	pathadd "${REDSHIFT_COREDATAPATH}/bin"
 
 	local path="$(cygpath -w "${htor_path}/Plugins/Houdini/${HVERSION}")"
 	export HOUDINI_PATH="$path;${HOUDINI_PATH}"
 
-	#local pxrpath="$(cygpath -w "${htor_path}/Plugins/Solaris/${HVERSION}")"
-	#export PXR_PLUGINPATH_NAME="${pxrpath};&"
+	local pxrpath="$(cygpath -w "${htor_path}/Plugins/Solaris/${HVERSION}")"
+	export PXR_PLUGINPATH_NAME="${pxrpath};&"
 
 	htor_env=true
 
