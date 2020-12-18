@@ -241,6 +241,8 @@ else
 	local pxrpath="$(cygpath -w "${htor_path}/Plugins/Solaris/${HVERSION}")"
 	export PXR_PLUGINPATH_NAME="${pxrpath};&"
 
+	export REDSHIFT_RV_OPEN_ONLY=1
+
 	htor_env=true
 
     hstart
