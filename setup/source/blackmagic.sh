@@ -52,7 +52,7 @@ if [ -f "${BMDIR}/Fusion ${FVERSION}/Fusion.exe" ] && [ -n "${FVERSION}" ]; then
 		edit.fusionprefs WGFusion "WG:\blackmagic\masterprefs\9"
 		edit.fusionprefs FFmpeg "WG:ffmpeg\ffmpeg-3.4.2-win64-shared"
 
-		unset FUSION16_MasterPrefs FUSION17_MasterPrefs
+		unset FUSION16_MasterPrefs
 		;;	
 	"16")
 		export FUSION16_MasterPrefs="$(cygpath -w "${fusion_prefs}")"
@@ -63,10 +63,10 @@ if [ -f "${BMDIR}/Fusion ${FVERSION}/Fusion.exe" ] && [ -n "${FVERSION}" ]; then
 		edit.fusionprefs WGFusion "WG:\blackmagic\masterprefs\16"
 		edit.fusionprefs FFmpeg "WG:ffmpeg\ffmpeg-latest-win64-shared"
 
-		unset FUSION9_MasterPrefs FUSION17_MasterPrefs
+		unset FUSION9_MasterPrefs
 		;;
 	"17")
-		export FUSION17_MasterPrefs="$(cygpath -w "${fusion_prefs}")"
+		export FUSION16_MasterPrefs="$(cygpath -w "${fusion_prefs}")"
 		export OFX_PLUGIN_PATH="$(cygpath -w "${WGPATH}/plugins/ofx/fusion/${FVERSION}")"
 		sapphire 2019.52
 		cryptomatte
@@ -74,7 +74,7 @@ if [ -f "${BMDIR}/Fusion ${FVERSION}/Fusion.exe" ] && [ -n "${FVERSION}" ]; then
 		edit.fusionprefs WGFusion "WG:\blackmagic\masterprefs\17"
 		edit.fusionprefs FFmpeg "WG:ffmpeg\ffmpeg-latest-win64-shared"
 
-		unset FUSION9_MasterPrefs FUSION16_MasterPrefs
+		unset FUSION9_MasterPrefs
 		;;
 	*)
 		local format="%s ${red}%11s${nc} %s\n"
