@@ -3,3 +3,5 @@
 # DJV: reset --> ~/Documents/DJV folder delete
 #--------------------------------------------------------------------------------------------------////
 pathadd "${WGPATH}/djv/2.0.8/bin"
+
+alias djv='djv &'
