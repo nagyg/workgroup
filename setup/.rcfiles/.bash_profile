@@ -16,9 +16,9 @@ HVERSION=   # not in use
 FVERSION=   # not in use
 #----------------------- HOUDINI -------------------------////
 export HDIR="/c/Program Files/Side Effects Software"
-expreditor=(    "true" "1.4.6"      )
+expreditor=(    "true" "1.4.7"      )
 modeler=(       "false" "2020.1.6"  )
-groombear=(     "false" "1.2.0"    )
+groombear=(     "false" "1.2.29"    )
 quadremesher=(  "true"              )
 #-------------------- BLACKMAGIC APPS --------------------////
 export BMDIR="/c/Program Files/Blackmagic Design"
@@ -28,6 +28,7 @@ source "${WGPATH}/setup/source/vscode.sh"
 #source "${WGPATH}/setup/source/ffmpeg.sh"
 #source "${WGPATH}/setup/source/opencolorio.sh"
 #source "${WGPATH}/setup/source/tweaksoftware.sh"
+#source "${WGPATH}/setup/source/djv.sh"
 #source "${WGPATH}/setup/source/arnold.sh"
 #source "${WGPATH}/setup/source/redshift.sh"
 #source "${WGPATH}/setup/source/houdini.sh"
