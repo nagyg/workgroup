@@ -61,6 +61,7 @@ if [ -d "${HFS}" ]; then
 
 	hplug.mlnlib
 	hplug.qlib
+	hplug.sidefxlabs
 	hplug.mops
 
 	#-----------------------////
@@ -70,9 +71,10 @@ if [ -d "${HFS}" ]; then
 		hplug.expreditor
 	fi
 
-	if [ "${quadremesher[0]}" == "true" ]; then
-		hplug.quadremesher
-	fi
+	#Experimental
+	#if [ "${quadremesher[0]}" == "true" ]; then
+	#	hplug.quadremesher
+	#fi
 
 	if [ "${modeler[0]}" == "true" ]; then
 		hplug.modeler
@@ -132,6 +134,15 @@ hplug.qlib() {
 }
 
 #-----------------------////
+# SideFXLabs:
+#-----------------------////
+hplug.sidefxlabs() {
+	export SIDEFXLABS="$HSITE\sidefxlabs"
+
+	export HOUDINI_PATH="$SIDEFXLABS;${HOUDINI_PATH}"
+}
+
+#-----------------------////
 # MOPs:
 #-----------------------////
 hplug.mops() {
@@ -173,9 +184,9 @@ fi
 #-----------------------////
 # Exoside Quadremesher:
 #-----------------------////
-hplug.quadremesher () {
-	export HOUDINI_OTLSCAN_PATH="${HSITE}\quadremesher\otls;${HOUDINI_OTLSCAN_PATH}"
-}
+#hplug.quadremesher () {
+#	export HOUDINI_OTLSCAN_PATH="${HSITE}\quadremesher\otls;${HOUDINI_OTLSCAN_PATH}"
+#}
 
 #-----------------------////
 # Axiom Solver:

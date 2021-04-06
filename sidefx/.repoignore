@@ -2,6 +2,7 @@
 .repoignore
 apps/*
 HSITE/qLib
+HSITE/sidefxlabs
 HSITE/mops
 HSITE/mlnLib
 HSITE/icons

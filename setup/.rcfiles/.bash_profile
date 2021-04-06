@@ -19,7 +19,6 @@ export HDIR="/c/Program Files/Side Effects Software"
 expreditor=(    "true" "1.4.7"      )
 modeler=(       "false" "2020.1.6"  )
 groombear=(     "false" "1.2.29"    )
-quadremesher=(  "true"              )
 #-------------------- BLACKMAGIC APPS --------------------////
 export BMDIR="/c/Program Files/Blackmagic Design"
 #------------------------ SOURCE -------------------------////

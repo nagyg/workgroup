@@ -83,6 +83,7 @@ Rather dirty but also very quick-safe-clean.
 Submodules
 ==========
  - [qLab/qLib](https://github.com/qLab/qLib)
+ - [sideeffects/SideFXLabs](https://github.com/sideeffects/SideFXLabs)
  - [toadstorm/MOPS](https://github.com/toadstorm/MOPS)
  - [nagyg/mlnLib](https://github.com/nagyg/mlnLib)
  - [crmabs/mtool](https://github.com/crmabs/mtool)
