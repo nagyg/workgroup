@@ -84,10 +84,8 @@ alias update.sidefx='update sidefx'
 alias update.solidangle='update solidangle'
 alias update.redshift='update redshift'
 alias update.djv='update djv'
-alias update.tweaksoftware='update tweaksoftware'
-alias update.vscode='update vscode'
 ## GRAVEYARD ##
 alias update.softimage='update softimage'
 
 #ignore: adobe, fonts, luts, softimage
-alias update.all='update blackmagic ffmpeg opencolorio plugins project sidefx solidangle redshift djv tweaksoftware vscode'
+alias update.all='update blackmagic ffmpeg opencolorio plugins project sidefx solidangle redshift djv'
