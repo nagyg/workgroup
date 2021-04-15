@@ -46,29 +46,18 @@ if [ -f "${BMDIR}/Fusion ${FVERSION}/Fusion.exe" ] && [ -n "${FVERSION}" ]; then
 	"9")
 		export FUSION9_MasterPrefs="$(cygpath -w "${fusion_prefs}")"
 		export OFX_PLUGIN_PATH="$(cygpath -w "${WGPATH}/plugins/ofx/fusion/${FVERSION}")"
-		sapphire 2019.52
+		sapphire 2021.02
 		cryptomatte
 		
 		edit.fusionprefs WGFusion "WG:\blackmagic\masterprefs\9"
 		edit.fusionprefs FFmpeg "WG:ffmpeg\ffmpeg-3.4.2-win64-shared"
 
 		unset FUSION16_MasterPrefs
-		;;	
-	"16")
-		export FUSION16_MasterPrefs="$(cygpath -w "${fusion_prefs}")"
-		export OFX_PLUGIN_PATH="$(cygpath -w "${WGPATH}/plugins/ofx/fusion/${FVERSION}")"
-		sapphire 2019.52
-		cryptomatte
-
-		edit.fusionprefs WGFusion "WG:\blackmagic\masterprefs\16"
-		edit.fusionprefs FFmpeg "WG:ffmpeg\ffmpeg-latest-win64-shared"
-
-		unset FUSION9_MasterPrefs
 		;;
 	"17")
 		export FUSION16_MasterPrefs="$(cygpath -w "${fusion_prefs}")"
 		export OFX_PLUGIN_PATH="$(cygpath -w "${WGPATH}/plugins/ofx/fusion/${FVERSION}")"
-		sapphire 2019.52
+		sapphire 2021.02
 		cryptomatte
 
 		edit.fusionprefs WGFusion "WG:\blackmagic\masterprefs\17"
@@ -121,8 +110,11 @@ sapphire() {
 	export SAPPHIRE_OFX_DIR="$(cygpath -w "${WGPATH}/plugins/borisfx/sapphire/$1")"
 	export LD_LIBRARY_PATH="$(cygpath -w "${WGPATH}/plugins/borisfx/sapphire/$1/lib64")"
 
-	local GenartsData="$(cygpath -w "${ProgramData}/GenArts")"
-	if [ ! -d "${GenartsData}" ]; then mkdir -p "${GenartsData}"; fi
+	export SAPPHIRE_LOAD_PRESET_PATH="$(cygpath -w "${WGPATH}/plugins/borisfx/GenArts")"
+	export SAPPHIRE_SAVE_PRESET_PATH="$(cygpath -w "${WGPATH}/plugins/borisfx/GenArts")"
+
+#	local GenartsData="$(cygpath -w "${ProgramData}/GenArts")"
+#	if [ ! -d "${GenartsData}" ]; then mkdir -p "${GenartsData}"; fi
 }
 
 #--------------------------------------------------------------------------------------------------////
