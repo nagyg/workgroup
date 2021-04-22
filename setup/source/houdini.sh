@@ -71,10 +71,9 @@ if [ -d "${HFS}" ]; then
 		hplug.expreditor
 	fi
 
-	#Experimental
-	#if [ "${quadremesher[0]}" == "true" ]; then
-	#	hplug.quadremesher
-	#fi
+	if [ "${magascans[0]}" == "true" ]; then
+		hplug.magascans
+	fi
 
 	if [ "${modeler[0]}" == "true" ]; then
 		hplug.modeler
@@ -161,6 +160,27 @@ local path="${HSITE}\expreditor\\${expreditor[1]}"
 }
 
 #-----------------------////
+# Quixel Megascans:
+#-----------------------////
+hplug.magascans () {
+local path="$HSITE\magascans\\${magascans[1]}\MSLiveLink"
+if [ -d "$(cygpath -u "${path}")" ]; then
+	export MS_HOUDINI_PATH="$(cygpath -w "$path\scripts\python\MSPlugin")"
+	export HOUDINI_PATH="$path;${HOUDINI_PATH}"
+fi
+}
+
+#-----------------------////
+# Axiom Solver:
+#-----------------------////
+hplug.axiom () {
+local path="$HSITE\axiom\\${HVERSION}"
+if [ -d "$(cygpath -u "${path}")" ]; then
+	export HOUDINI_PATH="$path;${HOUDINI_PATH}"
+fi
+}
+
+#-----------------------////
 # Modeler:
 #-----------------------////
 hplug.modeler () {
@@ -177,23 +197,6 @@ local path="${HSITE}\groombear\\${groombear[1]}"
 if [ -d "$(cygpath -u "${path}")" ]; then
 	export GROOMBEAR_PATH="$path"
 	export GROOMBEAR_ICONS="$path\icons"
-	export HOUDINI_PATH="$path;${HOUDINI_PATH}"
-fi
-}
-
-#-----------------------////
-# Exoside Quadremesher:
-#-----------------------////
-#hplug.quadremesher () {
-#	export HOUDINI_OTLSCAN_PATH="${HSITE}\quadremesher\otls;${HOUDINI_OTLSCAN_PATH}"
-#}
-
-#-----------------------////
-# Axiom Solver:
-#-----------------------////
-hplug.axiom () {
-local path="$HSITE\axiom\\${HVERSION}"
-if [ -d "$(cygpath -u "${path}")" ]; then
 	export HOUDINI_PATH="$path;${HOUDINI_PATH}"
 fi
 }

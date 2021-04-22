@@ -17,6 +17,7 @@ FVERSION=   # not in use
 #----------------------- HOUDINI -------------------------////
 export HDIR="/c/Program Files/Side Effects Software"
 expreditor=(    "true" "1.4.7"      )
+magascans=(     "false" "4.4"       )
 modeler=(       "false" "2020.1.6"  )
 groombear=(     "false" "1.2.29"    )
 #-------------------- BLACKMAGIC APPS --------------------////
