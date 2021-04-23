@@ -71,8 +71,8 @@ if [ -d "${HFS}" ]; then
 		hplug.expreditor
 	fi
 
-	if [ "${magascans[0]}" == "true" ]; then
-		hplug.magascans
+	if [ "${megascans[0]}" == "true" ]; then
+		hplug.megascans
 	fi
 
 	if [ "${modeler[0]}" == "true" ]; then
@@ -163,7 +163,7 @@ local path="${HSITE}\expreditor\\${expreditor[1]}"
 # Quixel Megascans:
 #-----------------------////
 hplug.megascans () {
-local path="$HSITE\magascans\\${magascans[1]}\MSLiveLink"
+local path="$HSITE\megascans\\${megascans[1]}\MSLiveLink"
 if [ -d "$(cygpath -u "${path}")" ]; then
 	export MS_HOUDINI_PATH="$(cygpath -w "$path\scripts\python\MSPlugin")"
 	export HOUDINI_PATH="$path;${HOUDINI_PATH}"
