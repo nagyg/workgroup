@@ -22,6 +22,7 @@ modeler=(       "false" "2020.1.6"  )
 groombear=(     "false" "1.2.29"    )
 #-------------------- BLACKMAGIC APPS --------------------////
 export BMDIR="/c/Program Files/Blackmagic Design"
+export BINSERVER=""
 #------------------------ SOURCE -------------------------////
 source "${WGPATH}/setup/source/main.sh"
 #source "${WGPATH}/setup/source/ffmpeg.sh"
