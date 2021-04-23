@@ -49,8 +49,8 @@ if [ -f "${BMDIR}/Fusion ${FVERSION}/Fusion.exe" ] && [ -n "${FVERSION}" ]; then
 		sapphire 2021.02
 		cryptomatte
 		
-		edit.fusionprefs WGFusion "WG:\blackmagic\masterprefs\9"
-		edit.fusionprefs FFmpeg "WG:ffmpeg\ffmpeg-3.4.2-win64-shared"
+		edit.fusionprefs "\[\"WGFusion:\"\]" "WG:\blackmagic\masterprefs\9"
+		edit.fusionprefs "\[\"FFmpeg:\"\]" "WG:ffmpeg\ffmpeg-3.4.2-win64-shared"
 
 		unset FUSION16_MasterPrefs
 		;;
@@ -60,8 +60,8 @@ if [ -f "${BMDIR}/Fusion ${FVERSION}/Fusion.exe" ] && [ -n "${FVERSION}" ]; then
 		sapphire 2021.02
 		cryptomatte
 
-		edit.fusionprefs WGFusion "WG:\blackmagic\masterprefs\17"
-		edit.fusionprefs FFmpeg "WG:ffmpeg\ffmpeg-latest-win64-shared"
+		edit.fusionprefs "\[\"WGFusion:\"\]" "WG:\blackmagic\masterprefs\17"
+		edit.fusionprefs "\[\"FFmpeg:\"\]" "WG:ffmpeg\ffmpeg-latest-win64-shared"
 
 		unset FUSION9_MasterPrefs
 		;;
