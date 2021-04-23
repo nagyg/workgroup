@@ -162,7 +162,7 @@ local path="${HSITE}\expreditor\\${expreditor[1]}"
 #-----------------------////
 # Quixel Megascans:
 #-----------------------////
-hplug.magascans () {
+hplug.megascans () {
 local path="$HSITE\magascans\\${magascans[1]}\MSLiveLink"
 if [ -d "$(cygpath -u "${path}")" ]; then
 	export MS_HOUDINI_PATH="$(cygpath -w "$path\scripts\python\MSPlugin")"
