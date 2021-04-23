@@ -75,8 +75,12 @@ esac
 	#export FBin="${BMDIR}/Fusion ${FVERSION}"
 	#pathadd "${FBin}"
 
-	edit.fusionprefs WG "$WGPATH"
-	edit.fusionprefs JOB "$JOB"
+	edit.fusionprefs "\[\"WG:\"\]" "$WGPATH"
+	edit.fusionprefs "\[\"JOB:\"\]" "$JOB"
+
+	if [ -n "${BINSERVER}" ]; then
+	edit.fusionprefs Server "$BINSERVER"
+	fi
 
 	if [ -f "${BMDIR}/DaVinci Resolve/Resolve.exe" ]; then
 		local supresolve=1
@@ -155,7 +159,7 @@ if [ -n "${2}" ]; then
 	fi
 
 	if [ -f "${fusion_prefs}" ]; then
-		sed -i "/\[\"${1}\:\"\]\ \=\ /c\\\t\t\t\t\[\"${1}\:\"\]\ \=\ \"${path_forfusion}\"\," "${fusion_prefs}"
+		sed -i "/${1}\ \=\ /c\\\t\t\t\t${1}\ \=\ \"${path_forfusion}\"\," "${fusion_prefs}"
 	fi
 fi
 }
