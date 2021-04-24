@@ -22,7 +22,8 @@ modeler=(       "false" "2020.1.6"  )
 groombear=(     "false" "1.2.29"    )
 #-------------------- BLACKMAGIC APPS --------------------////
 export BMDIR="/c/Program Files/Blackmagic Design"
-export STOCK=""
+export LIBRARY="/o/LIBRARY"
+export DISKCACHE="/a/Fusion"
 #------------------------ SOURCE -------------------------////
 source "${WGPATH}/setup/source/main.sh"
 #source "${WGPATH}/setup/source/ffmpeg.sh"

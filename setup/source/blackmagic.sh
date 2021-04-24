@@ -77,7 +77,8 @@ esac
 
 	edit.fusionprefs WG "$WGPATH"
 	edit.fusionprefs JOB "$JOB"
-	edit.fusionprefs WGStock "$STOCK"
+	edit.fusionprefs WGStock "$LIBRARY/Stock"
+	edit.fusionprefs WGDiskCache "$DISKCACHE"
 
 	if [ -f "${BMDIR}/DaVinci Resolve/Resolve.exe" ]; then
 		local supresolve=1
