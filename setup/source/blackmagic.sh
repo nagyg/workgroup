@@ -169,4 +169,8 @@ if [ -z "${BMDIR}" ]; then
 	export BMDIR="/c/Program Files/Blackmagic Design"
 fi
 
+if [ -z "${DISKCACHE}" ]; then
+	export DISKCACHE="$(cygpath -w "$HOME/AppData/Local/Temp")"
+fi
+
 fsetenv
