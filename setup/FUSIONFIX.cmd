@@ -12,7 +12,7 @@ echo(
 echo WGPATH : [%WGPATH%]
 echo(
 rem ############################################################################
-	copy %WGPATH%\setup\.rcfiles\FIX2021\.bash_profile %USERPROFILE% /a
+	copy %WGPATH%\setup\.rcfiles\FUSIONFIX\.bash_profile %USERPROFILE% /a
 rem ############################################################################
 echo(
 echo =================================== FUSION PROFILES DIR ===================================
