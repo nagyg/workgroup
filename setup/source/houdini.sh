@@ -62,6 +62,7 @@ if [ -d "${HFS}" ]; then
 	hplug.mlnlib
 	hplug.qlib
 	hplug.sidefxlabs
+	hplug.quadremesher
 	hplug.mops
 
 	#-----------------------////
@@ -136,9 +137,16 @@ hplug.qlib() {
 # SideFXLabs:
 #-----------------------////
 hplug.sidefxlabs() {
-	export SIDEFXLABS="$HSITE\sidefxlabs"
+	export SIDEFXLABS="$HSITE\sidefxlabs\\$HOUDINI_MAJOR_RELEASE.$HOUDINI_MINOR_RELEASE"
 
 	export HOUDINI_PATH="$SIDEFXLABS;${HOUDINI_PATH}"
+}
+
+#-----------------------////
+# Exoside Quadremesher:
+#-----------------------////
+hplug.quadremesher () {
+	export HOUDINI_OTLSCAN_PATH="${HSITE}\quadremesher\otls;${HOUDINI_OTLSCAN_PATH}"
 }
 
 #-----------------------////
