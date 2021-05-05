@@ -18,6 +18,3 @@
 	path = sidefx/HSITE/mops
 	url = https://github.com/toadstorm/MOPS.git
 	branch = master
-[submodule "sidefx/HSITE/sidefxlabs"]
-	path = sidefx/HSITE/sidefxlabs
-	url = https://github.com/sideeffects/SideFXLabs.git
