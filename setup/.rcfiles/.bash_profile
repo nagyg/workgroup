@@ -16,10 +16,15 @@ HVERSION=   # not in use
 FVERSION=   # not in use
 #----------------------- HOUDINI -------------------------////
 export HDIR="/c/Program Files/Side Effects Software"
-expreditor=(    "true" "1.4.7"      )
-megascans=(     "false" "4.4"       )
-modeler=(       "false" "2020.1.6"  )
-groombear=(     "false" "1.2.29"    )
+#----- PACKAGES -----//
+mlnlib=(      "false")
+qlib=(        "false")
+sidefxlabs=(  "false")
+mops=(        "false")
+axiom=(       "false")
+megascans=(   "false")
+modeler=(     "false")
+groombear=(   "false")
 #-------------------- BLACKMAGIC APPS --------------------////
 export BMDIR="/c/Program Files/Blackmagic Design"
 export DISKCACHE="/a/Fusion"

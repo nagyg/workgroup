@@ -57,36 +57,44 @@ if [ -d "${HFS}" ]; then
 
 	export HSITE="$(cygpath -w "${WGPATH}/sidefx/HSITE")"
 
-	unset HOUDINI_PATH HOUDINI_OTLSCAN_PATH
-
-	hplug.mlnlib
-	hplug.qlib
-	hplug.sidefxlabs
-	hplug.quadremesher
-	hplug.mops
+	unset package HOUDINI_PATH HOUDINI_OTLSCAN_PATH
 
 	#-----------------------////
-	# FCK PLUGINS
+	# ADDONS
 	#-----------------------////
-	if [ "${expreditor[0]}" == "true" ]; then
-		hplug.expreditor
+	if [ "${mlnlib}" == "true" ]; then
+		package.mlnlib
 	fi
 
-	if [ "${megascans[0]}" == "true" ]; then
-		hplug.megascans
+	if [ "${qlib}" == "true" ]; then
+		package.qlib
 	fi
 
-	if [ "${modeler[0]}" == "true" ]; then
-		hplug.modeler
+	if [ "${sidefxlabs}" == "true" ]; then
+		package.sidefxlabs
 	fi
 
-	if [ "${groombear[0]}" == "true" ]; then
-		hplug.groombear
+	if [ "${mops}" == "true" ]; then
+		package.mops
 	fi
 
-	hplug.axiom
+	if [ "${axiom}" == "true" ]; then
+		package.axiom
+	fi
 
-	#HOUDINI_PATH safe end
+	if [ "${megascans}" == "true" ]; then
+		package.megascans
+	fi
+
+	if [ "${modeler}" == "true" ]; then
+		package.modeler
+	fi
+
+	if [ "${groombear}" == "true" ]; then
+		package.groombear
+	fi
+
+	# HOUDINI_PATH safe end
 	export HOUDINI_PATH="${HOUDINI_PATH};&"
 	export HOUDINI_OTLSCAN_PATH="${HOUDINI_OTLSCAN_PATH};&"
 
@@ -102,6 +110,115 @@ else
 fi
 }
 
+hpathadd() {
+	if [ -z "${HOUDINI_PATH}" ]; then
+		export HOUDINI_PATH="$1"
+	else
+		export HOUDINI_PATH="$1;${HOUDINI_PATH}"
+	fi
+}
+
+#-----------------------////
+# mlnLib:
+#-----------------------////
+package.mlnlib() {
+local path="$HSITE\mlnLib"
+if [ -d "$(cygpath -u "${path}")" ]; then
+	export MLNLIB="$path"
+	hpathadd "$MLNLIB"
+	package+=(mlnLib)
+fi
+}
+
+#-----------------------////
+# qLib:
+#-----------------------////
+package.qlib() {
+local path="$HSITE\qLib"
+if [ -d "$(cygpath -u "${path}")" ]; then
+	export QLIB="$path"
+	export QOTL="$QLIB\otls"
+	export HOUDINI_OTLSCAN_PATH="$QOTL\base;$QOTL\future;$QOTL\experimental"
+	hpathadd "$QLIB"
+	package+=(qLib)
+fi
+}
+
+#-----------------------////
+# SideFXLabs:
+#-----------------------////
+package.sidefxlabs() {
+local path="$HSITE\sidefxlabs\\${HVERSION}"
+if [ -d "$(cygpath -u "${path}")" ]; then
+	export SIDEFXLABS="$path"
+	hpathadd "$SIDEFXLABS"
+	package+=(sidefxLabs)
+fi
+}
+
+#-----------------------////
+# MOPs:
+#-----------------------////
+package.mops() {
+local path="$HSITE\mops"
+if [ -d "$(cygpath -u "${path}")" ]; then
+	export MOPS="$path"
+	hpathadd "$MOPS"
+	package+=(MOPS)
+fi
+}
+
+#-----------------------////
+# Axiom Solver:
+#-----------------------////
+package.axiom () {
+local path="$HSITE\axiom\\${HVERSION}"
+if [ -d "$(cygpath -u "${path}")" ]; then
+	hpathadd "$path"
+	package+=(axiom)
+fi
+}
+
+#-----------------------////
+# Quixel Megascans:
+#-----------------------////
+package.megascans () {
+local path="$HSITE\megascans\\${HVERSION}\MSLiveLink"
+if [ -d "$(cygpath -u "${path}")" ]; then
+	export MS_HOUDINI_PATH="$(cygpath -w "$path\scripts\python\MSPlugin")"
+	hpathadd "$path"
+	package+=(Megascans)
+fi
+}
+
+#-----------------------////
+# Modeler:
+#-----------------------////
+package.modeler () {
+local path="${HSITE}\modeler\\${HVERSION}\modeler"
+if [ -d "$(cygpath -u "${path}")" ]; then
+	export MODELER_PATH="$path"
+	hpathadd "$MODELER_PATH"
+	package+=(Modeler)
+fi
+}
+
+#-----------------------////
+# GROOMBEAR:
+#-----------------------////
+package.groombear () {
+local path="${HSITE}\groombear\\${HVERSION}"
+if [ -d "$(cygpath -u "${path}")" ]; then
+	export GROOMBEAR_PATH="$path"
+	export GROOMBEAR_ICONS="$path\icons"
+	hpathadd "$GROOMBEAR_PATH"
+	package+=(Groombear)
+fi
+}
+
+#-----------------------////
+# RUN:
+#-----------------------////
 hstart() {
 	if [[ -z $1  ]]; then
 		# no args: just start houdini
@@ -113,105 +230,11 @@ hstart() {
 		# run houdini and pass all args
 		houdini "${@}" &
 	fi
-}
-#-----------------------////
-# mlnLib:
-#-----------------------////
-hplug.mlnlib() {
-	export MLNLIB="$HSITE\mlnLib"
-	export HOUDINI_PATH="$MLNLIB"
+
+	local format="%s${blue} %s${nc}\n"
+	printf "$format" "packages in environment >" "${package[*]}"
 }
 
-#-----------------------////
-# qLib:
-#-----------------------////
-hplug.qlib() {
-	export QLIB="$HSITE\qLib"
-	export QOTL="$QLIB\otls"
-
-	export HOUDINI_PATH="$QLIB;${HOUDINI_PATH}"
-	export HOUDINI_OTLSCAN_PATH="$QOTL\base;$QOTL\future;$QOTL\experimental"
-}
-
-#-----------------------////
-# SideFXLabs:
-#-----------------------////
-hplug.sidefxlabs() {
-	export SIDEFXLABS="$HSITE\sidefxlabs\\$HOUDINI_MAJOR_RELEASE.$HOUDINI_MINOR_RELEASE"
-
-	export HOUDINI_PATH="$SIDEFXLABS;${HOUDINI_PATH}"
-}
-
-#-----------------------////
-# Exoside Quadremesher:
-#-----------------------////
-hplug.quadremesher () {
-	export HOUDINI_OTLSCAN_PATH="${HSITE}\quadremesher\otls;${HOUDINI_OTLSCAN_PATH}"
-}
-
-#-----------------------////
-# MOPs:
-#-----------------------////
-hplug.mops() {
-	export MOPS="$HSITE\mops"
-
-	export HOUDINI_PATH="$MOPS;${HOUDINI_PATH}"
-}
-
-#-----------------------////
-# Houdini ExprEditor:
-#-----------------------////
-hplug.expreditor () {
-local path="${HSITE}\expreditor\\${expreditor[1]}"
-	export HOUDINI_PATH="$path;${HOUDINI_PATH}"
-	export EDITOR="${WGPATH}/vscode/VSCode-win32-x64/Code.exe"
-}
-
-#-----------------------////
-# Quixel Megascans:
-#-----------------------////
-hplug.megascans () {
-local path="$HSITE\megascans\\${megascans[1]}\MSLiveLink"
-if [ -d "$(cygpath -u "${path}")" ]; then
-	export MS_HOUDINI_PATH="$(cygpath -w "$path\scripts\python\MSPlugin")"
-	export HOUDINI_PATH="$path;${HOUDINI_PATH}"
-fi
-}
-
-#-----------------------////
-# Axiom Solver:
-#-----------------------////
-hplug.axiom () {
-local path="$HSITE\axiom\\${HVERSION}"
-if [ -d "$(cygpath -u "${path}")" ]; then
-	export HOUDINI_PATH="$path;${HOUDINI_PATH}"
-fi
-}
-
-#-----------------------////
-# Modeler:
-#-----------------------////
-hplug.modeler () {
-local path="${HSITE}\modeler\\${modeler[1]}\modeler"
-	export MODELER_PATH="$path"
-	export HOUDINI_PATH="$path;${HOUDINI_PATH}"
-}
-
-#-----------------------////
-# GROOMBEAR:
-#-----------------------////
-hplug.groombear () {
-local path="${HSITE}\groombear\\${groombear[1]}"
-if [ -d "$(cygpath -u "${path}")" ]; then
-	export GROOMBEAR_PATH="$path"
-	export GROOMBEAR_ICONS="$path\icons"
-	export HOUDINI_PATH="$path;${HOUDINI_PATH}"
-fi
-}
-
-#-----------------------////
-# RUN:
-#-----------------------////
 h() {
 if [ "${htoa_env}" == "true" ]; then
 	asetenv &> /dev/null
@@ -240,6 +263,7 @@ else
 	export HOUDINI_PATH="$path;${HOUDINI_PATH}"
 
 	htoa_env=true
+	package+=(ARNOLD)
 
     hstart
 fi
@@ -266,6 +290,7 @@ else
 	export REDSHIFT_RV_OPEN_ONLY=1
 
 	htor_env=true
+	package+=(REDSHIFT)
 
     hstart
 fi
