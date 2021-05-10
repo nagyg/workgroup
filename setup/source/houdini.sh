@@ -57,7 +57,7 @@ if [ -d "${HFS}" ]; then
 
 	export HSITE="$(cygpath -w "${WGPATH}/sidefx/HSITE")"
 
-	unset package HOUDINI_PATH HOUDINI_OTLSCAN_PATH
+	unset package_success package_fail HOUDINI_PATH HOUDINI_OTLSCAN_PATH
 
 	#-----------------------////
 	# ADDONS
@@ -123,10 +123,13 @@ hpathadd() {
 #-----------------------////
 package.mlnlib() {
 local path="$HSITE\mlnLib"
+local name=mlnLib
 if [ -d "$(cygpath -u "${path}")" ]; then
 	export MLNLIB="$path"
 	hpathadd "$MLNLIB"
-	package+=(mlnLib)
+	package_success+=($name)
+else
+	package_fail+=($name)
 fi
 }
 
@@ -135,12 +138,15 @@ fi
 #-----------------------////
 package.qlib() {
 local path="$HSITE\qLib"
+local name=qLib
 if [ -d "$(cygpath -u "${path}")" ]; then
 	export QLIB="$path"
 	export QOTL="$QLIB\otls"
 	export HOUDINI_OTLSCAN_PATH="$QOTL\base;$QOTL\future;$QOTL\experimental"
 	hpathadd "$QLIB"
-	package+=(qLib)
+	package_success+=($name)
+else
+	package_fail+=($name)
 fi
 }
 
@@ -149,10 +155,13 @@ fi
 #-----------------------////
 package.sidefxlabs() {
 local path="$HSITE\sidefxlabs\\${HVERSION}"
+local name=sidefxLabs
 if [ -d "$(cygpath -u "${path}")" ]; then
 	export SIDEFXLABS="$path"
 	hpathadd "$SIDEFXLABS"
-	package+=(sidefxLabs)
+	package_success+=($name)
+else
+	package_fail+=($name)
 fi
 }
 
@@ -161,10 +170,13 @@ fi
 #-----------------------////
 package.mops() {
 local path="$HSITE\mops"
+local name=MOPS
 if [ -d "$(cygpath -u "${path}")" ]; then
 	export MOPS="$path"
 	hpathadd "$MOPS"
-	package+=(MOPS)
+	package_success+=($name)
+else
+	package_fail+=($name)
 fi
 }
 
@@ -173,9 +185,12 @@ fi
 #-----------------------////
 package.axiom () {
 local path="$HSITE\axiom\\${HVERSION}"
+local name=Axiom
 if [ -d "$(cygpath -u "${path}")" ]; then
 	hpathadd "$path"
-	package+=(axiom)
+	package_success+=($name)
+else
+	package_fail+=($name)
 fi
 }
 
@@ -184,10 +199,13 @@ fi
 #-----------------------////
 package.megascans () {
 local path="$HSITE\megascans\\${HVERSION}\MSLiveLink"
+local name=Megascans
 if [ -d "$(cygpath -u "${path}")" ]; then
 	export MS_HOUDINI_PATH="$(cygpath -w "$path\scripts\python\MSPlugin")"
 	hpathadd "$path"
-	package+=(Megascans)
+	package_success+=($name)
+else
+	package_fail+=($name)
 fi
 }
 
@@ -196,10 +214,13 @@ fi
 #-----------------------////
 package.modeler () {
 local path="${HSITE}\modeler\\${HVERSION}\modeler"
+local name=Modeler
 if [ -d "$(cygpath -u "${path}")" ]; then
 	export MODELER_PATH="$path"
 	hpathadd "$MODELER_PATH"
-	package+=(Modeler)
+	package_success+=($name)
+else
+	package_fail+=($name)
 fi
 }
 
@@ -208,11 +229,14 @@ fi
 #-----------------------////
 package.groombear () {
 local path="${HSITE}\groombear\\${HVERSION}"
+local name=Groombear
 if [ -d "$(cygpath -u "${path}")" ]; then
 	export GROOMBEAR_PATH="$path"
 	export GROOMBEAR_ICONS="$path\icons"
 	hpathadd "$GROOMBEAR_PATH"
-	package+=(Groombear)
+	package_success+=($name)
+else
+	package_fail+=($name)
 fi
 }
 
@@ -231,8 +255,14 @@ hstart() {
 		houdini "${@}" &
 	fi
 
-	local format="%s${blue} %s${nc}\n"
-	printf "$format" "packages in environment >" "${package[*]}"
+	printf "%s${blue} %s${nc}\n" "Houdini version         >" "${HVERSION}"
+
+	if [ ${#package_success[@]} != 0 ]; then
+		printf "%s${blue} %s${nc}\n" "Packages in environment >" "${package_success[*]}"
+	fi
+	if [ ${#package_fail[@]} != 0 ]; then
+		printf "%s${red} %s${nc}\n" "Packages not found      >" "${package_fail[*]}"
+	fi
 }
 
 h() {
@@ -263,7 +293,7 @@ else
 	export HOUDINI_PATH="$path;${HOUDINI_PATH}"
 
 	htoa_env=true
-	package+=(ARNOLD)
+	package_success+=(ARNOLD)
 
     hstart
 fi
@@ -290,7 +320,7 @@ else
 	export REDSHIFT_RV_OPEN_ONLY=1
 
 	htor_env=true
-	package+=(REDSHIFT)
+	package_success+=(REDSHIFT)
 
     hstart
 fi
