@@ -126,7 +126,7 @@ local path="$HSITE\mlnLib"
 local name=mlnLib
 if [ -d "$(cygpath -u "${path}")" ]; then
 	export MLNLIB="$path"
-	hpathadd "$MLNLIB"
+	hpathadd "$path"
 	package_success+=($name)
 else
 	package_fail+=($name)
@@ -143,7 +143,7 @@ if [ -d "$(cygpath -u "${path}")" ]; then
 	export QLIB="$path"
 	export QOTL="$QLIB\otls"
 	export HOUDINI_OTLSCAN_PATH="$QOTL\base;$QOTL\future;$QOTL\experimental"
-	hpathadd "$QLIB"
+	hpathadd "$path"
 	package_success+=($name)
 else
 	package_fail+=($name)
@@ -158,7 +158,7 @@ local path="$HSITE\sidefxlabs\\${HVERSION}"
 local name=sidefxLabs
 if [ -d "$(cygpath -u "${path}")" ]; then
 	export SIDEFXLABS="$path"
-	hpathadd "$SIDEFXLABS"
+	hpathadd "$path"
 	package_success+=($name)
 else
 	package_fail+=($name)
@@ -173,7 +173,7 @@ local path="$HSITE\mops"
 local name=MOPS
 if [ -d "$(cygpath -u "${path}")" ]; then
 	export MOPS="$path"
-	hpathadd "$MOPS"
+	hpathadd "$path"
 	package_success+=($name)
 else
 	package_fail+=($name)
@@ -201,7 +201,7 @@ package.megascans () {
 local path="$HSITE\megascans\\${HVERSION}\MSLiveLink"
 local name=Megascans
 if [ -d "$(cygpath -u "${path}")" ]; then
-	export MS_HOUDINI_PATH="$(cygpath -w "$path\scripts\python\MSPlugin")"
+	export MS_HOUDINI_PATH="$path\scripts\python\MSPlugin"
 	hpathadd "$path"
 	package_success+=($name)
 else
@@ -217,7 +217,7 @@ local path="${HSITE}\modeler\\${HVERSION}\modeler"
 local name=Modeler
 if [ -d "$(cygpath -u "${path}")" ]; then
 	export MODELER_PATH="$path"
-	hpathadd "$MODELER_PATH"
+	hpathadd  "$path"
 	package_success+=($name)
 else
 	package_fail+=($name)
@@ -231,9 +231,9 @@ package.groombear () {
 local path="${HSITE}\groombear\\${HVERSION}"
 local name=Groombear
 if [ -d "$(cygpath -u "${path}")" ]; then
-	export GROOMBEAR_PATH="$path"
-	export GROOMBEAR_ICONS="$path\icons"
-	hpathadd "$GROOMBEAR_PATH"
+	export GROOMBEAR_PATH="$(cygpath -u "$path")"
+	export GROOMBEAR_ICONS="$(cygpath -u "$path\icons")"
+	hpathadd "$path"
 	package_success+=($name)
 else
 	package_fail+=($name)

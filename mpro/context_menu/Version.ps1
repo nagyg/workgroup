@@ -1,6 +1,9 @@
 ﻿#Versions V1.0 KNM
 
+
 $Dir = $args
+#$Dir = "A:\a\hid_sc01"
+
 
 $console = $host.ui.rawui
 $console.backgroundcolor = "black"
@@ -72,7 +75,7 @@ do {
 
 if (($Ver-$verok) -eq 0) 
 {
-   $b = [System.Windows.Forms.MessageBox]::Show("Biztos létrehozzam $VerDir ?" , "Version status!!!" , 4)
+    $b = [System.Windows.Forms.MessageBox]::Show("Biztos létrehozzam "+$DirVPath+$DirVName+"_V001 ?" , "Version status!!!" , 4)
     if ($b -eq "YES" )
     {
         $VerDirPrev = "$DirVPath\$DirVName$Selector"+"000"
