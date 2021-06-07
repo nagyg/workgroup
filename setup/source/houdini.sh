@@ -217,7 +217,7 @@ local path="${HSITE}\modeler\\${HVERSION}\modeler"
 local name=Modeler
 if [ -d "$(cygpath -u "${path}")" ]; then
 	export MODELER_PATH="$path"
-	hpathadd  "$path"
+	hpathadd "$path"
 	package_success+=($name)
 else
 	package_fail+=($name)
