@@ -86,6 +86,10 @@ if [ -d "${HFS}" ]; then
 		package.megascans
 	fi
 
+	if [ "${odtools}" == "true" ]; then
+		package.odtools
+	fi
+
 	if [ "${modeler}" == "true" ]; then
 		package.modeler
 	fi
@@ -202,6 +206,20 @@ local path="$HSITE\megascans\\${HVERSION}\MSLiveLink"
 local name=Megascans
 if [ -d "$(cygpath -u "${path}")" ]; then
 	export MS_HOUDINI_PATH="$path\scripts\python\MSPlugin"
+	hpathadd "$path"
+	package_success+=($name)
+else
+	package_fail+=($name)
+fi
+}
+
+#-----------------------////
+# OD Houdini ShelfTools:
+#-----------------------////
+package.odtools () {
+local path="$HSITE\odtools\\${HVERSION}"
+local name=ODTools
+if [ -d "$(cygpath -u "${path}")" ]; then
 	hpathadd "$path"
 	package_success+=($name)
 else
