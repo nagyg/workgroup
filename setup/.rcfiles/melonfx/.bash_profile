@@ -23,6 +23,7 @@ sidefxlabs=(  "false")
 mops=(        "false")
 axiom=(       "false")
 megascans=(   "false")
+odtools=(     "true")
 modeler=(     "false")
 groombear=(   "false")
 #-------------------- BLACKMAGIC APPS --------------------////
