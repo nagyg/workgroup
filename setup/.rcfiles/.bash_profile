@@ -7,6 +7,7 @@
 # 1 # WORKGROUP
 #---------------------------------------------------------////
 export WGPATH=~/workgroup
+export DISKCACHE=
 #-------------- Please do not edit this section ----------////
 export JOB= # not in use
 
@@ -23,12 +24,11 @@ sidefxlabs=(  "false")
 mops=(        "false")
 axiom=(       "false")
 megascans=(   "false")
-odtools=(     "true")
+odtools=(     "false")
 modeler=(     "false")
 groombear=(   "false")
 #-------------------- BLACKMAGIC APPS --------------------////
 export BMDIR="/c/Program Files/Blackmagic Design"
-export DISKCACHE="/a/Fusion"
 #------------------------ SOURCE -------------------------////
 source "${WGPATH}/setup/source/main.sh"
 #source "${WGPATH}/setup/source/ffmpeg.sh"

@@ -7,6 +7,7 @@
 # 1 # WORKGROUP
 #---------------------------------------------------------////
 export WGPATH=//mlno/workgroup
+export DISKCACHE="/a"
 #-------------- Please do not edit this section ----------////
 export JOB= # not in use
 
@@ -17,26 +18,25 @@ FVERSION=   # not in use
 #----------------------- HOUDINI -------------------------////
 export HDIR="$WGPATH/sidefx/apps"
 #----- PACKAGES -----//
-mlnlib=(      "false")
-qlib=(        "false")
+mlnlib=(      "true")
+qlib=(        "true")
 sidefxlabs=(  "false")
 mops=(        "false")
 axiom=(       "false")
 megascans=(   "false")
-odtools=(     "true")
+odtools=(     "false")
 modeler=(     "false")
 groombear=(   "false")
 #-------------------- BLACKMAGIC APPS --------------------////
 export BMDIR="$WGPATH/blackmagic/apps"
-export DISKCACHE="/a/Fusion"
 #------------------------ SOURCE -------------------------////
 source "${WGPATH}/setup/source/main.sh"
 source "${WGPATH}/setup/source/ffmpeg.sh"
 source "${WGPATH}/setup/source/opencolorio.sh"
 source "${WGPATH}/setup/source/djv.sh"
-#source "${WGPATH}/setup/source/arnold.sh"
-#source "${WGPATH}/setup/source/redshift.sh"
-#source "${WGPATH}/setup/source/houdini.sh"
+source "${WGPATH}/setup/source/arnold.sh"
+source "${WGPATH}/setup/source/redshift.sh"
+source "${WGPATH}/setup/source/houdini.sh"
 source "${WGPATH}/setup/source/blackmagic.sh"
 source "${WGPATH}/setup/source/project.sh"
 source "${WGPATH}/.licenses"

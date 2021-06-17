@@ -221,6 +221,7 @@ local path="$HSITE\odtools\\${HVERSION}"
 local name=ODTools
 if [ -d "$(cygpath -u "${path}")" ]; then
 	hpathadd "$path"
+	if [ ! -d "${DISKCACHE_HOUDINI}/ODAssetLibraryData" ]; then mkdir -p "${DISKCACHE_HOUDINI}/ODAssetLibraryData"; fi
 	package_success+=($name)
 else
 	package_fail+=($name)
@@ -391,4 +392,11 @@ hrop.last() { echo -e "lasthip >> [${blue}`lasthip`${nc}] | rop [${blue}"$@"${nc
 if [ -z "${HDIR}" ]; then
 	export HDIR="/c/Program Files/Side Effects Software"
 fi
+
+if [ -z "${DISKCACHE}" ]; then
+	export DISKCACHE_HOUDINI="$(cygpath -u "$HOME/AppData/Local/Temp")"
+else
+	export DISKCACHE_HOUDINI="$(cygpath -u "$DISKCACHE/Houdini")"
+fi
+
 hsetenv

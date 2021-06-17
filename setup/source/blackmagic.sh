@@ -77,7 +77,7 @@ esac
 
 	edit.fusionprefs WG "$WGPATH"
 	edit.fusionprefs JOB "$JOB"
-	edit.fusionprefs WGDiskCache "$DISKCACHE"
+	edit.fusionprefs WGDiskCache "$DISKCACHE_FUSION"
 
 	if [ -f "${BMDIR}/DaVinci Resolve/Resolve.exe" ]; then
 		local supresolve=1
@@ -169,7 +169,9 @@ if [ -z "${BMDIR}" ]; then
 fi
 
 if [ -z "${DISKCACHE}" ]; then
-	export DISKCACHE="$(cygpath -w "$HOME/AppData/Local/Temp")"
+	export DISKCACHE_FUSION="$(cygpath -w "$HOME/AppData/Local/Temp")"
+else
+	export DISKCACHE_FUSION="$(cygpath -w "$DISKCACHE/Fusion")"
 fi
 
 fsetenv
