@@ -6,3 +6,7 @@ HSITE/mops
 HSITE/mlnLib
 HSITE/icons
 HSITE/.gitignore
+
+HSITE/odtools/*/python_panels/OD_AssetLibrary_Data/*
+HSITE/odtools/*/python_panels/assetLibraryPrefs.json
+HSITE/odtools/*/python_panels/directories.txt
