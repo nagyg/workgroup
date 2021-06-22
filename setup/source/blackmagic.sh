@@ -76,7 +76,6 @@ esac
 	#pathadd "${FBin}"
 
 	edit.fusionprefs WG "$WGPATH"
-	edit.fusionprefs JOB "$JOB"
 	edit.fusionprefs WGDiskCache "$DISKCACHE_FUSION"
 
 	if [ -f "${BMDIR}/DaVinci Resolve/Resolve.exe" ]; then
@@ -113,9 +112,6 @@ sapphire() {
 
 	export SAPPHIRE_LOAD_PRESET_PATH="$(cygpath -w "${WGPATH}/plugins/borisfx/GenArts")"
 	export SAPPHIRE_SAVE_PRESET_PATH="$(cygpath -w "${WGPATH}/plugins/borisfx/GenArts")"
-
-#	local GenartsData="$(cygpath -w "${ProgramData}/GenArts")"
-#	if [ ! -d "${GenartsData}" ]; then mkdir -p "${GenartsData}"; fi
 }
 
 #--------------------------------------------------------------------------------------------------////
