@@ -73,7 +73,7 @@ fi
 # alias:
 #------------------////
 alias update.adobe='update adobe'
-alias update.blackmagic='update blackmagic'
+alias update.blackmagic='update blackmagic plugins fonts luts'
 alias update.ffmpeg='update ffmpeg'
 alias update.fonts='update fonts'
 alias update.luts='update luts'
