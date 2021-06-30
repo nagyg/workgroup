@@ -48,7 +48,6 @@ if [ -f "${BMDIR}/Fusion ${FVERSION}/Fusion.exe" ] && [ -n "${FVERSION}" ]; then
 		export OFX_PLUGIN_PATH="$(cygpath -w "${WGPATH}/plugins/ofx/fusion/${FVERSION}")"
 
 		plugin.sapphire 2021.02
-		plugin.cryptomatte
 		plugin.reactor
 		
 		edit.fusionprefs WGFusion "WG:\blackmagic\masterprefs\9"
@@ -61,7 +60,6 @@ if [ -f "${BMDIR}/Fusion ${FVERSION}/Fusion.exe" ] && [ -n "${FVERSION}" ]; then
 		export OFX_PLUGIN_PATH="$(cygpath -w "${WGPATH}/plugins/ofx/fusion/${FVERSION}")"
 		
 		plugin.sapphire 2021.02
-		plugin.cryptomatte
 		plugin.reactor
 
 		edit.fusionprefs WGFusion "WG:\blackmagic\masterprefs\17"
@@ -116,13 +114,6 @@ plugin.sapphire() {
 
 	export SAPPHIRE_LOAD_PRESET_PATH="$(cygpath -w "${WGPATH}/plugins/borisfx/GenArts")"
 	export SAPPHIRE_SAVE_PRESET_PATH="$(cygpath -w "${WGPATH}/plugins/borisfx/GenArts")"
-}
-
-#--------------------------------------------------------------------------------------------------////
-# CRYPTOMATTE:
-#--------------------------------------------------------------------------------------------------////
-plugin.cryptomatte() {
-	export LUA_PATH="$(cygpath -w "${WGPATH}/plugins/cryptomatte/fusion/Modules/Lua/cryptomatte_utilities.lua")"
 }
 
 #--------------------------------------------------------------------------------------------------////
