@@ -54,6 +54,7 @@ if [ -d "${HFS}" ]; then
 
 	export HOUDINI_DSO_ERROR=2
 	export HOUDINI_EXTERNAL_HELP_BROWSER=1
+	export EDITOR=code.exe
 
 	export HSITE="$(cygpath -w "${WGPATH}/sidefx/HSITE")"
 
