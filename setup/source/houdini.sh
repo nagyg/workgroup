@@ -236,6 +236,10 @@ local path="${HSITE}\modeler\\${HVERSION}\modeler"
 local name=Modeler
 if [ -d "$(cygpath -u "${path}")" ]; then
 	export MODELER_PATH="$path"
+	export MODELER_MATERIAL_TYPE="principledshader::2.0"
+#	export MODELER_ZBRUSH_EXEC_PATH="C:/Program Files/Pixologic/ZBrush 2021/ZBrush.exe"
+#	export MODELER_ZBRUSH_CACHE_PATH="C:/z_cache"
+	export MODELER_POLYPEN_SCREEN_DELTA=10
 	hpathadd "$path"
 	package_success+=($name)
 else
