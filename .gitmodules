@@ -14,3 +14,6 @@
 	path = sidefx/HSITE/mops
 	url = https://github.com/toadstorm/MOPS.git
 	branch = master
+[submodule "redshift/OSLShaders"]
+	path = redshift/OSLShaders
+	url = https://github.com/redshift3d/RedshiftOSLShaders.git

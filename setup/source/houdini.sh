@@ -58,7 +58,7 @@ if [ -d "${HFS}" ]; then
 
 	export HSITE="$(cygpath -w "${WGPATH}/sidefx/HSITE")"
 
-	unset package_success package_fail HOUDINI_PATH HOUDINI_OTLSCAN_PATH
+	unset package_success package_fail HOUDINI_PATH HOUDINI_OTLSCAN_PATH ROSL
 
 	#-----------------------////
 	# ADDONS
@@ -341,6 +341,8 @@ else
 	export PXR_PLUGINPATH_NAME="${pxrpath};&"
 
 	export REDSHIFT_RV_OPEN_ONLY=1
+
+	export ROSL="$(cygpath -u "${RDIR}/OSLShaders")"
 
 	htor_env=true
 	package_success+=(REDSHIFT)
