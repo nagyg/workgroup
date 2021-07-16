@@ -86,3 +86,4 @@ Submodules
  - [toadstorm/MOPS](https://github.com/toadstorm/MOPS)
  - [nagyg/mlnLib](https://github.com/nagyg/mlnLib)
  - [crmabs/mtool](https://github.com/crmabs/mtool)
+ - [redshift3d/RedshiftOSLShaders](https://github.com/redshift3d/RedshiftOSLShaders)
