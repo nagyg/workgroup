@@ -58,7 +58,7 @@ git.push() {
 }
 
 git.submodule.update() {
-    git submodule update --remote
+    git submodule update --recursive --remote
 }
 
 git.pull.recurse() {
