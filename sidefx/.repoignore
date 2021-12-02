@@ -7,15 +7,10 @@ HSITE/mlnLib
 HSITE/icons
 HSITE/.gitignore
 
-HSITE/axiom/18.5.563
-HSITE/axiom/18.5.633
-HSITE/groombear/18.5.563
-HSITE/groombear/18.5.633
-HSITE/megascans/18.5.563
-HSITE/megascans/18.5.633
-HSITE/modeler/18.5.563
-HSITE/odtools/18.5.633
-HSITE/sidefxlabs/18.5.633
+HSITE/groombear/18.5.696
+HSITE/megascans/18.5.696
+HSITE/odtools/18.5.696
+HSITE/sidefxlabs/18.5.696
 
 HSITE/odtools/*/python_panels/OD_AssetLibrary_Data/*
 HSITE/odtools/*/python_panels/assetLibraryPrefs.json
