@@ -1,3 +1,3 @@
+.repoignore
 */*
-!.repoignore
 !OSLShaders
