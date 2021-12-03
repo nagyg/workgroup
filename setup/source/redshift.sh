@@ -23,7 +23,7 @@ rlist() {
 	local count=0
 	local i
 	rscan
-	local format="%s ${blue}%8s${nc} %s %s\n"
+	local format="%s ${blue}%8s${nc} %s %s %s\n"
 	for i in "${all_rversion[@]}"; do
 		local count=$((count+1))
 		local redshift_support_hversion=$redshift_support_hversion
