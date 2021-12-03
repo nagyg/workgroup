@@ -1,5 +1,4 @@
 .gitignore
-.repoignore
 apps/*
 HSITE/qLib
 HSITE/mops
@@ -7,6 +6,7 @@ HSITE/mlnLib
 HSITE/icons
 HSITE/.gitignore
 
+HSITE/axiom/18.5.696
 HSITE/groombear/18.5.696
 HSITE/megascans/18.5.696
 HSITE/odtools/18.5.696
