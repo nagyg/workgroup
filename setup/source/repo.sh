@@ -1,6 +1,6 @@
 #!/bin/bash
 #--------------------------------------------------------------------------------------------------////
-# repo rsync:
+# rsync repo:
 #--------------------------------------------------------------------------------------------------////
 # ${WGPATH}/sidefx/HSITE		[qLab/qLib](https://github.com/qLab/qLib)
 # ${WGPATH}/sidefx/HSITE		[toadstorm/MOPS](https://github.com/toadstorm/MOPS)
@@ -29,9 +29,11 @@ update() {
 	local REMOTEHOST="melon@nagyg.ddns.net::workgroup"
 
  	for i in "${@}"; do
+	 	# first check
 	 	rsync -a ${PASSFILE} ${REMOTEHOST}/${i}/.repoignore "$(cygdrive "$WGPATH/${i}/")"
 		if [ -f "${WGPATH}/${i}/.repoignore" ]; then
- 			rsync -avhz ${PASSFILE} --exclude-from="$(cygdrive "$WGPATH/${i}/.repoignore")" ${REMOTEHOST}/${i} "$(cygdrive "$WGPATH/")"
+			# rsync
+ 			rsync -avh ${PASSFILE} --exclude-from="$(cygdrive "$WGPATH/${i}/.repoignore")" ${REMOTEHOST}/${i} "$(cygdrive "$WGPATH/")"
 			echo -e "[${green}${REMOTEHOST}/${i}${nc}] >> [$WGPATH/${i}]"
 		else
 			echo -e "[${red}${REMOTEHOST}/${i}${nc}] >> .repoignore not found"
