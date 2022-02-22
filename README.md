@@ -49,7 +49,7 @@ You should be ready, good luck!
 Update
 ======
 Close all applications then run the following commands.
-### This will update all git submodules and all url / binary repos
+### This will update git and all rsync / binary repos
             builtin cd ~/workgroup && git pull
             - Now restart conemu and enter the following command:
             update.all

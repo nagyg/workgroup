@@ -54,5 +54,5 @@ alias update.redshift='update redshift'
 ## GRAVEYARD ##
 alias update.softimage='update softimage'
 
-#ignore: adobe, fonts, luts, softimage
-alias update.all='update blackmagic blender djv ffmpeg fonts luts opencolorio project redshift sidefx solidangle'
+#ignore: softimage
+alias update.all='update addons adobe blackmagic blender djv ffmpeg fonts luts opencolorio project redshift sidefx solidangle'
