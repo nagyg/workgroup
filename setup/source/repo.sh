@@ -2,6 +2,12 @@
 #--------------------------------------------------------------------------------------------------////
 # repo rsync:
 #--------------------------------------------------------------------------------------------------////
+# ${WGPATH}/sidefx/HSITE		[qLab/qLib](https://github.com/qLab/qLib)
+# ${WGPATH}/sidefx/HSITE		[toadstorm/MOPS](https://github.com/toadstorm/MOPS)
+# ${WGPATH}/sidefx/HSITE		[nagyg/mlnLib](https://github.com/nagyg/mlnLib)
+# ${WGPATH}/addons/mtool		[crmabs/mtool](https://github.com/crmabs/mtool)
+# ${WGPATH}/redshift/OSLShaders	[redshift3d/RedshiftOSLShaders](https://github.com/redshift3d/RedshiftOSLShaders)
+
 pathadd "${WGPATH}/setup/cwrsync"
 
 rsync() {
@@ -47,12 +53,15 @@ alias update.fonts='update fonts'
 alias update.luts='update luts'
 alias update.opencolorio='update opencolorio'
 alias update.project='update project'
+alias update.redshift='update redshift'
 alias update.sidefx='update sidefx'
 alias update.solidangle='update solidangle'
-alias update.redshift='update redshift'
+
+## ROYALRENDER ##
+alias update.royalrender='update royalrender'
 
 ## GRAVEYARD ##
 alias update.softimage='update softimage'
 
-#ignore: softimage
+#ignore: royalrender, softimage
 alias update.all='update addons adobe blackmagic blender djv ffmpeg fonts luts opencolorio project redshift sidefx solidangle'
