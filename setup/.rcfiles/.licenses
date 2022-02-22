@@ -1,6 +1,9 @@
 #!/bin/bash
 #------------------------ ARNOLD -------------------------////
 export solidangle_LICENSE=      # not in use
+#------------------------ AXIOM --------------------------////
+export AXIOM_LICENSE_PORT=      # not in use
+export AXIOM_LICENSE_HOST=      # not in use
 #------------------- BLACKMAGIC FUSION -------------------////
 export FUSION_LICENSE_SERVER=   # not in use
 export genarts_LICENSE=         # not in use

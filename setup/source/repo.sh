@@ -1,91 +1,58 @@
 #!/bin/bash
 #--------------------------------------------------------------------------------------------------////
-# URL repo:
+# repo rsync:
 #--------------------------------------------------------------------------------------------------////
+pathadd "${WGPATH}/setup/cwrsync"
 
-export url="http://nagyg.ddns.net:17600/workgroup/win"
+rsync() {
+	export rsyncarg=$@
 
-repo.archive() {
-local dir arg
-local in=`realpath .`
-local archive_dir="${WGPATH}/"
-local ext=tar.gz
+	local in=`pwd`
+	( cd ; cwrsync.cmd )
+	builtin cd "$in"
 
-function repo.tar {
-local tmp=${WGPATH}/tmp
-mkdir -p "${tmp}"
-if [ -f "$dir/.repoignore" ]; then
-	builtin cd "$dir"
-	tar -zcvf "${tmp}/${archive}.tar.gz" -X "$dir/.repoignore" .
-	if [ $? -eq 0 ]; then
-		echo -e "[${green}${tmp}/${archive}.${ext}${nc}]\n"
-	else
-		echo -e "[${red}tar exit [$?] ${tmp}/${archive}.${ext}${nc}]\n"
-	fi
-else
-	echo -e "[${dir}]	>> .repoignore file not found"
-fi
-}
-
-if [ "$#" == 0 ]; then
-	for dir in "${archive_dir}"* ; do
-		local archive=${dir##${archive_dir}}
-		repo.tar
-	done
-else
-	for arg in "${@}"; do
-		local archive=$arg
-		local dir=${WGPATH}/$arg
-		repo.tar
-	done
-fi
-builtin cd "$in"
+	unset rsyncarg
 }
 
 update() {
-if [ "$#" == 0 ]; then
+ if [ "$#" == 0 ]; then
 	echo "bash: [$#]: illegal number of parameters"
-else
+ else
 	local i
-	local ext=tar.gz
+	local PASSFILE="--password-file=$(cygdrive "$WGPATH/setup/cwrsync/etc/rsyncd.passwd")"
+	local REMOTEHOST="melon@nagyg.ddns.net::workgroup"
 
-	for i in "${@}"; do
-		wget -q --spider $url/${i}.${ext} > /dev/null
-		if [ $? -eq 0 ]; then
-
-			local path=`realpath "${WGPATH}/${i}"`
-
-			wget -N $url/${i}.${ext} -P "${path}"
-			tar -xf ${path}/${i}.${ext} -C ${path} && rm ${path}/${i}.${ext}
-				if [ $? -eq 0 ]; then
-					echo -e "[${green}$url/${i}.${ext}${nc}]	${green}>> ${i}${nc}\n"
-				else
-					echo -e "[${red}tar exit [$?] $url/${i}.${ext}${nc}]\n"
-				fi
+ 	for i in "${@}"; do
+	 	rsync -a ${PASSFILE} ${REMOTEHOST}/${i}/.repoignore "$(cygdrive "$WGPATH/${i}/")"
+		if [ -f "${WGPATH}/${i}/.repoignore" ]; then
+ 			rsync -avhz ${PASSFILE} --exclude-from="$(cygdrive "$WGPATH/${i}/.repoignore")" ${REMOTEHOST}/${i} "$(cygdrive "$WGPATH/")"
+			echo -e "[${green}${REMOTEHOST}/${i}${nc}] >> [$WGPATH/${i}]"
 		else
-			echo -e "[${red}wget exit [$?] $url/${i}.${ext}${nc}]\n"
+			echo -e "[${red}${REMOTEHOST}/${i}${nc}] >> .repoignore not found"
 		fi
-	done
-fi
+ 	done
+ fi
 }
 
 #------------------////
 # alias:
 #------------------////
+alias update.addons='update addons'
 alias update.adobe='update adobe'
-alias update.blackmagic='update blackmagic plugins fonts luts'
+alias update.blackmagic='update blackmagic fonts luts'
+alias update.blender='update blender'
+alias update.djv='update djv'
 alias update.ffmpeg='update ffmpeg'
 alias update.fonts='update fonts'
 alias update.luts='update luts'
 alias update.opencolorio='update opencolorio'
-alias update.plugins='update plugins'
 alias update.project='update project'
 alias update.sidefx='update sidefx'
 alias update.solidangle='update solidangle'
 alias update.redshift='update redshift'
-alias update.djv='update djv'
+
 ## GRAVEYARD ##
 alias update.softimage='update softimage'
 
 #ignore: adobe, fonts, luts, softimage
-alias update.all='update blackmagic ffmpeg opencolorio plugins project sidefx solidangle redshift djv'
+alias update.all='update blackmagic blender djv ffmpeg fonts luts opencolorio project redshift sidefx solidangle'

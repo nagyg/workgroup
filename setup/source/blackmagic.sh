@@ -45,7 +45,7 @@ if [ -f "${BMDIR}/Fusion ${FVERSION}/Fusion.exe" ] && [ -n "${FVERSION}" ]; then
     case "${FVERSION}" in
 	"9")
 		export FUSION9_MasterPrefs="$(cygpath -w "${fusion_prefs}")"
-		export OFX_PLUGIN_PATH="$(cygpath -w "${WGPATH}/plugins/ofx/fusion/${FVERSION}")"
+		export OFX_PLUGIN_PATH="$(cygpath -w "${WGPATH}/blackmagic/plugins/ofx/fusion/${FVERSION}")"
 
 		plugin.sapphire 2021.02
 		plugin.reactor
@@ -57,7 +57,7 @@ if [ -f "${BMDIR}/Fusion ${FVERSION}/Fusion.exe" ] && [ -n "${FVERSION}" ]; then
 		;;
 	"17")
 		export FUSION16_MasterPrefs="$(cygpath -w "${fusion_prefs}")"
-		export OFX_PLUGIN_PATH="$(cygpath -w "${WGPATH}/plugins/ofx/fusion/${FVERSION}")"
+		export OFX_PLUGIN_PATH="$(cygpath -w "${WGPATH}/blackmagic/plugins/ofx/fusion/${FVERSION}")"
 		
 		plugin.sapphire 2021.02
 		plugin.reactor
@@ -109,18 +109,18 @@ fi
 # SAPPHIRE:
 #--------------------------------------------------------------------------------------------------////
 plugin.sapphire() {
-	export SAPPHIRE_OFX_DIR="$(cygpath -w "${WGPATH}/plugins/borisfx/sapphire/$1")"
-	export LD_LIBRARY_PATH="$(cygpath -w "${WGPATH}/plugins/borisfx/sapphire/$1/lib64")"
+	export SAPPHIRE_OFX_DIR="$(cygpath -w "${WGPATH}/blackmagic/plugins/borisfx/sapphire/$1")"
+	export LD_LIBRARY_PATH="$(cygpath -w "${WGPATH}/blackmagic/plugins/borisfx/sapphire/$1/lib64")"
 
-	export SAPPHIRE_LOAD_PRESET_PATH="$(cygpath -w "${WGPATH}/plugins/borisfx/GenArts")"
-	export SAPPHIRE_SAVE_PRESET_PATH="$(cygpath -w "${WGPATH}/plugins/borisfx/GenArts")"
+	export SAPPHIRE_LOAD_PRESET_PATH="$(cygpath -w "${WGPATH}/blackmagic/plugins/borisfx/GenArts")"
+	export SAPPHIRE_SAVE_PRESET_PATH="$(cygpath -w "${WGPATH}/blackmagic/plugins/borisfx/GenArts")"
 }
 
 #--------------------------------------------------------------------------------------------------////
 # REACTOR:
 #--------------------------------------------------------------------------------------------------////
 plugin.reactor() {
-	export REACTOR_INSTALL_PATHMAP="$(cygpath -w "${WGPATH}/plugins/")"
+	export REACTOR_INSTALL_PATHMAP="$(cygpath -w "${WGPATH}/blackmagic/plugins/")"
 }
 
 #----------------------////

@@ -17,7 +17,7 @@ Check the images below in case you are wondering where are those settings we are
 ![alt text](https://github.com/nagyg/workgroup/blob/master/setup/docs/cmder_settings.png?raw=true)
 
 #### 2. From the new cmder run:
-            git clone --recursive https://github.com/nagyg/workgroup.git ~/workgroup
+            git clone https://github.com/nagyg/workgroup.git ~/workgroup
             
 The command above will download files from GitHub and might take some time.
 

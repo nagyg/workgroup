@@ -13,16 +13,18 @@ nc='\e[0m'
 #------------------------------------------////
 pathremove () { export PATH=`echo -n $PATH | awk -v RS=: -v ORS=: '$0 != "'"$1"'"' | sed 's/:$//'`; }
 pathadd () { pathremove $1; export PATH="$1:$PATH"; }
-
-ftobslash () { echo "$1" | sed 's|/|\\|g'; }
-btofslash () { echo "$1" | sed 's|\\|/|g'; }
-colonremove () { echo "$1" | sed 's|\\|/|g; s|\(.\):|/\1|g'; }
 pathshow () { printenv PATH | sed 's|:|\n|g'; }
+
+cygdrive () { cygpath -U "$(cygpath -w "$1")"; }
+
+#ftobslash () { echo "$1" | sed 's|/|\\|g'; }
+#btofslash () { echo "$1" | sed 's|\\|/|g'; }
+#colonremove () { echo "$1" | sed 's|\\|/|g; s|\(.\):|/\1|g'; }
 
 #------------------------------------------////
 # Bin:
 #------------------------------------------////
-pathadd "${WGPATH}/bin/wget-1.20.3-win32"
+pathadd "${WGPATH}/setup/bin"
 
 #------------------------------------------////
 # Bash Finction & Alias:
@@ -109,6 +111,8 @@ else
  	builtin cd ~          # go home
 fi
 }
+
+cdw() { cd "${WGPATH}"; }
 
 alias ..='cd ..'
 alias ...='cd ../../'

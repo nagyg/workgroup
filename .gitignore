@@ -1,3 +1,4 @@
+addons
 adobe
 cmder
 blackmagic
@@ -8,13 +9,16 @@ fonts
 luts
 opencolorio
 project
+redshift
+royalrender
+sidefx
 softimage
 solidangle
-royalrender
-tmp
 $RECYCLE.BIN
 System Volume Information
 
 # user .wgsource file
 .licenses
 !setup/.rcfiles/.licenses
+# secret
+setup/cwrsync/etc/rsyncd.passwd
