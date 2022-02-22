@@ -50,7 +50,7 @@ Update
 ======
 Close all applications then run the following commands.
 ### This will update all git submodules and all url / binary repos
-            builtin cd ~/workgroup && git pull --recurse-submodules
+            builtin cd ~/workgroup && git pull
             - Now restart conemu and enter the following command:
             update.all
             
@@ -78,12 +78,3 @@ A quick description follows: Create a dir anywhere. This will be the root dir la
 done by adding a line like this: export HOME='/a/wg'; The path is the path to the root directory. The install steps will do the rest. Keep your eye on cleanrc.cmd! The .bash_profile it creates is in your OS user's home.  ( "c:\Users\Sandor" or "/home/sandor" ) Move the new .bash_profile to root. Restore your old .bash_profile from the backup if needed. 
  
 Rather dirty but also very quick-safe-clean.
-
-
-Submodules
-==========
- - [qLab/qLib](https://github.com/qLab/qLib)
- - [toadstorm/MOPS](https://github.com/toadstorm/MOPS)
- - [nagyg/mlnLib](https://github.com/nagyg/mlnLib)
- - [crmabs/mtool](https://github.com/crmabs/mtool)
- - [redshift3d/RedshiftOSLShaders](https://github.com/redshift3d/RedshiftOSLShaders)
