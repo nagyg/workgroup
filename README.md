@@ -51,7 +51,7 @@ Update
 Close all applications then run the following commands.
 ### This will update git and all rsync / binary repos
             builtin cd ~/workgroup && git pull
-            - Now restart conemu and enter the following command:
+            # Now restart conemu and enter the following command:
             update.all
             
 #### NOTE: you can check out / place your workgroup repo anywhere. The instructions above were just an example.
