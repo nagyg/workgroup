@@ -21,25 +21,38 @@ rsync() {
 }
 
 update() {
- if [ "$#" == 0 ]; then
+if [ "$#" == 0 ]; then
 	echo "bash: [$#]: illegal number of parameters"
- else
+else
 	local i
-	local PASSFILE="--password-file=$(cygdrive "$WGPATH/setup/cwrsync/etc/rsyncd.passwd")"
+	local PASSFILE="$(cygdrive "$WGPATH/setup/cwrsync/etc/rsyncd.passwd")"
 	local REMOTEHOST="melon@nagyg.ddns.net::workgroup"
+	local RSYNCOPTION="--password-file=${PASSFILE}"
 
- 	for i in "${@}"; do
-	 	# first check
-	 	rsync -a ${PASSFILE} ${REMOTEHOST}/${i}/.repoignore "$(cygdrive "$WGPATH/${i}/")"
-		if [ -f "${WGPATH}/${i}/.repoignore" ]; then
-			# rsync
- 			rsync -avh ${PASSFILE} --exclude-from="$(cygdrive "$WGPATH/${i}/.repoignore")" ${REMOTEHOST}/${i} "$(cygdrive "$WGPATH/")"
-			echo -e "[${green}${REMOTEHOST}/${i}${nc}] >> [$WGPATH/${i}]"
-		else
-			echo -e "[${red}${REMOTEHOST}/${i}${nc}] >> .repoignore not found"
-		fi
- 	done
- fi
+	function rsync.loop {
+		for i in "${@}"; do
+	   		# first check sync .repoignore
+	 		rsync -a ${RSYNCOPTION} ${REMOTEHOST}/${i}/.repoignore "$(cygdrive "$WGPATH/${i}/")"
+			echo -e "[.repoignore] >> [$WGPATH/${i}]"
+
+			if [ -f "${WGPATH}/${i}/.repoignore" ]; then
+				# rsync
+ 				rsync -avh ${RSYNCOPTION} --exclude-from="$(cygdrive "$WGPATH/${i}/.repoignore")" ${REMOTEHOST}/${i} "$(cygdrive "$WGPATH/")"
+				echo -e "[${green}${REMOTEHOST}/${i}${nc}] >> [$WGPATH/${i}]"
+			else
+				echo -e "[${red}${REMOTEHOST}/${i}${nc}] >> .repoignore not found"
+			fi
+		done
+	}
+
+	if [ -f "${PASSFILE}" ]; then
+		rsync.loop $@
+	else
+		echo -e "[${red}${PASSFILE}${nc}] >> rsync passwd file missing"
+		unset PASSFILE RSYNCOPTION
+		rsync.loop $@
+	fi
+fi
 }
 
 #------------------////

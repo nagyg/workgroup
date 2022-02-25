@@ -150,7 +150,6 @@ r() {
 #----------------------////
 edit.fusionprefs() {
 if [ -n "${2}" ]; then
-
 	if [[ ${2} == *":"* ]]; then
   		local path_forfusion="$(echo "${2}" | sed 's|\\|\\\\\\\\|g' )"
 	else
