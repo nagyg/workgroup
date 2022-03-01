@@ -43,6 +43,8 @@ case "$1" in
 		local input=RVERSION ;;
 	"${all_hversion[@]}")
 		local input=HVERSION ;;
+	"${all_bversion[@]}")
+		local input=BVERSION ;;
 	"${all_fversion[@]}")
 		local input=FVERSION ;;
 	*)

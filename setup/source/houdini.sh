@@ -106,8 +106,8 @@ if [ -d "${HFS}" ]; then
 	htoa_env=false
 	htor_env=false
 
-	local format="%s ${green}%11s${nc} %s $(switch.color $supphtoa)%s${nc} %s $(switch.color $suppredshift)%s${nc}\n"
-	printf "$format" "Houdini    >" "${HVERSION}" "||" "ARNOLD" "|" "REDSHIFT"
+	local format="%s ${green}%11s${nc} %s $(switch.color $suppredshift)%s${nc} %s $(switch.color $supphtoa)%s${nc}\n"
+	printf "$format" "Houdini    >" "${HVERSION}" "||" "REDSHIFT" "|" "ARNOLD"
 
 else
 	unset HFS
