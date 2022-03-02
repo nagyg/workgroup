@@ -41,6 +41,12 @@ if [ -d "${BFS}" ]; then
 	export BB="${BFS}"
 	pathadd "${BB}"
 
+	#export BLENDER_USER_CONFIG="${WGPATH}/blender/${BVERSION}/config"
+	#export BLENDER_USER_SCRIPTS="${WGPATH}/blender/${BVERSION}/scripts"
+	#export BLENDER_EXTRA_SCRIPTS="${WGPATH}/blender/${BVERSION}/scripts/addons"
+
+	#export REDSHIFT_COREDATAPATH="${WGPATH}/redshift/3.0.66"
+
     local format="%s ${green}%11s${nc} %s $(switch.color $suppredshift)%s${nc}\n"
 	#printf "$format" "Blender    >" "${BVERSION}" "||" "REDSHIFT"
     printf "$format" "Blender    >" "${BVERSION}" "||"
