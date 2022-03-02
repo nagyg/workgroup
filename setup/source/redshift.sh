@@ -23,13 +23,13 @@ rlist() {
 	local count=0
 	local i
 	rscan
-	local format="%s ${blue}%8s${nc} %s %s %s\n"
+	local format="%s ${blue}%8s${nc} %s %s %s %s \n"
 	for i in "${all_rversion[@]}"; do
 		local count=$((count+1))
 		local redshift_support_hversion=$redshift_support_hversion
 		rversions "${i}"
 		printf "$format" "${count})" "${i}" \
-		"|| ${redshift_support_hversion[@]}"
+		"|| Houdini ${redshift_support_hversion[@]}" "| Blender ${redshift_support_bversion[@]}"
 	done
 }
 
@@ -58,16 +58,24 @@ if [ -d "${RDIR}/${RVERSION}" ] && [ -n "${RVERSION}" ]; then
 
 	rversions "${RVERSION}"
 
-	if [ -z "${HVERSION}" ]; then suppredshift=0; else
-		case ${redshift_support_hversion[@]} in  *${HVERSION}*) suppredshift=1 ;; *) suppredshift=0 ;; esac
-		htor_path="${RDIR}/${RVERSION}"
+	pathremove "${REDSHIFT_COREDATAPATH}/bin"
+	export REDSHIFT_COREDATAPATH="${RDIR}/${RVERSION}"
+	pathadd "${REDSHIFT_COREDATAPATH}/bin"
+
+	if [ -z "${HVERSION}" ]; then Hsuppredshift=0; else
+		case ${redshift_support_hversion[@]} in  *${HVERSION}*) Hsuppredshift=1 ;; *) Hsuppredshift=0 ;; esac
+	fi
+
+	if [ -z "${BVERSION}" ]; then Bsuppredshift=0; else
+		case ${redshift_support_bversion[@]} in  *${BVERSION}*) Bsuppredshift=1 ;; *) Bsuppredshift=0 ;; esac
 	fi
 
 	local format="%s ${green}%11s${nc} %s ${green}%s${nc}\n"
 	printf "$format" "Redshift   >" "${RVERSION}" "||"
 
 else
-	suppredshift=0
+	Hsuppredshift=0
+	Bsuppredshift=0
 	rversion
 fi
 }

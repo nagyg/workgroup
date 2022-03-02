@@ -106,7 +106,7 @@ if [ -d "${HFS}" ]; then
 	htoa_env=false
 	htor_env=false
 
-	local format="%s ${green}%11s${nc} %s $(switch.color $suppredshift)%s${nc} %s $(switch.color $supphtoa)%s${nc}\n"
+	local format="%s ${green}%11s${nc} %s $(switch.color $Hsuppredshift)%s${nc} %s $(switch.color $supphtoa)%s${nc}\n"
 	printf "$format" "Houdini    >" "${HVERSION}" "||" "REDSHIFT" "|" "ARNOLD"
 
 else
@@ -323,21 +323,17 @@ fi
 }
 
 hr() {
-if [ -z "${suppredshift}" ] || [ ${suppredshift} = 0 ]; then
+if [ -z "${Hsuppredshift}" ] || [ ${Hsuppredshift} = 0 ]; then
 	echo -e "${red}${RVERSION} Redshift not working with Houdini ${HVERSION}${nc}"
 	rlist
 else
 
 	hsetenv &> /dev/null
 
-	pathremove "${REDSHIFT_COREDATAPATH}/bin"
-	export REDSHIFT_COREDATAPATH="${htor_path}"
-	pathadd "${REDSHIFT_COREDATAPATH}/bin"
-
-	local path="$(cygpath -w "${htor_path}/Plugins/Houdini/${HVERSION}")"
+	local path="$(cygpath -w "${REDSHIFT_COREDATAPATH}/Plugins/Houdini/${HVERSION}")"
 	export HOUDINI_PATH="$path;${HOUDINI_PATH}"
 
-	local pxrpath="$(cygpath -w "${htor_path}/Plugins/Solaris/${HVERSION}")"
+	local pxrpath="$(cygpath -w "${REDSHIFT_COREDATAPATH}/Plugins/Solaris/${HVERSION}")"
 	export PXR_PLUGINPATH_NAME="${pxrpath};&"
 
 	export REDSHIFT_RV_OPEN_ONLY=1

@@ -41,15 +41,10 @@ if [ -d "${BFS}" ]; then
 	export BB="${BFS}"
 	pathadd "${BB}"
 
-	#export BLENDER_USER_CONFIG="${WGPATH}/blender/${BVERSION}/config"
-	#export BLENDER_USER_SCRIPTS="${WGPATH}/blender/${BVERSION}/scripts"
-	#export BLENDER_EXTRA_SCRIPTS="${WGPATH}/blender/${BVERSION}/scripts/addons"
+	btor_env=false
 
-	#export REDSHIFT_COREDATAPATH="${WGPATH}/redshift/3.0.66"
-
-    local format="%s ${green}%11s${nc} %s $(switch.color $suppredshift)%s${nc}\n"
-	#printf "$format" "Blender    >" "${BVERSION}" "||" "REDSHIFT"
-    printf "$format" "Blender    >" "${BVERSION}" "||"
+    local format="%s ${green}%11s${nc} %s $(switch.color $Bsuppredshift)%s${nc}\n"
+	printf "$format" "Blender    >" "${BVERSION}" "||" "REDSHIFT"
 
 else
 	unset BFS
@@ -65,7 +60,27 @@ bstart() {
 }
 
 b() {
+if [ "${btor_env}" == "true" ]; then
+	bsetenv &> /dev/null
+fi
+bstart
+}
+
+br() {
+if [ -z "${Bsuppredshift}" ] || [ ${Bsuppredshift} = 0 ]; then
+	echo -e "${red}${RVERSION} Redshift not working with Blender ${BVERSION}${nc}"
+	rlist
+else
+
+	bsetenv &> /dev/null
+
+	local path="$(cygpath -w "${REDSHIFT_COREDATAPATH}/Plugins/Blender/${BVERSION}")"
+	export BLENDER_ADDONS_PATH="$path"
+
+	btor_env=true
+
     bstart
+fi
 }
 
 #-----------------------////
