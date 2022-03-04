@@ -38,7 +38,7 @@ if [ -f "${BMDIR}/Fusion ${FVERSION}/Fusion.exe" ] && [ -n "${FVERSION}" ]; then
 	fusion_profile_dir="$(cygpath -u "$APPDATA\Blackmagic Design\Fusion\Profiles\Default")"
 
 	# Force delete workgroup preferences!!!#################
-	rm "${fusion_profile_dir}/workgroup.prefs" 2> /dev/null
+	#rm "${fusion_profile_dir}/workgroup.prefs" 2> /dev/null
 	########################################################
 
 	if [ ! -d "${fusion_profile_dir}" ]; then mkdir -p "${fusion_profile_dir}"; fi
