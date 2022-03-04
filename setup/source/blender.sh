@@ -1,4 +1,14 @@
 #!/bin/bash
+# I found a way to get the updated environment variables, but is a workaround.
+# In this file scripts\modules\addon_utils.py replace this function:
+# line:50, only the # BLENDER_USER_ADDONS bit is needed
+# MELON Fx
+#    import os
+#    if 'BLENDER_USER_ADDONS' in os.environ:
+#        envpaths = os.environ['BLENDER_USER_ADDONS'].split(os.pathsep)
+#        for p in envpaths:
+#            if os.path.isdir(p):
+#                addon_paths.append(os.path.normpath(p))
 #--------------------------------------------------------------------------------------------------////
 # BLENDER environment:
 #--------------------------------------------------------------------------------------------------////
@@ -41,8 +51,6 @@ if [ -d "${BFS}" ]; then
 	export BB="${BFS}"
 	pathadd "${BB}"
 
-	btor_env=false
-
     local format="%s ${green}%11s${nc} %s $(switch.color $Bsuppredshift)%s${nc}\n"
 	printf "$format" "Blender    >" "${BVERSION}" "||" "REDSHIFT"
 
@@ -60,24 +68,13 @@ bstart() {
 }
 
 b() {
-if [ "${btor_env}" == "true" ]; then
-	bsetenv &> /dev/null
-fi
-bstart
-}
-
-br() {
 if [ -z "${Bsuppredshift}" ] || [ ${Bsuppredshift} = 0 ]; then
 	echo -e "${red}${RVERSION} Redshift not working with Blender ${BVERSION}${nc}"
 	rlist
 else
 
-	bsetenv &> /dev/null
-
-	local path="$(cygpath -w "${REDSHIFT_COREDATAPATH}/Plugins/Blender/${BVERSION}")"
-	export BLENDER_ADDONS_PATH="$path"
-
-	btor_env=true
+	local path="$(cygpath -w "${WGPATH}/blender/addons/${BVERSION}")"
+	export BLENDER_USER_ADDONS="$path"
 
     bstart
 fi
@@ -90,14 +87,8 @@ fi
 #--------------------------------------------------------------------------------------------------////
 # INITIAL:
 #--------------------------------------------------------------------------------------------------////
-if [ -z "${BDIR}" ]; then
-	export BDIR="/c/Program Files/Blender Foundation"
+export BDIR="${WGPATH}/blender/apps"
+
+if [ -d "${BDIR}" ]; then
+	bsetenv
 fi
-
-#if [ -z "${DISKCACHE}" ]; then
-#	export DISKCACHE_BLENDER="$(cygpath -u "$HOME/AppData/Local/Temp")"
-#else
-#	export DISKCACHE_BLENDER="$(cygpath -u "$DISKCACHE/Blender")"
-#fi
-
-bsetenv

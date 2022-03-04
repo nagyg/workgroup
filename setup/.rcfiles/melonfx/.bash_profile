@@ -28,8 +28,6 @@ megascans=(   "false")
 odtools=(     "false")
 modeler=(     "false")
 groombear=(   "false")
-#----------------------- BLENDER -------------------------////
-export BDIR="$WGPATH/blender/apps"
 #-------------------- BLACKMAGIC APPS --------------------////
 export BMDIR="$WGPATH/blackmagic/apps"
 #------------------------ SOURCE -------------------------////

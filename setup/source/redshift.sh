@@ -45,6 +45,7 @@ if [ ${#all_rversion[@]} != 0 ]; then
 	echo
 	rsetenv
 	hsetenv 2> /dev/null
+	bsetenv 2> /dev/null
 	edit.profile "RVERSION" "$RVERSION"
 	echo ==========================================================================
 else

@@ -330,10 +330,10 @@ else
 
 	hsetenv &> /dev/null
 
-	local path="$(cygpath -w "${REDSHIFT_COREDATAPATH}/Plugins/Houdini/${HVERSION}")"
+	local path="$(cygpath -w "${WGPATH}/sidefx/HtoR/${HVERSION}/Houdini")"
 	export HOUDINI_PATH="$path;${HOUDINI_PATH}"
 
-	local pxrpath="$(cygpath -w "${REDSHIFT_COREDATAPATH}/Plugins/Solaris/${HVERSION}")"
+	local pxrpath="$(cygpath -w "${WGPATH}/sidefx/HtoR/${HVERSION}/Solaris")"
 	export PXR_PLUGINPATH_NAME="${pxrpath};&"
 
 	export REDSHIFT_RV_OPEN_ONLY=1

@@ -3,13 +3,13 @@
 # ARNOLD environment:
 #--------------------------------------------------------------------------------------------------////
 aversions() {
-	source "${ADIR}/arnold/$1/versions.sh"
+	source "${ADIR}/$1/versions.sh"
 }
 
 ascan() {
 	unset all_aversion
 	local d i
-	local arnold_dir="${ADIR}/arnold/"
+	local arnold_dir="${ADIR}/"
 	for d in "${arnold_dir}"* ; do
 		if [ -f "$d/versions.sh" ]; then
 			all_aversion+=(`echo ${d##${arnold_dir}}`)
@@ -38,7 +38,7 @@ aversion() {
 	ascan
 if [ ${#all_aversion[@]} != 0 ]; then
 	echo ==========================================================================
-	echo -e " List exist ${blue}Arnold${nc} in [${ADIR}/arnold] directory."
+	echo -e " List exist ${blue}Arnold${nc} in [${ADIR}] directory."
 	echo
 	alist
 	echo
@@ -55,13 +55,13 @@ fi
 }
 
 asetenv() {
-if [ -d "${ADIR}/arnold/${AVERSION}" ] && [ -n "${AVERSION}" ]; then
+if [ -d "${ADIR}/${AVERSION}" ] && [ -n "${AVERSION}" ]; then
 
 	aversions "${AVERSION}"
 
 	if [ -z "${HVERSION}" ]; then supphtoa=0; else
 		case ${htoa_support_hversion[@]} in  *${HVERSION}*) supphtoa=1 ;; *) supphtoa=0 ;; esac
-		htoa_path="${ADIR}/htoa/${HVERSION}"
+		htoa_path="${WGPATH}/sidefx/HtoA/${HVERSION}"
 	fi
 
 	local format="%s ${green}%11s${nc} %s ${green}%s${nc}\n"
@@ -77,7 +77,7 @@ fi
 # INITIAL:
 #--------------------------------------------------------------------------------------------------////
 if [ -z "${ADIR}" ]; then
-	export ADIR="${WGPATH}/solidangle"
+	export ADIR="${WGPATH}/arnold"
 fi
 
 asetenv

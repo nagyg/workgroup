@@ -68,9 +68,9 @@ alias update.fonts='update fonts'
 alias update.luts='update luts'
 alias update.opencolorio='update opencolorio'
 alias update.project='update project'
-alias update.redshift='update redshift'
-alias update.sidefx='update sidefx'
-alias update.solidangle='update solidangle'
+alias update.redshift='update redshift sidefx'
+alias update.arnold='update arnold sidefx'
+alias update.sidefx='update sidefx redshift arnold'
 
 ## ROYALRENDER ##
 alias update.royalrender='update royalrender'
@@ -79,4 +79,4 @@ alias update.royalrender='update royalrender'
 alias update.softimage='update softimage'
 
 #ignore: royalrender, softimage
-alias update.all='update addons adobe blackmagic blender djv ffmpeg fonts luts opencolorio project redshift sidefx solidangle'
+alias update.all='update addons adobe blackmagic blender djv ffmpeg fonts luts opencolorio project redshift arnold sidefx'

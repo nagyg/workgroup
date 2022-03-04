@@ -28,8 +28,6 @@ megascans=(   "false")
 odtools=(     "false")
 modeler=(     "false")
 groombear=(   "false")
-#----------------------- BLENDER -------------------------////
-export BDIR="/c/Program Files/Blender Foundation"
 #-------------------- BLACKMAGIC APPS --------------------////
 export BMDIR="/c/Program Files/Blackmagic Design"
 #------------------------ SOURCE -------------------------////
