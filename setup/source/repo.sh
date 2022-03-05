@@ -32,12 +32,12 @@ else
 	function rsync.loop {
 		for i in "${@}"; do
 	   		# first check sync .repoignore
-	 		rsync -a ${RSYNCOPTION} ${REMOTEHOST}/${i}/.repoignore "$(cygdrive "$WGPATH/${i}/")"
+	 		rsync --perms --no-p --no-g --chmod=ugo=rwX -rtvh ${RSYNCOPTION} ${REMOTEHOST}/${i}/.repoignore "$(cygdrive "$WGPATH/${i}/")"
 			echo -e "[.repoignore] >> [$WGPATH/${i}]"
 
 			if [ -f "${WGPATH}/${i}/.repoignore" ]; then
 				# rsync
- 				rsync -avh ${RSYNCOPTION} --exclude-from="$(cygdrive "$WGPATH/${i}/.repoignore")" ${REMOTEHOST}/${i} "$(cygdrive "$WGPATH/")"
+ 				rsync --perms --no-p --no-g --chmod=ugo=rwX -rtvh ${RSYNCOPTION} --exclude-from="$(cygdrive "$WGPATH/${i}/.repoignore")" ${REMOTEHOST}/${i} "$(cygdrive "$WGPATH/")"
 				echo -e "[${green}${REMOTEHOST}/${i}${nc}] >> [$WGPATH/${i}]"
 			else
 				echo -e "[${red}${REMOTEHOST}/${i}${nc}] >> .repoignore not found"
