@@ -128,10 +128,5 @@ source "${WGPATH}/setup/source/repo.sh"
 #------------------------------------------////
 # INITIAL:
 #------------------------------------------////
-if [ -d "$JOB" ]; then
-	builtin cd "$JOB"
-else
-	builtin cd ~
-fi
-
 printf "%s ${yellow}%s${nc}\n" "Workgroup  >" "${WGPATH}"
+builtin cd ~
