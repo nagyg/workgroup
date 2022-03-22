@@ -16,7 +16,7 @@ else
 		edit.fusionprefs JOB "$JOB" 2> /dev/null
 
 		if [ -d "$JOB/3D/Asset" ]; then export ASSETDIR="$JOB/3D/Asset"; fi;
-		if [ -d "$JOB/Asset" ]; then export ASSETDIR="$JOB/Asset"; fi;
+		if [ -d "$JOB/3D/Scene" ]; then export SCENEDIR="$JOB/3D/Scene"; fi;
 
 		job
 	else
@@ -31,40 +31,19 @@ fi
 mkproj() {
 
 	function mkproj.help {
-   		echo "Usage  : mkproj [OPTION]... [DESTINATION DIR]"
-   		echo
-   		echo "Options:"
-   		echo "--level, -l      Set project level (0 or 1)"
-   		echo
-   		echo "Syntax : [ mkproj --level 0 ~/testproj ]"
-		echo "         [ mkproj -l 1 ~/testproj ]"
+   		echo "Usage  : mkproj [DESTINATION DIR]"
+   		echo "Syntax : mkproj ~/testproj"
 	}
 
-if [ "$#" -ne 3 ]; then
+if [ "$#" -ne 1 ]; then
 	mkproj.help
 else
-	function make.proj {
-		local path=`realpath "${3}"`
-		if [ ! -d "$path" ]; then
-			cp -r "${WGPATH}/project/proj${2}" "$path"
-			job "$path"
-		else
-			echo "bash: $path: directory exists"
-		fi
-	}
-
-	if [ "$1" == "--level" ] || [ "$1" == "-l" ]; then
-		case "$2" in
-			"0")
-				make.proj $@
-				mk3d > /dev/null 2>&1 ;;
-			"1")
-				make.proj $@ ;;
-			*)
-				echo "bash: invalid level argument" ;;
-		esac	
+	local path=`realpath "${1}"`
+	if [ ! -d "$path" ]; then
+		cp -r "${WGPATH}/project/proj" "$path"
+		job "$path"
 	else
-		echo "bash: --level argument missing"
+		echo "bash: $path: directory exists"
 	fi
 fi
 }
@@ -73,8 +52,8 @@ mkscene() {
 if [ "$#" == 0 ]; then
 	echo "bash: [$#]: illegal number of arguments"
 else
-	if [ -d "$JOB/Scene" ]; then
-		builtin cd "$JOB/Scene"
+	if [ -d "${SCENEDIR}" ] && [ -n "${SCENEDIR}" ]; then
+		builtin cd "${SCENEDIR}"
 		local i
 		for i in "${@}"; do
 		local path=`realpath "${i}"`
@@ -113,26 +92,10 @@ else
 fi
 }
 
-mk3d() {
-if [ -d "$JOB" ]; then
-	builtin cd "$JOB"
-	local path=`realpath "$JOB/3D"`
-	if [ ! -d "$path" ]; then
-		cp -r "${WGPATH}/project/3D" "$path"
-		job "$JOB"
-		printf "%s ${blue}%s${nc}\n" "3D         >" "${path}"
-	else
-		echo "bash: $path: directory exists"
-	fi
-else
-	echo "bash: JOB variable zero or directory not exists"
-fi
-}
-
 # some more cd aliases
 cdj() { cd "$JOB/$1"; }
 cda() { cd "$ASSETDIR/$1"; }
-cds() { cd "$JOB/Scene/$1"; }
+cds() { cd "$JOB/3D/Scene/$1"; }
 
 #------------------------------------------////
 # INITIAL:
