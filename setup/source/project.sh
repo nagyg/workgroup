@@ -11,7 +11,9 @@ else
 
 		export JOB="$path"
 		
-		if [ ! -f "$path/job_env.py" ]; then cp -r "${WGPATH}/project/proj0/job_env.py" "$path"; fi
+		if [ ! -f "$path/job_env.py" ]; then cp -u "${WGPATH}/project/proj/job_env.py" "$path"; fi
+		if [ ! -d "$path/3D" ]; then cp -ru "${WGPATH}/project/proj/3D" "$path"; fi
+
 		edit.profile "export JOB" "$JOB" 2> /dev/null
 		edit.fusionprefs JOB "$JOB" 2> /dev/null
 
