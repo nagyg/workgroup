@@ -60,17 +60,17 @@ fi
 #------------------////
 alias update.addons='update addons'
 alias update.adobe='update adobe'
-alias update.blackmagic='update blackmagic ffmpeg fonts luts'
-alias update.blender='update blender redshift'
+alias update.blackmagic='update blackmagic ffmpeg fonts luts opencolorio project'
+alias update.blender='update blender redshift opencolorio project'
 alias update.djv='update djv'
 alias update.ffmpeg='update ffmpeg'
 alias update.fonts='update fonts'
 alias update.luts='update luts'
 alias update.opencolorio='update opencolorio'
 alias update.project='update project'
-alias update.redshift='update redshift sidefx blender'
-alias update.arnold='update arnold sidefx'
-alias update.sidefx='update sidefx redshift arnold'
+alias update.redshift='update redshift sidefx blender opencolorio project'
+alias update.arnold='update arnold sidefx opencolorio project'
+alias update.sidefx='update sidefx redshift arnold opencolorio project'
 
 ## ROYALRENDER ##
 alias update.royalrender='update royalrender'

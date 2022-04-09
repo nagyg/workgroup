@@ -28,6 +28,9 @@ The command above will initialize your shell startup. Backs up and configures yo
 
 #### 4. Exit / Restart cmder
 #### 5. From the new cmder run:
+            echo 'rsync password' > $WGPATH/setup/cwrsync/etc/rsyncd.passwd
+            
+Create passwd file for rsync
             update.all
             
 This will download some more meat.
