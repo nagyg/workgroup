@@ -32,12 +32,12 @@ The command above will initialize your shell startup. Backs up and configures yo
             
 Create passwd file for rsync
             update.all
-            
+
 This will download some more meat.
 
 #### 6. Then run: 
             code ~/.bash_profile $WGPATH/.licenses
-            
+
 The line above will open vscode and edit the ~/.bash_profile and $WGPATH/.licenses files. 
 Set up the environment variables here if it's needed.
 
