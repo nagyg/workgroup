@@ -11,6 +11,7 @@ if [ -d "${dir}" ]; then
   $dir/_setenv/all/blender__inhouse.rrEnv \
   $dir/_setenv/all/fusion__inhouse.rrEnv \
   $dir/_config/3D00__3D_global__inhouse.inc \
+  $dir/_config/3D06__Houdini____global__inhouse.inc \
   $dir/_config/A40__Redshift_StdA__inhouse.inc \
   $dir/_config/A40__Redshift_StdA_tiled__inhouse.inc \
   $dir/_config/A80__Arnold_StdA_HtoA__inhouse.inc \
