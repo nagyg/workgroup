@@ -52,7 +52,7 @@ if [ -f "${BMDIR}/Fusion ${FVERSION}/Fusion.exe" ] && [ -n "${FVERSION}" ]; then
 		export OFX_PLUGIN_PATH="$(cygpath -w "${WGPATH}/blackmagic/plugins/ofx/${FVERSION}")"
 		export REACTOR_INSTALL_PATHMAP="$(cygpath -w "${WGPATH}/blackmagic/plugins/fusion/${FVERSION}/")"
 
-		plugin.sapphire 2021.02
+		plugin.sapphire 2022.02
 		
 		edit.fusionprefs WGFusion "WG:blackmagic\masterprefs\9"
 		edit.fusionprefs Reactor "WG:blackmagic\plugins\fusion\9\Reactor"
@@ -65,7 +65,7 @@ if [ -f "${BMDIR}/Fusion ${FVERSION}/Fusion.exe" ] && [ -n "${FVERSION}" ]; then
 		export OFX_PLUGIN_PATH="$(cygpath -w "${WGPATH}/blackmagic/plugins/ofx/${FVERSION}")"
 		export REACTOR_INSTALL_PATHMAP="$(cygpath -w "${WGPATH}/blackmagic/plugins/fusion/${FVERSION}/")"
 		
-		plugin.sapphire 2021.02
+		plugin.sapphire 2022.02
 
 		edit.fusionprefs WGFusion "WG:blackmagic\masterprefs\17"
 		edit.fusionprefs Reactor "WG:blackmagic\plugins\fusion\17\Reactor"
@@ -78,7 +78,7 @@ if [ -f "${BMDIR}/Fusion ${FVERSION}/Fusion.exe" ] && [ -n "${FVERSION}" ]; then
 		export OFX_PLUGIN_PATH="$(cygpath -w "${WGPATH}/blackmagic/plugins/ofx/${FVERSION}")"
 		export REACTOR_INSTALL_PATHMAP="$(cygpath -w "${WGPATH}/blackmagic/plugins/fusion/${FVERSION}/")"
 		
-		plugin.sapphire 2021.02
+		plugin.sapphire 2022.02
 
 		edit.fusionprefs WGFusion "WG:blackmagic\masterprefs\18"
 		edit.fusionprefs Reactor "WG:blackmagic\plugins\fusion\18\Reactor"
