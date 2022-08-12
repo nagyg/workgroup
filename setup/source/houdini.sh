@@ -284,7 +284,7 @@ hstart() {
 		houdini "${@}" &
 	fi
 
-	printf "%s${blue} %s${nc}\n" "HFS                     >" "${HFS}"
+	printf "%s${blue} %s${nc}\n" "Houdini File System     >" "${HFS}"
 
 	if [ ${#package_success[@]} != 0 ]; then
 		printf "%s${blue} %s${nc}\n" "Packages in environment >" "${package_success[*]}"
