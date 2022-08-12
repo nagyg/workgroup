@@ -8,18 +8,6 @@
 # ${WGPATH}/addons/mtool		[crmabs/mtool](https://github.com/crmabs/mtool)
 # ${WGPATH}/redshift/OSLShaders	[redshift3d/RedshiftOSLShaders](https://github.com/redshift3d/RedshiftOSLShaders)
 
-pathadd "${WGPATH}/setup/cwrsync"
-
-rsync() {
-	export rsyncarg=$@
-
-	local in=`pwd`
-	( cd ; cwrsync.cmd )
-	builtin cd "$in"
-
-	unset rsyncarg
-}
-
 update() {
 if [ "$#" == 0 ]; then
 	echo "bash: [$#]: illegal number of parameters"
@@ -32,12 +20,12 @@ else
 	function rsync.loop {
 		for i in "${@}"; do
 	   		# first check sync .repoignore
-	 		rsync --perms --no-p --no-g --chmod=ugo=rwX -rtvh ${RSYNCOPTION} ${REMOTEHOST}/${i}/.repoignore "$(cygdrive "$WGPATH/${i}/")"
+	 		rsync --perms --no-p --no-g --chmod=ugo=rwX -rtvh ${RSYNCOPTION} $(cygdrive "${REMOTEHOST}/${i}/.repoignore") $(cygdrive "$WGPATH/${i}/")
 			echo -e "[.repoignore] >> [$WGPATH/${i}]"
 
 			if [ -f "${WGPATH}/${i}/.repoignore" ]; then
 				# rsync
- 				rsync --perms --no-p --no-g --chmod=ugo=rwX -rtvh ${RSYNCOPTION} --exclude-from="$(cygdrive "$WGPATH/${i}/.repoignore")" ${REMOTEHOST}/${i} "$(cygdrive "$WGPATH/")"
+ 				rsync --perms --no-p --no-g --chmod=ugo=rwX -rtvh ${RSYNCOPTION} --exclude-from=$(cygdrive "$WGPATH/${i}/.repoignore") $(cygdrive "${REMOTEHOST}/${i}") $(cygdrive "$WGPATH/")
 				echo -e "[${green}${REMOTEHOST}/${i}${nc}] >> [$WGPATH/${i}]"
 			else
 				echo -e "[${red}${REMOTEHOST}/${i}${nc}] >> .repoignore not found"

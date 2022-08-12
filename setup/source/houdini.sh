@@ -35,7 +35,13 @@ fi
 }
 
 hsetenv() {
-export HFS="${HDIR}/Houdini ${HVERSION}"
+
+if [ -d "${DISKCACHE_HOUDINI}/apps/Houdini ${HVERSION}" ]; then
+	export HFS="${DISKCACHE_HOUDINI}/apps/Houdini ${HVERSION}"
+else
+	export HFS="${HDIR}/Houdini ${HVERSION}"
+fi
+
 if [ -d "${HFS}" ]; then
 
 	pathremove "${HB}"
@@ -57,6 +63,7 @@ if [ -d "${HFS}" ]; then
 	export EDITOR=code.exe
 
 	export HSITE="$(cygpath -w "${WGPATH}/sidefx/HSITE")"
+	export HOUDINI_TEMP_DIR="$(cygpath -w "${DISKCACHE_HOUDINI}/temp")"
 
 	unset package_success package_fail HOUDINI_PATH HOUDINI_OTLSCAN_PATH ROSL
 
@@ -278,7 +285,7 @@ hstart() {
 		houdini "${@}" &
 	fi
 
-	printf "%s${blue} %s${nc}\n" "Houdini version         >" "${HVERSION}"
+	printf "%s${blue} %s${nc}\n" "HFS                     >" "${HFS}"
 
 	if [ ${#package_success[@]} != 0 ]; then
 		printf "%s${blue} %s${nc}\n" "Packages in environment >" "${package_success[*]}"
@@ -347,6 +354,19 @@ else
 fi
 }
 
+htodiskcache() {
+  hscan
+  local cachepath="${DISKCACHE_HOUDINI}/apps"; mkdir -p "$cachepath"
+  
+  for i in "${all_hversion[@]}"; do
+   echo -e "copy: ${green}${HDIR}/Houdini $i${nc} --> ${green}${cachepath}/Houdini $i${nc}"
+   rsync --perms --no-p --no-g --chmod=ugo=rwX -rtvh $(cygdrive "${HDIR}/Houdini $i") $(cygdrive "${cachepath}/")
+  done
+
+  echo -e "list: ${green}${cachepath}${nc}"; lt "${DISKCACHE_HOUDINI}/apps"
+  hsetenv &> /dev/null
+}
+
 #-----------------------////
 # Function:
 #-----------------------////
@@ -396,9 +416,11 @@ if [ -z "${HDIR}" ]; then
 fi
 
 if [ -z "${DISKCACHE}" ]; then
-	export DISKCACHE_HOUDINI="$(cygpath -u "$HOME/AppData/Local/Temp")"
+	export DISKCACHE_HOUDINI="$(cygpath -u "$HOME/AppData/Local/Temp/Houdini")"
 else
 	export DISKCACHE_HOUDINI="$(cygpath -u "$DISKCACHE/Houdini")"
 fi
+
+mkdir -p "${DISKCACHE_HOUDINI}"
 
 hsetenv

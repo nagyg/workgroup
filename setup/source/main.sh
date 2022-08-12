@@ -15,7 +15,7 @@ pathremove () { export PATH=`echo -n $PATH | awk -v RS=: -v ORS=: '$0 != "'"$1"'
 pathadd () { pathremove $1; export PATH="$1:$PATH"; }
 pathshow () { printenv PATH | sed 's|:|\n|g'; }
 
-cygdrive () { cygpath -U "$(cygpath -w "$1")"; }
+cygdrive () { echo \"$(cygpath -U "$(cygpath -w "$1")")\"; }
 
 #ftobslash () { echo "$1" | sed 's|/|\\|g'; }
 #btofslash () { echo "$1" | sed 's|\\|/|g'; }
@@ -24,7 +24,20 @@ cygdrive () { cygpath -U "$(cygpath -w "$1")"; }
 #------------------------------------------////
 # Bin:
 #------------------------------------------////
-#pathadd "${WGPATH}/bin"
+pathadd "${WGPATH}/setup/cwrsync"
+
+#------------------------------------------////
+# rsync:
+#------------------------------------------////
+rsync() {
+	export rsyncarg=$@
+
+	local in=`pwd`
+	( cd ; cwrsync.cmd )
+	builtin cd "$in"
+
+	unset rsyncarg
+}
 
 #------------------------------------------////
 # Bash Finction & Alias:
