@@ -35,7 +35,6 @@ fi
 }
 
 hsetenv() {
-
 if [ -d "${DISKCACHE_HOUDINI}/apps/Houdini ${HVERSION}" ]; then
 	export HFS="${DISKCACHE_HOUDINI}/apps/Houdini ${HVERSION}"
 else
@@ -63,6 +62,7 @@ if [ -d "${HFS}" ]; then
 	export EDITOR=code.exe
 
 	export HSITE="$(cygpath -w "${WGPATH}/sidefx/HSITE")"
+	export HOUDINI_TEMP_DIR="$(cygpath -w "${DISKCACHE_HOUDINI}/temp")"
 	
 	unset package_success package_fail HOUDINI_PATH HOUDINI_OTLSCAN_PATH ROSL
 
@@ -354,16 +354,20 @@ fi
 }
 
 htodiskcache() {
-  hscan
   local cachepath="${DISKCACHE_HOUDINI}/apps"; mkdir -p "$cachepath"
-  
-  for i in "${all_hversion[@]}"; do
-   echo -e "copy: ${green}${HDIR}/Houdini $i${nc} --> ${green}${cachepath}/Houdini $i${nc}"
-   rsync --perms --no-p --no-g --chmod=ugo=rwX -rtvh $(cygdrive "${HDIR}/Houdini $i") $(cygdrive "${cachepath}/")
-  done
+  echo -e "Destination cache folder: ${yellow}[$cachepath]${nc}"
 
-  echo -e "list: ${green}${cachepath}${nc}"; lt "${DISKCACHE_HOUDINI}/apps"
-  hsetenv &> /dev/null
+  hversion
+
+  if [ -d "${HDIR}/Houdini ${HVERSION}" ] && [ -d "${cachepath}" ]; then	
+	rsync --perms --no-p --no-g --chmod=ugo=rwX -rtvh $(cygdrive "${HDIR}/Houdini ${HVERSION}") $(cygdrive "${cachepath}/")
+	echo -e "rsync: ${green}[${HDIR}/Houdini $HVERSION]${nc} --> ${green}[${cachepath}/Houdini $HVERSION]${nc}"
+	echo "cache:" ; lt "${DISKCACHE_HOUDINI}/apps"
+	hsetenv &> /dev/null
+  else
+	echo -e "rsync: ${red}[${HDIR}/Houdini $HVERSION]${nc} --> ${red}[${cachepath}/Houdini $HVERSION]${nc}"
+	echo "cache:" ; lt "${DISKCACHE_HOUDINI}/apps"
+  fi
 }
 
 #-----------------------////
@@ -415,9 +419,9 @@ if [ -z "${HDIR}" ]; then
 fi
 
 if [ -z "${DISKCACHE}" ]; then
-	export DISKCACHE_HOUDINI="$(cygpath -u "$HOME/AppData/Local/Temp/Houdini")"
+	export DISKCACHE_HOUDINI="~/AppData/Local/Temp/Houdini"
 else
-	export DISKCACHE_HOUDINI="$(cygpath -u "$DISKCACHE/Houdini")"
+	export DISKCACHE_HOUDINI="$DISKCACHE/Houdini"
 fi
 
 mkdir -p "${DISKCACHE_HOUDINI}"
