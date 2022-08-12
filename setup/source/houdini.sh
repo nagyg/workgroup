@@ -63,8 +63,7 @@ if [ -d "${HFS}" ]; then
 	export EDITOR=code.exe
 
 	export HSITE="$(cygpath -w "${WGPATH}/sidefx/HSITE")"
-	export HOUDINI_TEMP_DIR="$(cygpath -w "${DISKCACHE_HOUDINI}/temp")"
-
+	
 	unset package_success package_fail HOUDINI_PATH HOUDINI_OTLSCAN_PATH ROSL
 
 	#-----------------------////
