@@ -362,12 +362,12 @@ htodiskcache() {
   if [ -d "${HDIR}/Houdini ${HVERSION}" ] && [ -d "${cachepath}" ]; then	
 	rsync --perms --no-p --no-g --chmod=ugo=rwX -rtvh $(cygdrive "${HDIR}/Houdini ${HVERSION}") $(cygdrive "${cachepath}/")
 	echo -e "rsync: ${green}[${HDIR}/Houdini $HVERSION]${nc} --> ${green}[${cachepath}/Houdini $HVERSION]${nc}"
-	echo "cache:" ; lt "${DISKCACHE_HOUDINI}/apps"
 	hsetenv &> /dev/null
   else
 	echo -e "rsync: ${red}[${HDIR}/Houdini $HVERSION]${nc} --> ${red}[${cachepath}/Houdini $HVERSION]${nc}"
-	echo "cache:" ; lt "${DISKCACHE_HOUDINI}/apps"
   fi
+
+  echo "cache:" ; lt "${DISKCACHE_HOUDINI}/apps"
 }
 
 #-----------------------////
