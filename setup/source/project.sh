@@ -4,9 +4,7 @@
 #--------------------------------------------------------------------------------------------------////
 job () {
 if [ "$#" == 0 ]; then
-	if [ ! -z "${JOB}" ]; then
-		printf "%s ${yellow}%s${nc}\n" "JOB        >" "   [${JOB}]"
-	fi
+	printf "%s ${yellow}%s${nc}\n" "JOB        >" "   [${JOB}]"
 else
 	local path=`realpath "$1" 2> /dev/null`
 	if [ -d "$path" ]; then
@@ -103,4 +101,10 @@ cds() { cd "$JOB/3D/Scene/$1"; }
 #------------------------------------------////
 # INITIAL:
 #------------------------------------------////
-job "$JOB"
+if [ -d "${JOB}" ] && [ ! -z "${JOB}" ]; then
+	job "$JOB"
+else
+	unset JOB
+	edit.profile "export JOB" "$JOB" 2> /dev/null
+	edit.fusionprefs JOB "$JOB" 2> /dev/null
+fi
