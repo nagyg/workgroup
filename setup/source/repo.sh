@@ -13,7 +13,7 @@ if [ "$#" == 0 ]; then
 	echo "bash: [$#]: illegal number of parameters"
 else
 	local i
-	local PASSFILE=$(cygpath -u "$WGPATH/setup/cwrsync/etc/rsyncd.passwd")
+	local PASSFILE=$(cygpath -w "$WGPATH/setup/cwrsync/etc/rsyncd.passwd")
 	local REMOTEHOST="melon@nagyg.ddns.net::workgroup"
 	local RSYNCOPTION="--password-file=${PASSFILE}"
 
