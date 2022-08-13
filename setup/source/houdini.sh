@@ -354,22 +354,22 @@ fi
 }
 
 htocache() {
-	local cachepath="${WGCACHE_HOUDINI}/apps"; mkdir -p "$cachepath"
-	echo -e "Destination cache folder: ${yellow}[$cachepath]${nc}"
+local cachepath="${WGCACHE_HOUDINI}/apps"; mkdir -p "$cachepath"
 
-	hversion
-  
-	local sourcepath="${HDIR}/Houdini ${HVERSION}"
+echo -e "Destination cache folder: ${yellow}[$cachepath]${nc}"
 
-	if [ -d "${sourcepath}" ] && [ -d "${cachepath}" ]; then	
-		rsync --perms --no-p --no-g --chmod=ugo=rwX -rtvh $(cygdrive "${sourcepath}") $(cygdrive "${cachepath}/")
-		echo -e "rsync: ${green}[${sourcepath}]${nc} --> ${green}[${cachepath}/Houdini $HVERSION]${nc}"
-		hsetenv &> /dev/null
-	else
-		echo -e "rsync: ${red}[${sourcepath}]${nc} --> ${red}[${cachepath}/Houdini $HVERSION]${nc}"
-	fi
+hversion 
+local sourcepath="${HDIR}/Houdini ${HVERSION}"
 
-	echo "cache:" ; lt "$cachepath"
+if [ -d "${sourcepath}" ] && [ -d "${cachepath}" ]; then	
+	rsync --perms --no-p --no-g --chmod=ugo=rwX -rtvh $(cygdrive "${sourcepath}") $(cygdrive "${cachepath}/")
+	echo -e "rsync: ${green}[${sourcepath}]${nc} --> ${green}[${cachepath}/Houdini $HVERSION]${nc}"
+	hsetenv &> /dev/null
+else
+	echo -e "rsync: ${red}[${sourcepath}]${nc} --> ${red}[${cachepath}/Houdini $HVERSION]${nc}"
+fi
+
+echo "cache:" ; lt "$cachepath"
 }
 
 #-----------------------////
