@@ -284,14 +284,16 @@ hstart() {
 		houdini "${@}" &
 	fi
 
-	printf "%s${blue} %s${nc}\n" "Houdini File System     >" "${HFS}"
+	printf "%s\n" "-------------------------"
+	printf "%s${blue} %s${nc}\n" "          HFS           >" "[${HFS}]"
 
 	if [ ${#package_success[@]} != 0 ]; then
-		printf "%s${blue} %s${nc}\n" "Packages in environment >" "${package_success[*]}"
+		printf "%s${blue} %s${nc}\n" "Packages in environment >" "[${package_success[*]}]"
 	fi
 	if [ ${#package_fail[@]} != 0 ]; then
-		printf "%s${red} %s${nc}\n" "Packages not found      >" "${package_fail[*]}"
+		printf "%s${red} %s${nc}\n" "Packages not found      >" "[${package_fail[*]}]"
 	fi
+	printf "%s\n" "-------------------------"
 }
 
 h() {

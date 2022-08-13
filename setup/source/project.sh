@@ -5,7 +5,7 @@
 job () {
 if [ "$#" == 0 ]; then
 	if [ ! -z "${JOB}" ]; then
-		printf "%s %s${yellow}%s${nc}%s\n" "JOB        >" "[" "${JOB}" "]"
+		printf "%s ${yellow}%s${nc}\n" "JOB        >" "   [${JOB}]"
 	fi
 else
 	local path=`realpath "$1" 2> /dev/null`

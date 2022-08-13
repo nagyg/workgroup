@@ -32,6 +32,7 @@ groombear=(   "false")
 export BMDIR="/c/Program Files/Blackmagic Design"
 #------------------------ SOURCE -------------------------////
 source "${WGPATH}/setup/source/main.sh"
+#source "${WGPATH}/setup/source/project.sh"
 #source "${WGPATH}/setup/source/ffmpeg.sh"
 #source "${WGPATH}/setup/source/opencolorio.sh"
 #source "${WGPATH}/setup/source/djv.sh"
@@ -41,7 +42,6 @@ source "${WGPATH}/setup/source/main.sh"
 #source "${WGPATH}/setup/source/blender.sh"
 #source "${WGPATH}/setup/source/blackmagic.sh"
 #source "${WGPATH}/setup/source/royalrender.sh"
-#source "${WGPATH}/setup/source/project.sh"
 #source "${WGPATH}/.licenses"
 
 #----------------------- GRAVEYARD

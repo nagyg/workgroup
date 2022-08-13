@@ -145,6 +145,7 @@ if [ -z "${WGCACHE}" ] || [ ! -d "${WGCACHE}" ]; then
 	export WGCACHE="$HOME/AppData/Local/Temp"
 fi
 
-printf "%s %s${yellow}%s${nc}%s %s %s${yellow}%s${nc}%s\n" "Workgroup  >" "[" "${WGPATH}" "]" "CACHE" "[" "${WGCACHE}" "]"
+printf "%s ${yellow}%s${nc}\n" "WGPATH     >" "   [${WGPATH}]"
+printf "%s ${yellow}%s${nc}\n" "WGCACHE    >" "   [${WGCACHE}]"
 
 builtin cd ~
