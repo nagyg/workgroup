@@ -141,5 +141,11 @@ source "${WGPATH}/setup/source/repo.sh"
 #------------------------------------------////
 # INITIAL:
 #------------------------------------------////
-printf "%s ${yellow}%s${nc}\n" "Workgroup  >" "${WGPATH}"
+
+if [ -z "${WGCACHE}" ]; then
+	printf "%s %s${yellow}%s${nc}%s\n" "Workgroup  >" "[" "${WGPATH}" "]"
+else
+	printf "%s %s${yellow}%s${nc}%s %s %s${yellow}%s${nc}%s\n" "Workgroup  >" "[" "${WGPATH}" "]" "CACHE" "[" "${WGCACHE}" "]"
+fi
+
 builtin cd ~

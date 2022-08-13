@@ -35,8 +35,8 @@ fi
 }
 
 hsetenv() {
-if [ -d "${DISKCACHE_HOUDINI}/apps/Houdini ${HVERSION}" ]; then
-	export HFS="${DISKCACHE_HOUDINI}/apps/Houdini ${HVERSION}"
+if [ -d "${WGCACHE_HOUDINI}/apps/Houdini ${HVERSION}" ]; then
+	export HFS="${WGCACHE_HOUDINI}/apps/Houdini ${HVERSION}"
 else
 	export HFS="${HDIR}/Houdini ${HVERSION}"
 fi
@@ -62,7 +62,7 @@ if [ -d "${HFS}" ]; then
 	export EDITOR=code.exe
 
 	export HSITE="$(cygpath -w "${WGPATH}/sidefx/HSITE")"
-	export HOUDINI_TEMP_DIR="$(cygpath -w "${DISKCACHE_HOUDINI}/temp")"
+	export HOUDINI_TEMP_DIR="$(cygpath -w "${WGCACHE_HOUDINI}/temp")"
 	
 	unset package_success package_fail HOUDINI_PATH HOUDINI_OTLSCAN_PATH ROSL
 
@@ -353,8 +353,8 @@ else
 fi
 }
 
-htodiskcache() {
-  local cachepath="${DISKCACHE_HOUDINI}/apps"
+htocache() {
+  local cachepath="${WGCACHE_HOUDINI}/apps"
 
   echo -e "Destination cache folder: ${yellow}[$cachepath]${nc}"
   hversion
@@ -420,12 +420,12 @@ if [ -z "${HDIR}" ]; then
 	export HDIR="/c/Program Files/Side Effects Software"
 fi
 
-if [ -z "${DISKCACHE}" ]; then
-	export DISKCACHE_HOUDINI="~/AppData/Local/Temp/Houdini"
+if [ -z "${WGCACHE}" ]; then
+	export WGCACHE_HOUDINI="$HOME/AppData/Local/Temp/Houdini"
 else
-	export DISKCACHE_HOUDINI="$DISKCACHE/Houdini"
+	export WGCACHE_HOUDINI="$WGCACHE/Houdini"
 fi
 
-mkdir -p "${DISKCACHE_HOUDINI}"
+mkdir -p "${WGCACHE_HOUDINI}"
 
 hsetenv

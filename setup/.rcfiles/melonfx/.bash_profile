@@ -7,7 +7,7 @@
 # 1 # WORKGROUP
 #---------------------------------------------------------////
 export WGPATH=//mlno/workgroup
-export DISKCACHE="/a"
+export WGCACHE="/a"
 #-------------- Please do not edit this section ----------////
 export JOB= # not in use
 

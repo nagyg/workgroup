@@ -7,7 +7,7 @@
 # 1 # WORKGROUP
 #---------------------------------------------------------////
 export WGPATH=~/workgroup
-export DISKCACHE=
+export WGCACHE=
 #-------------- Please do not edit this section ----------////
 export JOB= # not in use
 

@@ -97,7 +97,7 @@ esac
 	#pathadd "${FBin}"
 
 	edit.fusionprefs WG "$WGPATH"
-	edit.fusionprefs WGDiskCache "$DISKCACHE_FUSION"
+	edit.fusionprefs WGDiskCache "$WGCACHE_FUSION"
 
 	if [ -f "${BMDIR}/DaVinci Resolve/Resolve.exe" ]; then
 		local supresolve=1
@@ -177,10 +177,12 @@ if [ -z "${BMDIR}" ]; then
 	export BMDIR="/c/Program Files/Blackmagic Design"
 fi
 
-if [ -z "${DISKCACHE}" ]; then
-	export DISKCACHE_FUSION="$(cygpath -w "$HOME/AppData/Local/Temp")"
+if [ -z "${WGCACHE}" ]; then
+	export WGCACHE_FUSION="$HOME/AppData/Local/Temp/Fusion"
 else
-	export DISKCACHE_FUSION="$(cygpath -w "$DISKCACHE/Fusion")"
+	export WGCACHE_FUSION="$WGCACHE/Fusion"
 fi
+
+mkdir -p "${WGCACHE_FUSION}"
 
 fsetenv

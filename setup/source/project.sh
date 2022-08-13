@@ -4,7 +4,9 @@
 #--------------------------------------------------------------------------------------------------////
 job () {
 if [ "$#" == 0 ]; then
-	printf "%s ${yellow}%s${nc}\n" "JOB        >" "${JOB}"
+	if [ ! -z "${JOB}" ]; then
+		printf "%s %s${yellow}%s${nc}%s\n" "JOB        >" "[" "${JOB}" "]"
+	fi
 else
 	local path=`realpath "$1" 2> /dev/null`
 	if [ -d "$path" ]; then
@@ -25,7 +27,6 @@ else
 		unset JOB
 		edit.profile "export JOB" "$JOB" 2> /dev/null
 		edit.fusionprefs JOB "$JOB" 2> /dev/null
-		printf "%s ${yellow}%11s${nc} %s\n" "JOB        >" "Empty" "||"
 	fi
 fi
 }
