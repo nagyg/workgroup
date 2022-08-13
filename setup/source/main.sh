@@ -141,11 +141,10 @@ source "${WGPATH}/setup/source/repo.sh"
 #------------------------------------------////
 # INITIAL:
 #------------------------------------------////
-
-if [ -z "${WGCACHE}" ]; then
-	printf "%s %s${yellow}%s${nc}%s\n" "Workgroup  >" "[" "${WGPATH}" "]"
-else
-	printf "%s %s${yellow}%s${nc}%s %s %s${yellow}%s${nc}%s\n" "Workgroup  >" "[" "${WGPATH}" "]" "CACHE" "[" "${WGCACHE}" "]"
+if [ -z "${WGCACHE}" ] || [ ! -d "${WGCACHE}" ]; then
+	export WGCACHE="$HOME/AppData/Local/Temp"
 fi
+
+printf "%s %s${yellow}%s${nc}%s %s %s${yellow}%s${nc}%s\n" "Workgroup  >" "[" "${WGPATH}" "]" "CACHE" "[" "${WGCACHE}" "]"
 
 builtin cd ~

@@ -420,12 +420,6 @@ if [ -z "${HDIR}" ]; then
 	export HDIR="/c/Program Files/Side Effects Software"
 fi
 
-if [ -z "${WGCACHE}" ]; then
-	export WGCACHE_HOUDINI="$HOME/AppData/Local/Temp/Houdini"
-else
-	export WGCACHE_HOUDINI="$WGCACHE/Houdini"
-fi
-
-mkdir -p "${WGCACHE_HOUDINI}"
+export WGCACHE_HOUDINI="$WGCACHE/Houdini"; mkdir -p "${WGCACHE_HOUDINI}"
 
 hsetenv

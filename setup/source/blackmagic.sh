@@ -177,12 +177,6 @@ if [ -z "${BMDIR}" ]; then
 	export BMDIR="/c/Program Files/Blackmagic Design"
 fi
 
-if [ -z "${WGCACHE}" ]; then
-	export WGCACHE_FUSION="$HOME/AppData/Local/Temp/Fusion"
-else
-	export WGCACHE_FUSION="$WGCACHE/Fusion"
-fi
-
-mkdir -p "${WGCACHE_FUSION}"
+export WGCACHE_FUSION="$WGCACHE/Fusion"; mkdir -p "${WGCACHE_FUSION}"
 
 fsetenv
