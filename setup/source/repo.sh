@@ -2,11 +2,11 @@
 #--------------------------------------------------------------------------------------------------////
 # rsync repo:
 #--------------------------------------------------------------------------------------------------////
-# ${WGPATH}/sidefx/HSITE		[qLab/qLib](https://github.com/qLab/qLib)
-# ${WGPATH}/sidefx/HSITE		[toadstorm/MOPS](https://github.com/toadstorm/MOPS)
-# ${WGPATH}/sidefx/HSITE		[nagyg/mlnLib](https://github.com/nagyg/mlnLib)
-# ${WGPATH}/addons/mtool		[crmabs/mtool](https://github.com/crmabs/mtool)
-# ${WGPATH}/redshift/OSLShaders	[redshift3d/RedshiftOSLShaders](https://github.com/redshift3d/RedshiftOSLShaders)
+# ${WGPATH}/sidefx/HSITE			[qLab/qLib](https://github.com/qLab/qLib)
+# ${WGPATH}/sidefx/HSITE			[toadstorm/MOPS](https://github.com/toadstorm/MOPS)
+# ${WGPATH}/sidefx/HSITE			[nagyg/mlnLib](https://github.com/nagyg/mlnLib)
+# ${WGPATH}/addons/mtool			[crmabs/mtool](https://github.com/crmabs/mtool)
+# ${WGPATH}/redshift/OSLShaders		[redshift3d/RedshiftOSLShaders](https://github.com/redshift3d/RedshiftOSLShaders)
 
 update() {
 if [ "$#" == 0 ]; then

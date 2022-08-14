@@ -17,10 +17,6 @@ pathshow () { printenv PATH | sed 's|:|\n|g'; }
 
 cygdrive () { echo \"$(cygpath -U "$(cygpath -w "$1")")\"; }
 
-#ftobslash () { echo "$1" | sed 's|/|\\|g'; }
-#btofslash () { echo "$1" | sed 's|\\|/|g'; }
-#colonremove () { echo "$1" | sed 's|\\|/|g; s|\(.\):|/\1|g'; }
-
 #------------------------------------------////
 # Bin:
 #------------------------------------------////
