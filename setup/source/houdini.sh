@@ -273,6 +273,17 @@ fi
 # RUN:
 #-----------------------////
 hstart() {
+	
+	printf "%s\n" "------`date "+%a %T"`-------"
+	printf "%s${blue} %s${nc}\n" "          HFS           >" "[${HFS}]"
+	if [ ${#package_success[@]} != 0 ]; then
+		printf "%s${blue} %s${nc}\n" "Packages in environment >" "[${package_success[*]}]"
+	fi
+	if [ ${#package_fail[@]} != 0 ]; then
+		printf "%s${red} %s${nc}\n" "Packages not found      >" "[${package_fail[*]}]"
+	fi
+	printf "%s\n" "-------------------------"
+
 	if [[ -z $1  ]]; then
 		# no args: just start houdini
 		houdini &
@@ -283,17 +294,6 @@ hstart() {
 		# run houdini and pass all args
 		houdini "${@}" &
 	fi
-
-	printf "%s\n" "-------------------------"
-	printf "%s${blue} %s${nc}\n" "          HFS           >" "[${HFS}]"
-
-	if [ ${#package_success[@]} != 0 ]; then
-		printf "%s${blue} %s${nc}\n" "Packages in environment >" "[${package_success[*]}]"
-	fi
-	if [ ${#package_fail[@]} != 0 ]; then
-		printf "%s${red} %s${nc}\n" "Packages not found      >" "[${package_fail[*]}]"
-	fi
-	printf "%s\n" "-------------------------"
 }
 
 h() {

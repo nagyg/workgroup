@@ -140,6 +140,11 @@ plugin.sapphire() {
 #----------------------////
 f() {
 	local in=`realpath .`
+
+	printf "%s\n" "------`date "+%a %T"`-------"
+	printf "%s${blue} %s${nc}\n" "         FUSION         >" "[${BMDIR}/Fusion ${FVERSION}]"
+	printf "%s\n" "-------------------------"
+
 	builtin cd "${BMDIR}/Fusion ${FVERSION}"
 	"${BMDIR}/Fusion ${FVERSION}/Fusion.exe" &
 	builtin cd "$in"
