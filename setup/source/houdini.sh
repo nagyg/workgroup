@@ -273,7 +273,6 @@ fi
 # RUN:
 #-----------------------////
 hstart() {
-	
 	printf "%s\n" "------`date "+%a %T"`-------"
 	printf "%s${blue} %s${nc}\n" "          HFS           >" "[${HFS}]"
 	if [ ${#package_success[@]} != 0 ]; then
