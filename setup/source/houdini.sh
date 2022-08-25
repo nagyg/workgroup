@@ -93,14 +93,6 @@ if [ -d "${HFS}" ]; then
 		package.megascans
 	fi
 
-	if [ "${odtools}" == "true" ]; then
-		package.odtools
-	fi
-
-	if [ "${modeler}" == "true" ]; then
-		package.modeler
-	fi
-
 	if [ "${groombear}" == "true" ]; then
 		package.groombear
 	fi
@@ -213,39 +205,6 @@ local path="$HSITE\megascans\\${HVERSION}\MSLiveLink"
 local name=Megascans
 if [ -d "$(cygpath -u "${path}")" ]; then
 	export MS_HOUDINI_PATH="$path\scripts\python\MSPlugin"
-	hpathadd "$path"
-	package_success+=($name)
-else
-	package_fail+=($name)
-fi
-}
-
-#-----------------------////
-# OD Houdini ShelfTools:
-#-----------------------////
-package.odtools () {
-local path="$HSITE\odtools\\${HVERSION}"
-local name=ODTools
-if [ -d "$(cygpath -u "${path}")" ]; then
-	hpathadd "$path"
-	package_success+=($name)
-else
-	package_fail+=($name)
-fi
-}
-
-#-----------------------////
-# Modeler:
-#-----------------------////
-package.modeler () {
-local path="${HSITE}\modeler\\${HVERSION}\modeler"
-local name=Modeler
-if [ -d "$(cygpath -u "${path}")" ]; then
-	export MODELER_PATH="$path"
-	export MODELER_MATERIAL_TYPE="principledshader::2.0"
-#	export MODELER_ZBRUSH_EXEC_PATH="C:/Program Files/Pixologic/ZBrush 2021/ZBrush.exe"
-#	export MODELER_ZBRUSH_CACHE_PATH="C:/z_cache"
-	export MODELER_POLYPEN_SCREEN_DELTA=10
 	hpathadd "$path"
 	package_success+=($name)
 else

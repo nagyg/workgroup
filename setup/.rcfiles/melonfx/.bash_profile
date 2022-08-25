@@ -25,8 +25,6 @@ sidefxlabs=(  "false")
 mops=(        "false")
 axiom=(       "false")
 megascans=(   "false")
-odtools=(     "false")
-modeler=(     "false")
 groombear=(   "false")
 #-------------------- BLACKMAGIC APPS --------------------////
 export BMDIR="$WGPATH/blackmagic/apps"
