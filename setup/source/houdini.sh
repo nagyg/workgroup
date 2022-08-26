@@ -66,9 +66,9 @@ if [ -d "${HFS}" ]; then
 	
 	unset package_success package_fail HOUDINI_PATH HOUDINI_OTLSCAN_PATH ROSL
 
-	#-----------------------////
+	#------------------------////
 	# ADDONS
-	#-----------------------////
+	#------------------------////
 	if [ "${mlnlib}" == "true" ]; then
 		package.mlnlib
 	fi
@@ -121,9 +121,9 @@ hpathadd() {
 	fi
 }
 
-#-----------------------////
+#------------------------////
 # mlnLib:
-#-----------------------////
+#------------------------////
 package.mlnlib() {
 local path="$HSITE\mlnLib"
 local name=mlnLib
@@ -136,9 +136,9 @@ else
 fi
 }
 
-#-----------------------////
+#------------------------////
 # qLib:
-#-----------------------////
+#------------------------////
 package.qlib() {
 local path="$HSITE\qLib"
 local name=qLib
@@ -153,9 +153,9 @@ else
 fi
 }
 
-#-----------------------////
+#------------------------////
 # SideFXLabs:
-#-----------------------////
+#------------------------////
 package.sidefxlabs() {
 local path="$HSITE\sidefxlabs\\${HVERSION}"
 local name=sidefxLabs
@@ -168,9 +168,9 @@ else
 fi
 }
 
-#-----------------------////
+#------------------------////
 # MOPs:
-#-----------------------////
+#------------------------////
 package.mops() {
 local path="$HSITE\mops"
 local name=MOPS
@@ -183,9 +183,9 @@ else
 fi
 }
 
-#-----------------------////
+#------------------------////
 # Axiom Solver:
-#-----------------------////
+#------------------------////
 package.axiom () {
 local path="$HSITE\axiom\\${HVERSION}"
 local name=Axiom
@@ -197,9 +197,9 @@ else
 fi
 }
 
-#-----------------------////
+#------------------------////
 # Quixel Megascans:
-#-----------------------////
+#------------------------////
 package.megascans () {
 local path="$HSITE\megascans\\${HVERSION}\MSLiveLink"
 local name=Megascans
@@ -212,9 +212,9 @@ else
 fi
 }
 
-#-----------------------////
+#------------------------////
 # GROOMBEAR:
-#-----------------------////
+#------------------------////
 package.groombear () {
 local path="${HSITE}\groombear\\${HVERSION}"
 local name=Groombear
@@ -228,9 +228,9 @@ else
 fi
 }
 
-#-----------------------////
+#------------------------////
 # RUN:
-#-----------------------////
+#------------------------////
 hstart() {
 	printf "%s\n" "------`date "+%a %T"`-------"
 	printf "%s${blue} %s${nc}\n" "          HFS           >" "[${HFS}]"
@@ -332,9 +332,9 @@ fi
 echo "cache:" ; lt "$cachepath"
 }
 
-#-----------------------////
+#------------------------////
 # Function:
-#-----------------------////
+#------------------------////
 pathhshow () { printenv HOUDINI_PATH | sed 's|;|\n|g'; }
 
 cdhsite() { cd $HSITE; }
