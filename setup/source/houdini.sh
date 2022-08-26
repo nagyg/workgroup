@@ -262,7 +262,7 @@ fi
 if [ "${htor_env}" == "true" ]; then
 	hsetenv &> /dev/null
 fi
-hstart
+hstart "${@}"
 }
 
 ha() {
@@ -284,7 +284,7 @@ else
 	htoa_env=true
 	package_success+=(ARNOLD)
 
-    hstart
+    hstart "${@}"
 fi
 }
 
@@ -309,7 +309,7 @@ else
 	htor_env=true
 	package_success+=(REDSHIFT)
 
-	hstart
+	hstart "${@}"
 fi
 }
 
@@ -351,27 +351,27 @@ done
 }
 
 lasthip() {
-local history="~/houdini${HOUDINI_RELEASE_VERSION}/file.history"
+local history="$(cygpath -u "$HOME/houdini${HOUDINI_RELEASE_VERSION}/file.history")"
 if [ -f "$history" ]; then
     while read line ; do
 	    case $line in
 		    *"}"*)
 		    break ;;
 		    *)
-		    local lasthip="$line" ;;
+		    local lasthip="$(cygpath -u "$line")" ;;
 	    esac
     done < "$history"
 echo $lasthip
 fi
 }
 
-h.last() { echo -e "lasthip >> [${blue}`lasthip`${nc}]"; h "`lasthip`"; }
+h.last() { h "`lasthip`"; }
 
-ha.last() { echo -e "lasthip >> [${blue}`lasthip`${nc}]"; ha "`lasthip`"; }
+ha.last() { ha "`lasthip`"; }
 
-hr.last() { echo -e "lasthip >> [${blue}`lasthip`${nc}]"; hr "`lasthip`"; }
+hr.last() { hr "`lasthip`"; }
 
-hrop.last() { echo -e "lasthip >> [${blue}`lasthip`${nc}] | rop [${blue}"$@"${nc}]"; hrop "`lasthip`" ${@}; }
+hrop.last() { printf "%s${blue} %s${nc} %s\n" "lasthip                 >" "[`lasthip`]" "| rop ["$@"]"; hrop "`lasthip`" ${@}; }
 
 #--------------------------------------------------------------------------------------------------////
 # INITIAL:
