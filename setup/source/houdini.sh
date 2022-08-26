@@ -365,13 +365,13 @@ echo $lasthip
 fi
 }
 
-h.last() { h "`lasthip`"; }
+h.lasthip() { h "`lasthip`"; }
 
-ha.last() { ha "`lasthip`"; }
+ha.lasthip() { ha "`lasthip`"; }
 
-hr.last() { hr "`lasthip`"; }
+hr.lasthip() { hr "`lasthip`"; }
 
-hrop.last() { printf "%s${blue} %s${nc} %s\n" "lasthip                 >" "[`lasthip`]" "| rop ["$@"]"; hrop "`lasthip`" ${@}; }
+hrop.lasthip() { printf "%s${blue} %s${nc} %s\n" "lasthip                 >" "[`lasthip`]" "| rop ["$@"]"; hrop "`lasthip`" ${@}; }
 
 #--------------------------------------------------------------------------------------------------////
 # INITIAL:
