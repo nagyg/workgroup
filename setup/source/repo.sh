@@ -9,43 +9,43 @@
 # ${WGPATH}/redshift/OSLShaders		[redshift3d/RedshiftOSLShaders](https://github.com/redshift3d/RedshiftOSLShaders)
 
 update() {
-if [ "$#" == 0 ]; then
-	echo "bash: [$#]: illegal number of parameters"
-else
-	local i
-	local PASSFILE=$(cygpath -w "$WGPATH/setup/cwrsync/etc/rsyncd.passwd")
-	local REMOTEHOST="melon@nagyg.ddns.net::workgroup"
-	local RSYNCOPTION="--password-file=${PASSFILE}"
-
-	function rsync.loop {
-		for i in "${@}"; do
-	   		# first check sync .repoignore
-	 		rsync --perms --no-p --no-g --chmod=ugo=rwX -rtvh ${RSYNCOPTION} $(cygdrive "${REMOTEHOST}/${i}/.repoignore") $(cygdrive "$WGPATH/${i}/")
-			echo -e "[.repoignore] >> [$WGPATH/${i}]"
-
-			if [ -f "${WGPATH}/${i}/.repoignore" ]; then
-				# rsync
- 				rsync --perms --no-p --no-g --chmod=ugo=rwX -rtvh ${RSYNCOPTION} --exclude-from=$(cygdrive "$WGPATH/${i}/.repoignore") $(cygdrive "${REMOTEHOST}/${i}") $(cygdrive "$WGPATH/")
-				echo -e "[${green}${REMOTEHOST}/${i}${nc}] >> [$WGPATH/${i}]"
-			else
-				echo -e "[${red}${REMOTEHOST}/${i}${nc}] >> .repoignore not found"
-			fi
-		done
-	}
-
-	if [ -f "${PASSFILE}" ]; then
-		rsync.loop $@
+	if [ "$#" == 0 ]; then
+		echo "bash: [$#]: illegal number of parameters"
 	else
-		echo -e "[${red}${PASSFILE}${nc}] >> rsync passwd file missing"
-		unset PASSFILE RSYNCOPTION
-		rsync.loop $@
+		local i
+		local PASSFILE=$(cygpath -w "$WGPATH/setup/cwrsync/etc/rsyncd.passwd")
+		local REMOTEHOST="melon@nagyg.ddns.net::workgroup"
+		local RSYNCOPTION="--password-file=${PASSFILE}"
+
+		function rsync.loop {
+			for i in "${@}"; do
+				# first check sync .repoignore
+				rsync --perms --no-p --no-g --chmod=ugo=rwX -rtvh ${RSYNCOPTION} $(cygdrive "${REMOTEHOST}/${i}/.repoignore") $(cygdrive "$WGPATH/${i}/")
+				echo -e "[.repoignore] >> [$WGPATH/${i}]"
+
+				if [ -f "${WGPATH}/${i}/.repoignore" ]; then
+					# rsync
+					rsync --perms --no-p --no-g --chmod=ugo=rwX -rtvh ${RSYNCOPTION} --exclude-from=$(cygdrive "$WGPATH/${i}/.repoignore") $(cygdrive "${REMOTEHOST}/${i}") $(cygdrive "$WGPATH/")
+					echo -e "[${green}${REMOTEHOST}/${i}${nc}] >> [$WGPATH/${i}]"
+				else
+					echo -e "[${red}${REMOTEHOST}/${i}${nc}] >> .repoignore not found"
+				fi
+			done
+		}
+
+		if [ -f "${PASSFILE}" ]; then
+			rsync.loop $@
+		else
+			echo -e "[${red}${PASSFILE}${nc}] >> rsync passwd file missing"
+			unset PASSFILE RSYNCOPTION
+			rsync.loop $@
+		fi
 	fi
-fi
 }
 
-#------------------////
+#------------------------////
 # alias:
-#------------------////
+#------------------------////
 alias update.addons='update addons'
 alias update.adobe='update adobe'
 alias update.blackmagic='update blackmagic ffmpeg fonts luts opencolorio project'

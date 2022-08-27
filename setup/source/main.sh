@@ -44,33 +44,33 @@ switch () {  if [ -z $1 ] || [ $1 == 0 ]; then echo $2 ; else echo $3; fi; }
 switch.color () { switch "$1" ${red} ${green}; }
 
 createmenu () {
-if [ -z "$1" ]; then return; fi
-case "$1" in
-	"${all_aversion[@]}")
-		local input=AVERSION ;;
-	"${all_rversion[@]}")
-		local input=RVERSION ;;
-	"${all_hversion[@]}")
-		local input=HVERSION ;;
-	"${all_bversion[@]}")
-		local input=BVERSION ;;
-	"${all_fversion[@]}")
-		local input=FVERSION ;;
-	*)
-		return ;;
-esac
-echo " ${input}"
-PS3=$'\nSelect version : '
-echo
-select version; do
-	if [ 1 -le "$REPLY" ] 2>/dev/null && [ "$REPLY" -le $(($#)) ] 2>/dev/null; then
-		export "${input}"="${version}"
-		break;
-	else
-		echo "bash: $REPLY: incorrect input"
-	fi
-done
-unset PS3
+	if [ -z "$1" ]; then return; fi
+	case "$1" in
+		"${all_aversion[@]}")
+			local input=AVERSION ;;
+		"${all_rversion[@]}")
+			local input=RVERSION ;;
+		"${all_hversion[@]}")
+			local input=HVERSION ;;
+		"${all_bversion[@]}")
+			local input=BVERSION ;;
+		"${all_fversion[@]}")
+			local input=FVERSION ;;
+		*)
+			return ;;
+	esac
+	echo " ${input}"
+	PS3=$'\nSelect version : '
+	echo
+	select version; do
+		if [ 1 -le "$REPLY" ] 2>/dev/null && [ "$REPLY" -le $(($#)) ] 2>/dev/null; then
+			export "${input}"="${version}"
+			break;
+		else
+			echo "bash: $REPLY: incorrect input"
+		fi
+	done
+	unset PS3
 }
 
 tree () {
@@ -82,25 +82,25 @@ reload() {
 }
 
 extract() {
- if [ -f "$1" ] ; then
-  case "$1" in
-  *.tar.bz2) tar xjf "$1" ;;
-  *.tar.gz) tar xzf "$1" ;;
-  *.tar.Z) tar xzf "$1" ;;
-  *.bz2) bunzip2 "$1" ;;
-  *.rar) unrar x "$1" ;;
-  *.gz) gunzip "$1" ;;
-  *.jar) unzip "$1" ;;
-  *.tar) tar xf "$1" ;;
-  *.tbz2) tar xjf "$1" ;;
-  *.tgz) tar xzf "$1" ;;
-  *.zip) unzip "$1" ;;
-  *.Z) uncompress "$1" ;;
-  *) echo "'$1' cannot be extracted." ;;
- esac
- else
-  echo "'$1' is not a file."
- fi
+	if [ -f "$1" ] ; then
+		case "$1" in
+		*.tar.bz2) tar xjf "$1" ;;
+		*.tar.gz) tar xzf "$1" ;;
+		*.tar.Z) tar xzf "$1" ;;
+		*.bz2) bunzip2 "$1" ;;
+		*.rar) unrar x "$1" ;;
+		*.gz) gunzip "$1" ;;
+		*.jar) unzip "$1" ;;
+		*.tar) tar xf "$1" ;;
+		*.tbz2) tar xjf "$1" ;;
+		*.tgz) tar xzf "$1" ;;
+		*.zip) unzip "$1" ;;
+		*.Z) uncompress "$1" ;;
+		*) echo "'$1' cannot be extracted." ;;
+	esac
+	else
+		echo "'$1' is not a file."
+	fi
 }
 
 # some more ls aliases
@@ -116,11 +116,11 @@ alias lr='la -R'   # recursice ls
 
 # some more cd aliases
 cd() {
-if [ -n "$1" ]; then
-	builtin cd "$@" && lt # list and sort by modification time
-else
- 	builtin cd ~          # go home
-fi
+	if [ -n "$1" ]; then
+		builtin cd "$@" && lt # list and sort by modification time
+	else
+		builtin cd ~          # go home
+	fi
 }
 
 cdw() { cd "${WGPATH}"; }

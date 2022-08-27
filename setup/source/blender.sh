@@ -27,62 +27,62 @@ bscan() {
 
 bversion() {
 	bscan
-if [ ${#all_bversion[@]} != 0 ]; then
-	echo ==========================================================================
-	echo -e " List exist ${blue}Blender${nc} in [${BDIR}] directory."
-	echo
-	createmenu "${all_bversion[@]}"
-	echo
-	rsetenv > /dev/null 2>&1
-	bsetenv
-	edit.profile "BVERSION" "$BVERSION"
-	echo ==========================================================================
-else
-	local format="${red}%s %14s${nc}\n"
-	printf "$format" "Blender    >" "Not found ||"
-fi
+	if [ ${#all_bversion[@]} != 0 ]; then
+		echo ==========================================================================
+		echo -e " List exist ${blue}Blender${nc} in [${BDIR}] directory."
+		echo
+		createmenu "${all_bversion[@]}"
+		echo
+		rsetenv > /dev/null 2>&1
+		bsetenv
+		edit.profile "BVERSION" "$BVERSION"
+		echo ==========================================================================
+	else
+		local format="${red}%s %14s${nc}\n"
+		printf "$format" "Blender    >" "Not found ||"
+	fi
 }
 
 bsetenv() {
-export BFS="${BDIR}/Blender ${BVERSION}"
-if [ -d "${BFS}" ]; then
+	export BFS="${BDIR}/Blender ${BVERSION}"
+	if [ -d "${BFS}" ]; then
 
-	pathremove "${BB}"
-	export BB="${BFS}"
-	pathadd "${BB}"
+		pathremove "${BB}"
+		export BB="${BFS}"
+		pathadd "${BB}"
 
-    local format="%s ${green}%11s${nc} %s $(switch.color $Bsuppredshift)%s${nc}\n"
-	printf "$format" "Blender    >" "${BVERSION}" "||" "REDSHIFT"
+		local format="%s ${green}%11s${nc} %s $(switch.color $Bsuppredshift)%s${nc}\n"
+		printf "$format" "Blender    >" "${BVERSION}" "||" "REDSHIFT"
 
-else
-	unset BFS
-	bversion
-fi
+	else
+		unset BFS
+		bversion
+	fi
 }
 
-#-----------------------////
+#------------------------////
 # RUN:
-#-----------------------////
+#------------------------////
 bstart() {
-    blender "${@}" &
+	blender "${@}" &
+	}
+
+	b() {
+	if [ -z "${Bsuppredshift}" ] || [ ${Bsuppredshift} = 0 ]; then
+		echo -e "${red}${RVERSION} Redshift not working with Blender ${BVERSION}${nc}"
+		rlist
+	else
+
+		local path="$(cygpath -w "${WGPATH}/blender/addons/${BVERSION}")"
+		export BLENDER_USER_ADDONS="$path"
+
+		bstart
+	fi
 }
 
-b() {
-if [ -z "${Bsuppredshift}" ] || [ ${Bsuppredshift} = 0 ]; then
-	echo -e "${red}${RVERSION} Redshift not working with Blender ${BVERSION}${nc}"
-	rlist
-else
-
-	local path="$(cygpath -w "${WGPATH}/blender/addons/${BVERSION}")"
-	export BLENDER_USER_ADDONS="$path"
-
-    bstart
-fi
-}
-
-#-----------------------////
+#------------------------////
 # Function:
-#-----------------------////
+#------------------------////
 
 #--------------------------------------------------------------------------------------------------////
 # INITIAL:

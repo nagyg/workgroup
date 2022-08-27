@@ -36,41 +36,41 @@ alist() {
 
 aversion() {
 	ascan
-if [ ${#all_aversion[@]} != 0 ]; then
-	echo ==========================================================================
-	echo -e " List exist ${blue}Arnold${nc} in [${ADIR}] directory."
-	echo
-	alist
-	echo
-	createmenu "${all_aversion[@]}"
-	echo
-	asetenv
-	hsetenv 2> /dev/null
-	edit.profile "AVERSION" "$AVERSION"
-	echo ==========================================================================
-else
-	local format="${red}%s %14s${nc}\n"
-	printf "$format" "Arnold     >" "Not found ||"
-fi
+	if [ ${#all_aversion[@]} != 0 ]; then
+		echo ==========================================================================
+		echo -e " List exist ${blue}Arnold${nc} in [${ADIR}] directory."
+		echo
+		alist
+		echo
+		createmenu "${all_aversion[@]}"
+		echo
+		asetenv
+		hsetenv 2> /dev/null
+		edit.profile "AVERSION" "$AVERSION"
+		echo ==========================================================================
+	else
+		local format="${red}%s %14s${nc}\n"
+		printf "$format" "Arnold     >" "Not found ||"
+	fi
 }
 
 asetenv() {
-if [ -d "${ADIR}/${AVERSION}" ] && [ -n "${AVERSION}" ]; then
+	if [ -d "${ADIR}/${AVERSION}" ] && [ -n "${AVERSION}" ]; then
 
-	aversions "${AVERSION}"
+		aversions "${AVERSION}"
 
-	if [ -z "${HVERSION}" ]; then supphtoa=0; else
-		case ${htoa_support_hversion[@]} in  *${HVERSION}*) supphtoa=1 ;; *) supphtoa=0 ;; esac
-		htoa_path="${WGPATH}/sidefx/HtoA/${HVERSION}"
+		if [ -z "${HVERSION}" ]; then supphtoa=0; else
+			case ${htoa_support_hversion[@]} in  *${HVERSION}*) supphtoa=1 ;; *) supphtoa=0 ;; esac
+			htoa_path="${WGPATH}/sidefx/HtoA/${HVERSION}"
+		fi
+
+		local format="%s ${green}%11s${nc} %s ${green}%s${nc}\n"
+		printf "$format" "Arnold     >" "${AVERSION}" "||"
+
+	else
+		supphtoa=0
+		aversion
 	fi
-
-	local format="%s ${green}%11s${nc} %s ${green}%s${nc}\n"
-	printf "$format" "Arnold     >" "${AVERSION}" "||"
-
-else
-	supphtoa=0
-	aversion
-fi
 }
 
 #--------------------------------------------------------------------------------------------------////
