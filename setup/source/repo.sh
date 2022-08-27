@@ -20,12 +20,13 @@ update() {
 		function rsync.loop {
 			for i in "${@}"; do
 				# first check sync .repoignore
-				rsync --perms --no-p --no-g --chmod=ugo=rwX -rtvh ${RSYNCOPTION} $(cygdrive "${REMOTEHOST}/${i}/.repoignore") $(cygdrive "$WGPATH/${i}/")
+				mkdir -p "$WGPATH/${i}"
+				rsync --no-p --no-g --chmod=ugo=rwX -rtvh ${RSYNCOPTION} $(cygdrive "${REMOTEHOST}/${i}/.repoignore") $(cygdrive "$WGPATH/${i}/")
 				echo -e "[.repoignore] >> [$WGPATH/${i}]"
 
 				if [ -f "${WGPATH}/${i}/.repoignore" ]; then
 					# rsync
-					rsync --perms --no-p --no-g --chmod=ugo=rwX -rtvh ${RSYNCOPTION} --exclude-from=$(cygdrive "$WGPATH/${i}/.repoignore") $(cygdrive "${REMOTEHOST}/${i}") $(cygdrive "$WGPATH/")
+					rsync --no-p --no-g --chmod=ugo=rwX -rtvh ${RSYNCOPTION} --exclude-from=$(cygdrive "$WGPATH/${i}/.repoignore") $(cygdrive "${REMOTEHOST}/${i}") $(cygdrive "$WGPATH/")
 					echo -e "[${green}${REMOTEHOST}/${i}${nc}] >> [$WGPATH/${i}]"
 				else
 					echo -e "[${red}${REMOTEHOST}/${i}${nc}] >> .repoignore not found"
