@@ -21,12 +21,12 @@ update() {
 			for i in "${@}"; do
 				# first check sync .repoignore
 				mkdir -p "$WGPATH/${i}"
-				rsync --no-p --no-g --chmod=ugo=rwX -rtvh ${RSYNCOPTION} $(cygdrive "${REMOTEHOST}/${i}/.repoignore") $(cygdrive "$WGPATH/${i}/")
+				rsync --no-p --no-g --chmod=ugo=rwX -avh ${RSYNCOPTION} $(cygdrive "${REMOTEHOST}/${i}/.repoignore") $(cygdrive "$WGPATH/${i}/")
 				echo -e "[.repoignore] >> [$WGPATH/${i}]"
 
 				if [ -f "${WGPATH}/${i}/.repoignore" ]; then
 					# rsync
-					rsync --no-p --no-g --chmod=ugo=rwX -rtvh ${RSYNCOPTION} --exclude-from=$(cygdrive "$WGPATH/${i}/.repoignore") $(cygdrive "${REMOTEHOST}/${i}") $(cygdrive "$WGPATH/")
+					rsync --no-p --no-g --chmod=ugo=rwX -avh ${RSYNCOPTION} --exclude-from=$(cygdrive "$WGPATH/${i}/.repoignore") $(cygdrive "${REMOTEHOST}/${i}/") $(cygdrive "$WGPATH/${i}")
 					echo -e "[${green}${REMOTEHOST}/${i}${nc}] >> [$WGPATH/${i}]"
 				else
 					echo -e "[${red}${REMOTEHOST}/${i}${nc}] >> .repoignore not found"
