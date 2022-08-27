@@ -1,14 +1,16 @@
 #!/bin/bash
 # I found a way to get the updated environment variables, but is a workaround.
 # In this file scripts\modules\addon_utils.py replace this function:
-# line:50, only the # BLENDER_USER_ADDONS bit is needed
-# MELON Fx
-#    import os
-#    if 'BLENDER_USER_ADDONS' in os.environ:
-#        envpaths = os.environ['BLENDER_USER_ADDONS'].split(os.pathsep)
-#        for p in envpaths:
-#            if os.path.isdir(p):
-#                addon_paths.append(os.path.normpath(p))
+# only the # BLENDER_USER_ADDONS bit is needed
+#def paths():
+#
+#import os
+#if 'BLENDER_USER_ADDONS' in os.environ:
+#	envpaths = os.environ['BLENDER_USER_ADDONS'].split(os.pathsep)
+#	for p in envpaths:
+#		if os.path.isdir(p):
+#			addon_paths.append(os.path.normpath(p))
+#
 #--------------------------------------------------------------------------------------------------////
 # BLENDER environment:
 #--------------------------------------------------------------------------------------------------////
