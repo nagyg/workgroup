@@ -1,5 +1,5 @@
-cwRsync 6.2.4 - Rsync client for Windows
-November 2021, provided by itefix.net - https://www.itefix.net/cwrsync
+cwRsync 6.2.5 - Rsync client for Windows
+November 2022, provided by itefix.net - https://www.itefix.net/cwrsync
 
 This archive contains a barebone distribution of Rsync for Windows.
 
@@ -20,23 +20,23 @@ See https://www.itefix.net/cwrsync for more information.
 ENJOY RSYNC!!
 
 Version information:
-Rsync 3.2.3
-Cygwin 3.3.2
-OpenSSH 8.8p
-LibreSSL 3.3.3
+Rsync 3.2.5
+Cygwin 3.3.5
+OpenSSH 9.0p
+LibreSSL 3.5.3
 
 Output of 'rsync --version':
 ----------------------------
-rsync  version 3.2.3  protocol version 31
-Copyright (C) 1996-2020 by Andrew Tridgell, Wayne Davison, and others.
+rsync  version 3.2.5  protocol version 31
+Copyright (C) 1996-2022 by Andrew Tridgell, Wayne Davison, and others.
 Web site: https://rsync.samba.org/
 Capabilities:
     64-bit files, 64-bit inums, 64-bit timestamps, 64-bit long ints,
-    socketpairs, hardlinks, no hardlink-specials, symlinks, IPv6, atimes,
-    batchfiles, inplace, append, no ACLs, xattrs, optional protect-args,
-    iconv, symtimes, prealloc, stop-at, no crtimes
+    socketpairs, symlinks, symtimes, hardlinks, no hardlink-specials,
+    hardlink-symlinks, IPv6, atimes, batchfiles, inplace, append, no ACLs,
+    xattrs, optional protect-args, iconv, prealloc, stop-at, crtimes
 Optimizations:
-    no SIMD, asm, openssl-crypto
+    no SIMD-roll, no asm-roll, openssl-crypto, no asm-MD5
 Checksum list:
     xxh64 (xxhash) md5 md4 none
 Compress list:
@@ -48,4 +48,4 @@ General Public Licence for details.
 
 Output of 'ssh -V':
 -------------------
-OpenSSH_8.8p1, LibreSSL 3.3.3
+OpenSSH_9.0p1, LibreSSL 3.5.3
