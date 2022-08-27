@@ -67,7 +67,7 @@ hsetenv() {
 		unset package_success package_fail HOUDINI_PATH HOUDINI_OTLSCAN_PATH ROSL
 
 		#------------------------////
-		# ADDONS
+		# PACKAGES
 		#------------------------////
 		if [ "${mlnlib}" == "true" ]; then
 			package.mlnlib
@@ -229,6 +229,28 @@ package.groombear () {
 }
 
 #------------------------////
+# HFS CACHE:
+#------------------------////
+htocache() {
+	local cachepath="${WGCACHE_HOUDINI}/apps"; mkdir -p "$cachepath"
+
+	echo -e "Destination cache folder: ${yellow}[$cachepath]${nc}"
+
+	hversion 
+	local sourcepath="${HDIR}/Houdini ${HVERSION}"
+
+	if [ -d "${sourcepath}" ] && [ -d "${cachepath}" ]; then	
+		rsync --perms --no-p --no-g --chmod=ugo=rwX -rtvh $(cygdrive "${sourcepath}") $(cygdrive "${cachepath}/")
+		echo -e "rsync: ${green}[${sourcepath}]${nc} --> ${green}[${cachepath}/Houdini $HVERSION]${nc}"
+		hsetenv &> /dev/null
+	else
+		echo -e "rsync: ${red}[${sourcepath}]${nc} --> ${red}[${cachepath}/Houdini $HVERSION]${nc}"
+	fi
+
+	echo "cache:" ; lt "$cachepath"
+}
+
+#------------------------////
 # RUN:
 #------------------------////
 hstart() {
@@ -314,43 +336,9 @@ hr() {
 	fi
 }
 
-htocache() {
-	local cachepath="${WGCACHE_HOUDINI}/apps"; mkdir -p "$cachepath"
-
-	echo -e "Destination cache folder: ${yellow}[$cachepath]${nc}"
-
-	hversion 
-	local sourcepath="${HDIR}/Houdini ${HVERSION}"
-
-	if [ -d "${sourcepath}" ] && [ -d "${cachepath}" ]; then	
-		rsync --perms --no-p --no-g --chmod=ugo=rwX -rtvh $(cygdrive "${sourcepath}") $(cygdrive "${cachepath}/")
-		echo -e "rsync: ${green}[${sourcepath}]${nc} --> ${green}[${cachepath}/Houdini $HVERSION]${nc}"
-		hsetenv &> /dev/null
-	else
-		echo -e "rsync: ${red}[${sourcepath}]${nc} --> ${red}[${cachepath}/Houdini $HVERSION]${nc}"
-	fi
-
-	echo "cache:" ; lt "$cachepath"
-}
-
 #------------------------////
-# Function:
+# Read & Load last hip:
 #------------------------////
-pathhshow () { printenv HOUDINI_PATH | sed 's|;|\n|g'; }
-
-cdhsite() { cd $HSITE; }
-
-hrop() {
-	local rop
-	for rop in "${@}"; do
-		if [ "$rop" == "$1" ]; then
-			continue
-		else
-			cmd //c "echo render -C -V -I $rop | hbatch $1"
-		fi
-	done
-}
-
 lasthip() {
 	local history="$(cygpath -u "$HOME/houdini${HOUDINI_RELEASE_VERSION}/file.history")"
 	if [ -f "$history" ]; then
@@ -372,7 +360,28 @@ ha.lasthip() { ha "`lasthip`"; }
 
 hr.lasthip() { hr "`lasthip`"; }
 
+#------------------------////
+# ROP:
+#------------------------////
+hrop() {
+	local rop
+	for rop in "${@}"; do
+		if [ "$rop" == "$1" ]; then
+			continue
+		else
+			cmd //c "echo render -C -V -I $rop | hbatch $1"
+		fi
+	done
+}
+
 hrop.lasthip() { printf "%s${blue} %s${nc} %s\n" "lasthip                 >" "[`lasthip`]" "| rop ["$@"]"; hrop "`lasthip`" ${@}; }
+
+#------------------------////
+# Function:
+#------------------------////
+pathhshow () { printenv HOUDINI_PATH | sed 's|;|\n|g'; }
+
+cdhsite() { cd $HSITE; }
 
 #--------------------------------------------------------------------------------------------------////
 # INITIAL:
