@@ -239,8 +239,8 @@ htocache() {
 	hversion 
 	local sourcepath="${HDIR}/Houdini ${HVERSION}"
 
-	if [ -d "${sourcepath}" ] && [ -d "${cachepath}" ]; then	
-		rsync --perms --no-p --no-g --chmod=ugo=rwX -rtvh $(cygdrive "${sourcepath}") $(cygdrive "${cachepath}/")
+	if [ -d "${sourcepath}" ] && [ -d "${cachepath}" ]; then
+		rsync -avh $(cygdrive "${sourcepath}") $(cygdrive "${cachepath}/")
 		echo -e "rsync: ${green}[${sourcepath}]${nc} --> ${green}[${cachepath}/Houdini $HVERSION]${nc}"
 		hsetenv &> /dev/null
 	else
