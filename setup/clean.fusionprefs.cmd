@@ -20,6 +20,9 @@ rem ############################################################################
 	) else (
 	echo  NOT EXIST Fusion.prefs )
 rem ############################################################################
+	replace "%WGPATH%\blackmagic\masterprefs\Fusion.prefs" "%prefsdir%" /a
+	replace "%WGPATH%\blackmagic\masterprefs\Fusion.toolbars" "%prefsdir%" /a
+rem ############################################################################
 	if exist "%prefsdir%\workgroup.prefs" (
 	del "%prefsdir%\workgroup.prefs" 
 	echo  REMOVE workgroup.prefs )
