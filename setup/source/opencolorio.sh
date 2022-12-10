@@ -2,7 +2,7 @@
 #--------------------------------------------------------------------------------------------------////
 # OpenColorIO:
 #--------------------------------------------------------------------------------------------------////
-export OCIO="$(cygpath -w "${WGPATH}/opencolorio/aces_1.2/config.ocio")"
+export OCIO="$(cygpath -w "${WGPATH}/opencolorio/redshift_3_0/config.ocio")"
 
 ocio.converter () {
     local in=`realpath .`
