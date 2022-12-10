@@ -40,6 +40,7 @@ REM Rsync is a very powerful tool. Please look at documentation for other option
 REM
 
 REM ** CUSTOMIZE ** Enter your rsync command(s) here
-
-rsync --version
-ssh -V
+REM
+REM rsync --version
+REM echo arguments: [%rsyncarg%]
+rsync %rsyncarg%
