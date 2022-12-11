@@ -325,9 +325,16 @@ hr() {
 		local pxrpath="$(cygpath -w "${WGPATH}/sidefx/HtoR/${HVERSION}/Solaris")"
 		export PXR_PLUGINPATH_NAME="${pxrpath};&"
 
-		export REDSHIFT_RV_OPEN_ONLY=1
+		local HOUDINI_DSO_ERROR=2
+		local REDSHIFT_RV_OPEN_ONLY=1
 
-		export ROSL="$(cygpath -u "${RDIR}/OSLShaders")"
+		local REDSHIFT_DISABLEOUTPUTLOCKFILES=1
+		local REDSHIFT_DISABLE_AUTOTEXTURESCOLORSPACE=1
+
+		#local TF_DEBUG=PLUG_*
+		local OCIO="$(cygpath -w "${WGPATH}/opencolorio/redshift_3_0/config.ocio")"
+
+		local ROSL="$(cygpath -u "${RDIR}/OSLShaders")"
 
 		htor_env=true
 		package_success+=(REDSHIFT)
