@@ -157,7 +157,7 @@ package.qlib() {
 # SideFXLabs:
 #------------------------////
 package.sidefxlabs() {
-	local path="$HSITE\sidefxlabs\\${HVERSION}"
+	local path="$HSITE\sidefxlabs\\${HOUDINI_MAJOR_RELEASE}.${HOUDINI_MINOR_RELEASE}"
 	local name=sidefxLabs
 	if [ -d "$(cygpath -u "${path}")" ]; then
 		export SIDEFXLABS="$path"
@@ -187,7 +187,7 @@ package.mops() {
 # Axiom Solver:
 #------------------------////
 package.axiom () {
-	local path="$HSITE\axiom\\${HVERSION}"
+	local path="$HSITE\axiom\\${HOUDINI_MAJOR_RELEASE}.${HOUDINI_MINOR_RELEASE}"
 	local name=Axiom
 	if [ -d "$(cygpath -u "${path}")" ]; then
 		hpathadd "$path"
